@@ -72,6 +72,11 @@ class ConfirmationResource extends Resource
                             ->preload(),
                         Forms\Components\TextInput::make('sponsor')
                             ->maxLength(255),
+                        Forms\Components\DatePicker::make('date_of_birth')
+                            ->native(false),
+                        Forms\Components\TextInput::make('place_of_birth'),
+                        Forms\Components\TextInput::make('place_of_confirmation')
+                            ->required(),
                         Forms\Components\Textarea::make('remarks')
                             ->maxLength(65535)
                             ->columnSpanFull(),
