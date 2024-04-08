@@ -2,12 +2,13 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Common\NumberField;
 use App\Filament\Resources\BaptismResource\Pages;
 use App\Models\Baptism;
 use Filament\Forms;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Form;
-use Filament\Forms\Set;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -20,12 +21,11 @@ class BaptismResource extends Resource
 
     public static function form(Form $form): Form
     {
-        $years = range(date('Y'), 1900);
-
         return $form
             ->schema([
                 Forms\Components\Section::make('Information')
                     ->schema([
+                        NumberField::create(),
                         Forms\Components\Group::make()
                             ->schema([
                                 Forms\Components\TextInput::make('name')
@@ -36,38 +36,36 @@ class BaptismResource extends Resource
                                     ->maxLength(50),
                             ])
                             ->columns(2),
-                        Forms\Components\Group::make([
-                            Forms\Components\TextInput::make('number')
-                                ->required()
-                                ->minValue(1)
-                                ->default(fn () => Baptism::where('year', date('Y'))->count() + 1)
-                                ->integer(),
-                            Forms\Components\Select::make('year')
-                                ->searchable()
-                                ->options(array_combine($years, $years))
-                                ->placeholder('Select a year')
-                                ->default(date('Y'))
-                                ->live()
-                                ->afterStateUpdated(function (Set $set, $state) {
-                                    $count = Baptism::where('year', $state)->count();
-                                    $set('number', $count + 1);
-                                })
-                                ->required(),
-                        ])
-                            ->columns(2),
                         Forms\Components\Group::make()
                             ->schema([
                                 Forms\Components\DatePicker::make('date_of_baptism')
                                     ->required()
+                                    ->displayFormat('d/m/Y')
                                     ->native(false),
                                 Forms\Components\DatePicker::make('date_of_birth')
+                                    ->displayFormat('d/m/Y')
                                     ->native(false),
                             ])
                             ->columns(2),
                         Forms\Components\Group::make()
                             ->schema([
+                                Forms\Components\Radio::make('infant')
+                                    ->live()
+                                    ->inline()
+                                    ->inlineLabel(false)
+                                    ->options([
+                                        1 => 'Infant',
+                                        0 => 'Not-Infant',
+                                    ])
+                                    ->default(true),
                                 Forms\Components\TextInput::make('age')
-                                    ->numeric(),
+                                    ->numeric()
+                                    ->visible(fn (Get $get) => ! $get('infant')),
+
+                            ])
+                            ->columns(2),
+                        Forms\Components\Group::make()
+                            ->schema([
                                 Forms\Components\Radio::make('gender')
                                     ->inline()
                                     ->default('male')
@@ -77,12 +75,8 @@ class BaptismResource extends Resource
                                         'female' => 'Female',
                                     ])
                                     ->required(),
-
-                            ])
-                            ->columns(2),
-                        Forms\Components\Group::make()
-                            ->schema([
                                 Forms\Components\TextInput::make('place_of_birth')
+                                    ->label('Place of Birth / Domicile')
                                     ->required()
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('place_of_baptism')
@@ -105,7 +99,7 @@ class BaptismResource extends Resource
                                     ->createOptionAction(fn (Action $action) => $action
                                         ->modalWidth('md')),
                             ])
-                            ->columns(3)
+                            ->columns(4)
                             ->columnSpanFull(),
                     ])
                     ->columns(2),
