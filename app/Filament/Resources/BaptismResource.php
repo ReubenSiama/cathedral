@@ -79,9 +79,19 @@ class BaptismResource extends Resource
                                     ->label('Place of Birth / Domicile')
                                     ->required()
                                     ->maxLength(255),
-                                Forms\Components\TextInput::make('place_of_baptism')
+                                Forms\Components\Select::make('parish_id')
+                                    ->relationship('parish', 'name')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->preload()
+                                    ->searchable()
+                                    ->label('Place of Baptism')
+                                    ->createOptionForm([
+                                        Forms\Components\TextInput::make('name')
+                                            ->required()
+                                            ->maxLength(255),
+                                    ])
+                                    ->createOptionAction(fn (Action $action) => $action
+                                        ->modalWidth('md')),
                                 Forms\Components\Select::make('priest_id')
                                     ->label('Minister')
                                     ->searchable()
@@ -127,9 +137,18 @@ class BaptismResource extends Resource
                             ->columns(2),
                         Forms\Components\Group::make()
                             ->schema([
-                                Forms\Components\TextInput::make('father_nationality')
+                                Forms\Components\Select::make('nationality_id')
+                                    ->relationship('nationality', 'name')
+                                    ->preload()
+                                    ->searchable()
                                     ->label('Father\'s Nationality')
-                                    ->maxLength(50),
+                                    ->createOptionForm([
+                                        Forms\Components\TextInput::make('name')
+                                            ->required()
+                                            ->maxLength(255),
+                                    ])
+                                    ->createOptionAction(fn (Action $action) => $action
+                                        ->modalWidth('md')),
                                 Forms\Components\TextInput::make('father_occupation')
                                     ->label('Father\'s Occupation')
                                     ->maxLength(50),

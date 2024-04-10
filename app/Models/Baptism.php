@@ -15,4 +15,14 @@ class Baptism extends Model
     {
         return $this->belongsTo(Priest::class);
     }
+
+    public function parish(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Parish::class);
+    }
+
+    public function nationality(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Nationality::class);
+    }
 }

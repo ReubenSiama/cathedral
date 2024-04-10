@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Nationality;
+use App\Models\Parish;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -33,7 +34,7 @@ return new class extends Migration
             $table->string('father_occupation')->nullable();
             $table->string('god_father')->nullable();
             $table->string('god_mother')->nullable();
-            $table->string('place_of_baptism');
+            $table->foreignIdFor(Parish::class)->nullable();
             $table->foreignIdFor(\App\Models\Priest::class)->nullable();
             $table->string('remarks')->nullable();
             $table->timestamps();
