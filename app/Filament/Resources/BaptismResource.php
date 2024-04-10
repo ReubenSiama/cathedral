@@ -19,6 +19,8 @@ class BaptismResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static $dateFormat = 'd/m/Y';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -40,16 +42,16 @@ class BaptismResource extends Resource
                             ->schema([
                                 Forms\Components\DatePicker::make('date_of_baptism')
                                     ->required()
-                                    ->displayFormat('d/m/Y')
+                                    ->displayFormat(self::$dateFormat)
                                     ->native(false),
                                 Forms\Components\DatePicker::make('date_of_birth')
-                                    ->displayFormat('d/m/Y')
+                                    ->displayFormat(self::$dateFormat)
                                     ->native(false),
                             ])
                             ->columns(2),
                         Forms\Components\Group::make()
                             ->schema([
-                                Forms\Components\Radio::make('infant')
+                                Forms\Components\Radio::make('is_infant')
                                     ->live()
                                     ->inline()
                                     ->inlineLabel(false)
@@ -60,7 +62,7 @@ class BaptismResource extends Resource
                                     ->default(true),
                                 Forms\Components\TextInput::make('age')
                                     ->numeric()
-                                    ->visible(fn (Get $get) => ! $get('infant')),
+                                    ->visible(fn (Get $get) => ! $get('is_infant')),
 
                             ])
                             ->columns(2),
@@ -178,14 +180,13 @@ class BaptismResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('baptism_number')
-                    ->label('Number')
+                Tables\Columns\TextColumn::make('number')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('date_of_baptism')
-                    ->date()
+                    ->date(self::$dateFormat)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('date_of_birth')
-                    ->date()
+                    ->date(self::$dateFormat)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('age')
                     ->numeric()
@@ -199,37 +200,17 @@ class BaptismResource extends Resource
                 Tables\Columns\TextColumn::make('gender')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('father_name')
+                    ->label('Father\'s Name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('father_surname')
+                    ->label('Father\'s Surname')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('mother_name')
+                    ->label('Mother\'s Name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('mother_surname')
+                    ->label('Mother\'s Surname')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('father_nationality')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('parents_domicile')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('father_occupation')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('god_father')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('god_mother')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('place_of_baptism')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('minister')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('remarks')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

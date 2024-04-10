@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('baptisms', function (Blueprint $table) {
             $table->id();
-            $table->year('year');
             $table->string('number');
             $table->date('date_of_baptism');
             $table->date('date_of_birth');
