@@ -91,8 +91,7 @@ class ConfirmationResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('confirmation_number')
-                    ->label('Number')
+                Tables\Columns\TextColumn::make('number')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
