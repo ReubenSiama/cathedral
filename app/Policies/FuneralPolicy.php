@@ -63,7 +63,7 @@ class FuneralPolicy
      */
     public function forceDelete(User $user, Funeral $funeral): bool
     {
-        return $user->can('force_delete_funeral');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class FuneralPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_funeral');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class FuneralPolicy
      */
     public function restore(User $user, Funeral $funeral): bool
     {
-        return $user->can('restore_funeral');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class FuneralPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_funeral');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class FuneralPolicy
      */
     public function replicate(User $user, Funeral $funeral): bool
     {
-        return $user->can('replicate_funeral');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class FuneralPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_funeral');
+        return $user->can('{{ Reorder }}');
     }
 }

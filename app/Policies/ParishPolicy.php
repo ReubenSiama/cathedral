@@ -63,7 +63,7 @@ class ParishPolicy
      */
     public function forceDelete(User $user, Parish $parish): bool
     {
-        return $user->can('force_delete_parish');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class ParishPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_parish');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class ParishPolicy
      */
     public function restore(User $user, Parish $parish): bool
     {
-        return $user->can('restore_parish');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class ParishPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_parish');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class ParishPolicy
      */
     public function replicate(User $user, Parish $parish): bool
     {
-        return $user->can('replicate_parish');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class ParishPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_parish');
+        return $user->can('{{ Reorder }}');
     }
 }

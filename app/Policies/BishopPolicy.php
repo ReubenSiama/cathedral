@@ -63,7 +63,7 @@ class BishopPolicy
      */
     public function forceDelete(User $user, Bishop $bishop): bool
     {
-        return $user->can('force_delete_bishop');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class BishopPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_bishop');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class BishopPolicy
      */
     public function restore(User $user, Bishop $bishop): bool
     {
-        return $user->can('restore_bishop');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class BishopPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_bishop');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class BishopPolicy
      */
     public function replicate(User $user, Bishop $bishop): bool
     {
-        return $user->can('replicate_bishop');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class BishopPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_bishop');
+        return $user->can('{{ Reorder }}');
     }
 }

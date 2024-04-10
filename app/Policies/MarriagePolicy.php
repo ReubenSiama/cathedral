@@ -63,7 +63,7 @@ class MarriagePolicy
      */
     public function forceDelete(User $user, Marriage $marriage): bool
     {
-        return $user->can('force_delete_marriage');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class MarriagePolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_marriage');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class MarriagePolicy
      */
     public function restore(User $user, Marriage $marriage): bool
     {
-        return $user->can('restore_marriage');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class MarriagePolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_marriage');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class MarriagePolicy
      */
     public function replicate(User $user, Marriage $marriage): bool
     {
-        return $user->can('replicate_marriage');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class MarriagePolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_marriage');
+        return $user->can('{{ Reorder }}');
     }
 }

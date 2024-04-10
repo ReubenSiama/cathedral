@@ -63,7 +63,7 @@ class ConfirmationPolicy
      */
     public function forceDelete(User $user, Confirmation $confirmation): bool
     {
-        return $user->can('force_delete_confirmation');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class ConfirmationPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_confirmation');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class ConfirmationPolicy
      */
     public function restore(User $user, Confirmation $confirmation): bool
     {
-        return $user->can('restore_confirmation');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class ConfirmationPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_confirmation');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class ConfirmationPolicy
      */
     public function replicate(User $user, Confirmation $confirmation): bool
     {
-        return $user->can('replicate_confirmation');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class ConfirmationPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_confirmation');
+        return $user->can('{{ Reorder }}');
     }
 }

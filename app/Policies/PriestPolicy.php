@@ -63,7 +63,7 @@ class PriestPolicy
      */
     public function forceDelete(User $user, Priest $priest): bool
     {
-        return $user->can('force_delete_priest');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class PriestPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_priest');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class PriestPolicy
      */
     public function restore(User $user, Priest $priest): bool
     {
-        return $user->can('restore_priest');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class PriestPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_priest');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class PriestPolicy
      */
     public function replicate(User $user, Priest $priest): bool
     {
-        return $user->can('replicate_priest');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class PriestPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_priest');
+        return $user->can('{{ Reorder }}');
     }
 }

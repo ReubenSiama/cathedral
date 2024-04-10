@@ -63,7 +63,7 @@ class FirstCommunionPolicy
      */
     public function forceDelete(User $user, FirstCommunion $firstCommunion): bool
     {
-        return $user->can('force_delete_first::communion');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class FirstCommunionPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_first::communion');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class FirstCommunionPolicy
      */
     public function restore(User $user, FirstCommunion $firstCommunion): bool
     {
-        return $user->can('restore_first::communion');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class FirstCommunionPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_first::communion');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class FirstCommunionPolicy
      */
     public function replicate(User $user, FirstCommunion $firstCommunion): bool
     {
-        return $user->can('replicate_first::communion');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class FirstCommunionPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_first::communion');
+        return $user->can('{{ Reorder }}');
     }
 }

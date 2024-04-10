@@ -63,7 +63,7 @@ class BaptismPolicy
      */
     public function forceDelete(User $user, Baptism $baptism): bool
     {
-        return $user->can('force_delete_baptism');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class BaptismPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_baptism');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class BaptismPolicy
      */
     public function restore(User $user, Baptism $baptism): bool
     {
-        return $user->can('restore_baptism');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class BaptismPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_baptism');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class BaptismPolicy
      */
     public function replicate(User $user, Baptism $baptism): bool
     {
-        return $user->can('replicate_baptism');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class BaptismPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_baptism');
+        return $user->can('{{ Reorder }}');
     }
 }
