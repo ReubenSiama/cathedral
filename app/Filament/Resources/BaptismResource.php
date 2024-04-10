@@ -217,11 +217,10 @@ class BaptismResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\Action::make('download')
+                    ->icon('heroicon-o-cloud-arrow-down')
+                    ->color('info')
+                    ->url(fn (Baptism $baptism) => route('baptism.download', $baptism)),
             ]);
     }
 
