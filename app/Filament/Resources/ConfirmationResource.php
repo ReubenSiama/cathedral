@@ -103,7 +103,7 @@ class ConfirmationResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('confirmation_date')
-                    ->date()
+                    ->date(self::$dateFormat)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('bishop.name')
                     ->label('Minister')
