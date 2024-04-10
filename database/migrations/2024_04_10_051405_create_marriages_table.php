@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('date_of_third_announcement');
             $table->string('impediment_dispensation');
             $table->foreignIdFor(\App\Models\Priest::class);
-            $table->foreignId('parish_priest');
+            $table->foreignId('parish_priest_id');
             $table->string('nuptial_form');
             $table->text('remarks');
             $table->timestamps();
