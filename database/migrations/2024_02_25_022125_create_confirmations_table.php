@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('confirmations', function (Blueprint $table) {
             $table->id();
-            $table->year('year');
-            $table->integer('number');
-            $table->string('confirmation_number')->virtualAs('CONCAT(number, "/", year)');
+            $table->string('number');
             $table->string('name');
             $table->string('surname')->nullable();
             $table->string('father_name')->nullable();
@@ -26,7 +24,8 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Parish::class);
             $table->date('confirmation_date');
             $table->foreignIdFor(\App\Models\Bishop::class);
-            $table->string('sponsor')->nullable();
+            $table->string('sponsor_1')->nullable();
+            $table->string('sponsor_2')->nullable();
             $table->text('remarks')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('place_of_birth')->nullable();

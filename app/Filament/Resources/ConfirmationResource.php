@@ -2,11 +2,12 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Common\NumberField;
 use App\Filament\Resources\ConfirmationResource\Pages;
 use App\Models\Confirmation;
 use Filament\Forms;
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Form;
-use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -17,41 +18,31 @@ class ConfirmationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static string $dateFormat = 'd/m/Y';
+
     public static function form(Form $form): Form
     {
-        $years = range(date('Y'), 1900);
-
         return $form
             ->schema([
                 Forms\Components\Section::make()
                     ->schema([
-                        Forms\Components\TextInput::make('number')
-                            ->required()
-                            ->minValue(1)
-                            ->default(fn () => Confirmation::where('year', date('Y'))->count() + 1)
-                            ->numeric(),
-                        Forms\Components\Select::make('year')
-                            ->default(date('Y'))
-                            ->searchable()
-                            ->options(array_combine($years, $years))
-                            ->live()
-                            ->afterStateUpdated(function (Set $set, $state) {
-                                $count = Confirmation::where('year', $state)->count();
-                                $set('number', $count + 1);
-                            })
-                            ->required(),
+                        NumberField::create('number'),
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('surname')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('father_name')
+                            ->label('Father\'s name')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('father_surname')
+                            ->label('Father\'s surname')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('mother_name')
+                            ->label('Mother\'s name')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('mother_surname')
+                            ->label('Mother\'s surname')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('domicile')
                             ->required()
@@ -60,8 +51,16 @@ class ConfirmationResource extends Resource
                             ->relationship('parish', 'name')
                             ->searchable()
                             ->preload()
-                            ->required(),
+                            ->required()
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                            ->createOptionAction(fn (Action $action) => $action
+                                ->modalWidth('md')),
                         Forms\Components\DatePicker::make('confirmation_date')
+                            ->displayFormat(self::$dateFormat)
                             ->native(false)
                             ->required(),
                         Forms\Components\Select::make('bishop_id')
@@ -70,10 +69,13 @@ class ConfirmationResource extends Resource
                             ->searchable()
                             ->required()
                             ->preload(),
-                        Forms\Components\TextInput::make('sponsor')
+                        Forms\Components\TextInput::make('sponsor_1')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('sponsor_2')
                             ->maxLength(255),
                         Forms\Components\DatePicker::make('date_of_birth')
-                            ->native(false),
+                            ->native(false)
+                            ->displayFormat(self::$dateFormat),
                         Forms\Components\TextInput::make('place_of_birth'),
                         Forms\Components\TextInput::make('place_of_confirmation')
                             ->required(),
