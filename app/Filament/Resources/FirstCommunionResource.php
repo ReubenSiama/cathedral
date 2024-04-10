@@ -2,11 +2,12 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Common\NumberField;
 use App\Filament\Resources\FirstCommunionResource\Pages;
 use App\Models\FirstCommunion;
 use Filament\Forms;
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Form;
-use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -19,47 +20,45 @@ class FirstCommunionResource extends Resource
 
     public static function form(Form $form): Form
     {
-        $years = range(date('Y'), 1900);
-
         return $form
             ->schema([
                 Forms\Components\Section::make()
                     ->schema([
-                        Forms\Components\TextInput::make('number')
-                            ->required()
-                            ->minValue(1)
-                            ->default(fn () => FirstCommunion::where('year', date('Y'))->count() + 1)
-                            ->numeric(),
-                        Forms\Components\Select::make('year')
-                            ->options(array_combine($years, $years))
-                            ->default(date('Y'))
-                            ->live()
-                            ->searchable()
-                            ->afterStateUpdated(function (Set $set, $state) {
-                                $count = FirstCommunion::where('year', $state)->count();
-                                $set('number', $count + 1);
-                            })
-                            ->required(),
+                        NumberField::create('number'),
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('surname')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('father_name')
+                            ->label('Father\'s name')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('father_surname')
+                            ->label('Father\'s surname')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('mother_name')
+                            ->label('Mother\'s name')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('mother_surname')
+                            ->label('Mother\'s surname')
                             ->maxLength(255),
                         Forms\Components\Select::make('parish_id')
                             ->relationship('parish', 'name')
                             ->searchable()
                             ->preload()
-                            ->required(),
+                            ->required()
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                            ->createOptionAction(
+                                fn (Action $action) => $action
+                                    ->modalWidth('md'),
+                            ),
                         Forms\Components\DatePicker::make('date_of_first_communion')
                             ->required()
+                            ->displayFormat('d/m/Y')
                             ->native(false),
                         Forms\Components\Textarea::make('remarks')
                             ->maxLength(65535)
@@ -87,6 +86,7 @@ class FirstCommunionResource extends Resource
                 Tables\Columns\TextColumn::make('parish.name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('date_of_first_communion')
+                    ->date('d/m/Y')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

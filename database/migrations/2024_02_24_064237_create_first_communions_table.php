@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('first_communions', function (Blueprint $table) {
             $table->id();
-            $table->year('year');
-            $table->integer('number');
-            $table->string('first_communion_number')->virtualAs('CONCAT(number, "/", year)');
+            $table->string('number');
             $table->string('name');
             $table->string('surname')->nullable();
             $table->string('father_name')->nullable();
