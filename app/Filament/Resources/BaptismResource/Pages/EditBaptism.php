@@ -19,6 +19,8 @@ class EditBaptism extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
+            Actions\Action::make('View Certificate')
+                ->url(fn ($record) => route('baptism.download', $record->getKey())),
         ];
     }
 }

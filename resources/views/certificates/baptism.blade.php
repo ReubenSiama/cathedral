@@ -99,7 +99,7 @@
                     ABODE:
                 </td>
                 <td style="border-bottom: 1px solid black">
-                    {{ $baptism->address }}
+                    {{ $baptism->place_of_birth }}
                 </td>
             </tr>
             <tr>
