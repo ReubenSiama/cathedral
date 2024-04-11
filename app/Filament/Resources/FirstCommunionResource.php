@@ -16,7 +16,7 @@ class FirstCommunionResource extends Resource
 {
     protected static ?string $model = FirstCommunion::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Data Entry';
 
     public static function form(Form $form): Form
     {

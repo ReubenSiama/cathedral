@@ -17,7 +17,7 @@ class BaptismResource extends Resource
 {
     protected static ?string $model = Baptism::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Data Entry';
 
     public static $dateFormat = 'd/m/Y';
 

@@ -16,7 +16,7 @@ class ConfirmationResource extends Resource
 {
     protected static ?string $model = Confirmation::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Data Entry';
 
     protected static string $dateFormat = 'd/m/Y';
 
