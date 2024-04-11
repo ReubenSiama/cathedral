@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             BishopSeeder::class,
             NationalitySeeder::class,
             PriestSeeder::class,
+            InstitutionSeeder::class,
+            MassTimingSeeder::class,
         ]);
     }
 }
