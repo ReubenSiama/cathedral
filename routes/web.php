@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\HomePageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::controller(HomePageController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('home');
+    });
 
 Route::get('login', function () {
     return redirect()->route('filament.admin.auth.login');
