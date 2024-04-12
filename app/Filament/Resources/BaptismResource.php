@@ -25,7 +25,7 @@ class BaptismResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Information')
+                Forms\Components\Section::make('INFORMATION')
                     ->schema([
                         NumberField::create(),
                         Forms\Components\Group::make()
@@ -115,7 +115,7 @@ class BaptismResource extends Resource
                             ->columnSpanFull(),
                     ])
                     ->columns(2),
-                Forms\Components\Section::make('Parents')
+                Forms\Components\Section::make('PARENTS')
                     ->schema([
                         Forms\Components\Group::make()
                             ->schema([
@@ -166,7 +166,7 @@ class BaptismResource extends Resource
                             ->maxLength(255),
                     ])
                     ->columns(2),
-                Forms\Components\Section::make('Remarks')
+                Forms\Components\Section::make('REMARKS')
                     ->schema([
                         Forms\Components\Textarea::make('remarks')
                             ->hiddenLabel()
@@ -188,10 +188,10 @@ class BaptismResource extends Resource
                 Tables\Columns\TextColumn::make('date_of_birth')
                     ->date(self::$dateFormat)
                     ->sortable(),
-                Tables\Columns\TextColumn::make('age')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('place_of_birth')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('priest.full_name')
+                    ->label('Minister')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),

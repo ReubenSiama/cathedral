@@ -50,6 +50,7 @@ class MarriageResource extends Resource
                             ->required()
                             ->maxLength(255),
                         Forms\Components\Select::make('priest_id')
+                            ->label('Minister')
                             ->relationship('priest', 'full_name')
                             ->required()
                             ->native(false)
@@ -86,9 +87,9 @@ class MarriageResource extends Resource
                             ->required(),
                     ])
                     ->columns(3),
-                Forms\Components\Section::make('Personal Details')
+                Forms\Components\Section::make('PERSONAL DETAILS')
                     ->schema([
-                        Forms\Components\Section::make('Bridegroom')
+                        Forms\Components\Section::make('BRIDEGROOM')
                             ->schema([
                                 Forms\Components\TextInput::make('personalDetails.0.name')
                                     ->required()
@@ -134,7 +135,7 @@ class MarriageResource extends Resource
                                     ->required(),
                             ])
                             ->columns(3),
-                        Forms\Components\Section::make('Bride')
+                        Forms\Components\Section::make('BRIDE')
                             ->schema([
                                 Forms\Components\TextInput::make('personalDetails.1.name')
                                     ->required()
@@ -181,9 +182,9 @@ class MarriageResource extends Resource
                             ])
                             ->columns(3),
                     ]),
-                Forms\Components\Section::make('Witness')
+                Forms\Components\Section::make('WITNESS')
                     ->schema([
-                        Forms\Components\Section::make('First Witness')
+                        Forms\Components\Section::make('FIRST WITNESS')
                             ->schema([
                                 Forms\Components\TextInput::make('witnesses.0.name')
                                     ->required()
@@ -199,7 +200,7 @@ class MarriageResource extends Resource
                                     ->acceptedFileTypes(['image/png']),
                             ])
                             ->columns(3),
-                        Forms\Components\Section::make('Second Witness')
+                        Forms\Components\Section::make('SECOND WITNESS')
                             ->schema([
                                 Forms\Components\TextInput::make('witnesses.1.name')
                                     ->required()
@@ -216,7 +217,7 @@ class MarriageResource extends Resource
                             ])
                             ->columns(3),
                     ]),
-                Forms\Components\Section::make('Remarks')
+                Forms\Components\Section::make('REMARKS')
                     ->schema([
                         Forms\Components\Textarea::make('remarks')
                             ->placeholder('Add any additional information here.')

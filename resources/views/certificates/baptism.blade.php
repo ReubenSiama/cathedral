@@ -75,7 +75,7 @@
                     NAME:
                 </td>
                 <td style="border-bottom: 1px solid black">
-                    {{ $baptism->name }}
+                    {{ $baptism->name }} {{ $baptism->surname }}
                 </td>
             </tr>
             <tr>
@@ -83,7 +83,7 @@
                     FATHER'S NAME:
                 </td>
                 <td style="border-bottom: 1px solid black">
-                    {{ $baptism->father_name }}
+                    {{ $baptism->father_name }} {{ $baptism->father_surname }}
                 </td>
             </tr>
             <tr>
@@ -91,7 +91,7 @@
                     MOTHER'S NAME:
                 </td>
                 <td style="border-bottom: 1px solid black">
-                    {{ $baptism->mother_name }}
+                    {{ $baptism->mother_name }} {{ $baptism->mother_surname }}
                 </td>
             </tr>
             <tr>
@@ -136,7 +136,7 @@
             </tr>
         </table>
     <div style="text-align: center; font-style: italic">Certified that the above is a true extract
-        from the Register of Baptisms kept at the <u>{{ $baptism->parish->name }}</u> Church</div>
+        from the Register of Baptisms kept at the <u>Christ the King Cathedral, Kulikawn</u> Church</div>
     <div class="bottom">
         <div class="left">
             The {{ date('jS', strtotime($baptism->date_of_baptism)) }} of
