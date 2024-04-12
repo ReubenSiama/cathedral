@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\CveInfant;
+use App\Enums\Relationship;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +12,11 @@ class Funeral extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public $casts = [
+        'relationship' => Relationship::class,
+        'cve_or_infants' => CveInfant::class,
+    ];
 
     public function priest(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

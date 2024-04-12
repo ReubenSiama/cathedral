@@ -2,12 +2,15 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\CveInfant;
+use App\Enums\Relationship;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\FuneralResource\Pages;
 use App\Models\Funeral;
 use Filament\Forms;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -32,8 +35,26 @@ class FuneralResource extends Resource
                             ->maxLength(255),
                         Forms\Components\TextInput::make('surname')
                             ->maxLength(255),
-                        Forms\Components\TextInput::make('parent_spouse_name')
-                            ->maxLength(255),
+                        Forms\Components\Group::make(
+                            [
+                                Forms\Components\Select::make('relationship')
+                                    ->options(Relationship::class)
+                                    ->default(Relationship::Parent)
+                                    ->native(false)
+                                    ->live()
+                                    ->required(),
+                                Forms\Components\TextInput::make('parent_spouse_name')
+                                    ->label(fn (Get $get) => match ($get('relationship')) {
+                                        Relationship::Parent => 'Parent\'s Name',
+                                        Relationship::Spouse => 'Spouse\'s Name',
+                                        default => 'Name',
+                                    })
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->columnSpan(2),
+                            ]
+                        )->columns(3)
+                            ->columnSpan(2),
                         Forms\Components\TextInput::make('age')
                             ->numeric()
                             ->maxLength(255),
@@ -49,10 +70,13 @@ class FuneralResource extends Resource
                             ->required(),
                         Forms\Components\TextInput::make('cause_of_death')
                             ->maxLength(255),
-                        Forms\Components\TextInput::make('cve_or_infants')
-                            ->label('C.V.E. or Infants')
-                            ->required()
-                            ->maxLength(255),
+                        Forms\Components\Radio::make('cve_or_infants')
+                            ->label('C.V.E. or Infant')
+                            ->inline(true)
+                            ->inlineLabel(false)
+                            ->default(CveInfant::CVE)
+                            ->options(CveInfant::class)
+                            ->required(),
                         Forms\Components\TextInput::make('place_of_burial')
                             ->maxLength(255),
                         Forms\Components\Select::make('priest_id')
