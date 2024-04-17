@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('number');
             $table->string('name');
+            $table->date('date_of_birth')->nullable();
+            $table->string('place_of_birth')->nullable();
+            $table->date('date_of_baptism')->nullable();
+            $table->string('place_of_baptism')->nullable();
             $table->string('surname')->nullable();
             $table->string('father_name')->nullable();
             $table->string('father_surname')->nullable();
@@ -22,7 +26,10 @@ return new class extends Migration
             $table->string('mother_surname')->nullable();
             $table->foreignIdFor(\App\Models\Parish::class);
             $table->date('date_of_first_communion');
+            $table->string('address');
             $table->text('remarks')->nullable();
+            $table->string('date_of_issue')->nullable();
+            $table->foreignIdFor(\App\Models\Priest::class);
             $table->timestamps();
         });
     }

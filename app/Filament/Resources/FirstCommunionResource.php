@@ -18,6 +18,8 @@ class FirstCommunionResource extends Resource
 
     protected static ?string $navigationGroup = 'Data Entry';
 
+    protected static string $dateFormat = 'd/m/Y';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -30,6 +32,14 @@ class FirstCommunionResource extends Resource
                             ->maxLength(255),
                         Forms\Components\TextInput::make('surname')
                             ->maxLength(255),
+                        Forms\Components\DatePicker::make('date_of_birth')
+                            ->displayFormat(self::$dateFormat)
+                            ->native(false),
+                        Forms\Components\TextInput::make('place_of_birth'),
+                        Forms\Components\DatePicker::make('date_of_baptism')
+                            ->displayFormat(self::$dateFormat)
+                            ->native(false),
+                        Forms\Components\TextInput::make('place_of_baptism'),
                         Forms\Components\TextInput::make('father_name')
                             ->label('Father\'s name')
                             ->maxLength(255),
@@ -42,8 +52,27 @@ class FirstCommunionResource extends Resource
                         Forms\Components\TextInput::make('mother_surname')
                             ->label('Mother\'s surname')
                             ->maxLength(255),
+                        Forms\Components\Select::make('priest_id')
+                            ->relationship('priest', 'full_name')
+                            ->label('Minister')
+                            ->searchable()
+                            ->preload()
+                            ->required()
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('surname')
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                            ->createOptionAction(
+                                fn (Action $action) => $action
+                                    ->modalWidth('md'),
+                            ),
                         Forms\Components\Select::make('parish_id')
                             ->relationship('parish', 'name')
+                            ->label('Place')
                             ->searchable()
                             ->preload()
                             ->required()
@@ -60,6 +89,10 @@ class FirstCommunionResource extends Resource
                             ->required()
                             ->displayFormat('d/m/Y')
                             ->native(false),
+                        Forms\Components\TextInput::make('address')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpan(2),
                         Forms\Components\Textarea::make('remarks')
                             ->maxLength(65535)
                             ->columnSpanFull(),

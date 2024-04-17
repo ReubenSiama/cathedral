@@ -113,18 +113,18 @@
         <tr>
             <td>Date of Birth</td>
             <td style="width: 1%;">:</td>
-            <td class="underline">{{ $firstCommunion->name }}</td>
+            <td class="underline">{{ date('d/m/Y', strtotime($firstCommunion->date_of_birth)) }}</td>
             <td style="width: 5%;">Place</td>
             <td style="width: 1%;">:</td>
-            <td class="underline" style="width: ">{{ $firstCommunion->name }}</td>
+            <td class="underline" style="width: ">{{ $firstCommunion->place_of_birth }}</td>
         </tr>
         <tr>
             <td>Date of Baptism</td>
             <td style="width: 1%;">:</td>
-            <td class="underline">{{ $firstCommunion->name }}</td>
+            <td class="underline">{{ date('d/m/Y', strtotime($firstCommunion->date_of_baptism)) }}</td>
             <td style="width: 5%;">Place</td>
             <td style="width: 1%;">:</td>
-            <td class="underline">{{ $firstCommunion->name }}</td>
+            <td class="underline">{{ $firstCommunion->place_of_baptism }}</td>
         </tr>
         <tr>
             <td>Father's Name</td>
@@ -145,22 +145,24 @@
         <tr>
             <td>Address</td>
             <td style="width: 1%;">:</td>
-            <td colspan="4" class="underline">{{ $firstCommunion->name }}</td>
+            <td colspan="4" class="underline">{{ $firstCommunion->address }}</td>
         </tr>
         <tr>
             <td style="width: 35%">Date of First Communion</td>
             <td style="width: 1%;">:</td>
-            <td colspan="4" class="underline">{{ $firstCommunion->name }}</td>
+            <td colspan="4" class="underline">
+                {{ date('d/m/Y', strtotime($firstCommunion->date_of_first_communion)) }}
+            </td>
         </tr>
         <tr>
             <td>Place of First Communion</td>
             <td style="width: 1%;">:</td>
-            <td colspan="4" class="underline">{{ $firstCommunion->name }}</td>
+            <td colspan="4" class="underline">{{ $firstCommunion->parish->name }}</td>
         </tr>
         <tr>
             <td>Conferred by</td>
             <td style="width: 1%;">:</td>
-            <td colspan="4" class="underline">{{ $firstCommunion->name }}</td>
+            <td colspan="4" class="underline">{{ $firstCommunion->priest->full_name }}</td>
         </tr>
         <tr>
             <td colspan="6" style="font-size: 13px; padding: 10px 0px; text-align: justify;">
@@ -173,20 +175,20 @@
         <tr>
             <td style="width: 18%">Place</td>
             <td style="width: 1%;">:</td>
-            <td class="underline"></td>
+            <td class="underline">Aizawl</td>
             <td class="bottom" rowspan="4"></td>
             <td colspan="2"></td>
         </tr>
         <tr>
             <td>Date of Issue</td>
             <td style="width: 1%;">:</td>
-            <td class="underline"></td>
+            <td class="underline">{{ date('d/m/Y', strtotime($firstCommunion->date_of_issue)) }}</td>
             <td colspan="2" class="underline"></td>
         </tr>
         <tr>
             <td>Reg. No.</td>
             <td style="width: 1%;">:</td>
-            <td class="underline"></td>
+            <td class="underline">{{ $firstCommunion->number }}</td>
             <td colspan="2" class="text-center">Parish Priest</td>
         </tr>
         <tr>

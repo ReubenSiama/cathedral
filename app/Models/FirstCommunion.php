@@ -15,4 +15,9 @@ class FirstCommunion extends Model
     {
         return $this->belongsTo(Parish::class);
     }
+
+    public function priest(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Priest::class);
+    }
 }

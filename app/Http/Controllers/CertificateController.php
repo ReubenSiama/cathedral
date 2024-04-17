@@ -17,6 +17,11 @@ class CertificateController extends Controller
 
     public function firstCommunion(FirstCommunion $firstCommunion)
     {
+        if ($firstCommunion->date_of_issue == null) {
+            $firstCommunion->date_of_issue = now();
+            $firstCommunion->save();
+        }
+
         return PDF::loadView('certificates.first-communion', compact('firstCommunion'))
             ->setPaper('a4')
             ->stream("$firstCommunion->name Certificate.pdf");
