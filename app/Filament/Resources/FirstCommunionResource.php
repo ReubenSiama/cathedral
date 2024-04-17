@@ -72,7 +72,7 @@ class FirstCommunionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('first_communion_number')
+                Tables\Columns\TextColumn::make('number')
                     ->label('Number')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
@@ -102,6 +102,11 @@ class FirstCommunionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('download')
+                    ->hiddenLabel()
+                    ->icon('heroicon-o-eye')
+                    ->color('info')
+                    ->url(fn (FirstCommunion $firstCommunion) => route('first.communion.download', $firstCommunion)),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
