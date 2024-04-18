@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('place_of_burial')->nullable();
             $table->foreignIdFor(\App\Models\Priest::class);
             $table->text('remarks')->nullable();
+            $table->string('relationship')->after('surname');
             $table->timestamps();
         });
     }
