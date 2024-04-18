@@ -50,6 +50,7 @@ class ConfirmationResource extends Resource
                             ->maxLength(255),
                         Forms\Components\Select::make('parish_id')
                             ->relationship('parish', 'name')
+                            ->label('Place of Confirmation')
                             ->searchable()
                             ->preload()
                             ->required()
@@ -78,8 +79,6 @@ class ConfirmationResource extends Resource
                             ->native(false)
                             ->displayFormat(self::$dateFormat),
                         Forms\Components\TextInput::make('place_of_birth'),
-                        Forms\Components\TextInput::make('place_of_confirmation')
-                            ->required(),
                         Forms\Components\Textarea::make('remarks')
                             ->maxLength(65535)
                             ->columnSpanFull(),
@@ -101,6 +100,7 @@ class ConfirmationResource extends Resource
                 Tables\Columns\TextColumn::make('domicile')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('parish.name')
+                    ->label('Parish/Church')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('confirmation_date')

@@ -233,7 +233,7 @@
             <td>Place of Confirmation</td>
             <td colspan="2" class="width-1 text-right">:</td>
             <td colspan="4" class="underline">
-                {{ $confirmation->place_of_confirmation }}
+                {{ $confirmation->parish->name }}
             </td>
         </tr>
         <tr>

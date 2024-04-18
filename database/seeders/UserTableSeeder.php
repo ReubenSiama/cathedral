@@ -11,10 +11,12 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::create([
+        $user = \App\Models\User::create([
             'name' => 'Admin',
             'email' => 'admin@mail.com',
             'password' => 'password',
         ]);
+
+        $user->assignRole('super_admin');
     }
 }

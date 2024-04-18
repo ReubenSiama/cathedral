@@ -29,7 +29,6 @@ return new class extends Migration
             $table->text('remarks')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('place_of_birth')->nullable();
-            $table->string('place_of_confirmation');
             $table->date('date_of_issue')->nullable();
             $table->timestamps();
         });
