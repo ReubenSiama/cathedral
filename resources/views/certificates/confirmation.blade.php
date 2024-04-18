@@ -184,62 +184,6 @@
                 </div>
             </td>
         </tr>
-        {{-- <tr>
-            <td style="vertical-align: bottom" class="text-gold" colspan="3">
-                THLARAU
-                <br>
-                THIANGHLIM
-                <br>
-                RAH 12-TE
-                <br>
-                Hmangaihna
-                <br>
-                Hlimna
-                <br>
-                Remna
-                <br>
-                Dawhtheihna
-                <br>
-                Ngilneihna
-                <br>
-                Thatna
-                <br>
-                Thilphalna
-                <br>
-                Zaidamna
-                <br>
-                Rinawmna
-                <br>
-                Thuhnuairawlhna
-                <br>
-                Insum theihna
-                <br>
-                Thianghlimna
-            </td>
-            <td class="crucifix"></td>
-            <td style="vertical-align: bottom" class="text-gold">
-                THLARAU
-                <br>
-                THIANGHLIM
-                <br>
-                THILPEK 7-TE
-                <br>
-                Finna
-                <br>
-                Hriatthiamna
-                <br>
-                Thurawn
-                <br>
-                Tuarchhelna
-                <br>
-                Hriatna
-                <br>
-                Pathian Ngaihsakna
-                <br>
-                Lalpa Tihna
-            </td>
-            <td colspan="2"></td>
-        </tr> --}}
         <tr>
             <td>Name</td>
             <td colspan="2" class="width-1 text-right">:</td>
