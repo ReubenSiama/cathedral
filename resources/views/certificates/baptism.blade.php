@@ -48,88 +48,103 @@
             </tr>
             <tr>
                 <td style="padding: 10px">
-                    DATE OF BAPTISM:
+                    DATE OF BAPTISM
                 </td>
+                <td style="width: 1%;">:</td>
                 <td style="border-bottom: 1px solid black;">
                     {{ date('d/m/Y', strtotime($baptism->date_of_baptism)) }}
                 </td>
             </tr>
             <tr>
-                <td>
-                    DATE OF BIRTH:
+                <td style="width: 40%">
+                    DATE OF BIRTH
                 </td>
+                <td style="width: 1%;">:</td>
                 <td style="border-bottom: 1px solid black">
                     {{ date('d/m/Y', strtotime($baptism->date_of_birth)) }}
                 </td>
             </tr>
             <tr>
-                <td>
-                    SEX:
+                <td style="width: 40%">
+                    SEX
                 </td>
+                <td style="width: 1%;">:</td>
                 <td style="border-bottom: 1px solid black">
                     {{ ucwords($baptism->gender) }}
                 </td>
             </tr>
             <tr>
-                <td>
-                    NAME:
+                <td style="width: 40%">
+                    NAME
                 </td>
+                <td style="width: 1%;">:</td>
                 <td style="border-bottom: 1px solid black">
                     {{ $baptism->name }} {{ $baptism->surname }}
                 </td>
             </tr>
             <tr>
-                <td>
-                    FATHER'S NAME:
+                <td style="width: 40%">
+                    FATHER'S NAME
                 </td>
+                <td style="width: 1%;">:</td>
                 <td style="border-bottom: 1px solid black">
                     {{ $baptism->father_name }} {{ $baptism->father_surname }}
                 </td>
             </tr>
             <tr>
-                <td>
-                    MOTHER'S NAME:
+                <td style="width: 40%">
+                    MOTHER'S NAME
                 </td>
+                <td style="width: 1%;">:</td>
                 <td style="border-bottom: 1px solid black">
                     {{ $baptism->mother_name }} {{ $baptism->mother_surname }}
                 </td>
             </tr>
             <tr>
-                <td>
-                    ABODE:
+                <td style="width: 40%">
+                    ABODE
                 </td>
-                <td style="border-bottom: 1px solid black">
+                <td style="width: 1%;">:</td>
+                <td style="border-bottom: 1px solid black;
+                font-size: {{ strlen($baptism->father_occupation) > 30 ? '12px' : '14px' }}">
                     {{ $baptism->place_of_birth }}
                 </td>
             </tr>
             <tr>
-                <td>
-                    FATHER'S PROFESSION:
+                <td style="width: 40%">
+                    FATHER'S PROFESSION
                 </td>
-                <td style="border-bottom: 1px solid black">
+                <td style="width: 1%;">:</td>
+                <td style="border-bottom: 1px solid black;
+                font-size: {{ strlen($baptism->father_occupation) > 30 ? '12px' : '14px' }}">
                     {{ $baptism->father_occupation }}
                 </td>
             </tr>
             <tr>
-                <td>
-                    NATIONALITY:
+                <td style="width: 40%">
+                    NATIONALITY
                 </td>
+                <td style="width: 1%;">:</td>
                 <td style="border-bottom: 1px solid black">
                     {{ $baptism->nationality->name }}
                 </td>
             </tr>
             <tr>
-                <td>
-                    GOD PARENTS:
+                <td style="width: 40%">
+                    GOD PARENTS
                 </td>
-                <td style="border-bottom: 1px solid black">
+                <td style="width: 1%;">:</td>
+                <td style="border-bottom: 1px solid black;
+                font-size: {{ strlen($baptism->god_father.' & '.$baptism->god_mother) > 50 ? '12px' : '14px' }}
+                ">
                     {{ $baptism->god_father }} & {{ $baptism->god_mother }}
                 </td>
             </tr>
             <tr>
-                <td>
-                    CLERGYMAN OFFICIATING:
+                <td style="width: 40%">
+                    CLERGYMAN OFFICIATING
                 </td>
+                <td style="width: 1%;">:</td>
                 <td style="border-bottom: 1px solid black">
                     {{ $baptism->priest->full_name }}
                 </td>

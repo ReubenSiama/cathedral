@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Common\DownloadCertificate;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\ConfirmationResource\Pages;
 use App\Models\Confirmation;
@@ -115,6 +116,7 @@ class ConfirmationResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                DownloadCertificate::make('confirmation.download'),
             ]);
     }
 

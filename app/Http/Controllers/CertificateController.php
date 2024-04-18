@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Baptism;
+use App\Models\Confirmation;
 use App\Models\FirstCommunion;
 use PDF;
 
@@ -25,5 +26,17 @@ class CertificateController extends Controller
         return PDF::loadView('certificates.first-communion', compact('firstCommunion'))
             ->setPaper('a4')
             ->stream("$firstCommunion->name Certificate.pdf");
+    }
+
+    public function confirmation(Confirmation $confirmation)
+    {
+        if ($confirmation->date_of_issue == null) {
+            $confirmation->date_of_issue = now();
+            $confirmation->save();
+        }
+
+        return PDF::loadView('certificates.confirmation', compact('confirmation'))
+            ->setPaper('a4')
+            ->stream('confirmation-certificate.pdf');
     }
 }

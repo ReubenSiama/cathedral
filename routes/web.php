@@ -28,4 +28,5 @@ Route::controller(CertificateController::class)
     ->group(function () {
         Route::get('baptism/{baptism}/download', 'baptism')->name('baptism.download');
         Route::get('first-communion/{firstCommunion}/download', 'firstCommunion')->name('first.communion.download');
+        Route::get('confirmation/{confirmation}/download', 'confirmation')->name('confirmation.download');
     });

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Common\DownloadCertificate;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\BaptismResource\Pages;
 use App\Models\Baptism;
@@ -161,9 +162,9 @@ class BaptismResource extends Resource
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('god_father')
-                            ->maxLength(255),
+                            ->maxLength(50),
                         Forms\Components\TextInput::make('god_mother')
-                            ->maxLength(255),
+                            ->maxLength(50),
                     ])
                     ->columns(2),
                 Forms\Components\Section::make('REMARKS')
@@ -218,11 +219,7 @@ class BaptismResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->hiddenLabel(),
-                Tables\Actions\Action::make('download')
-                    ->hiddenLabel()
-                    ->icon('heroicon-o-eye')
-                    ->color('info')
-                    ->url(fn (Baptism $baptism) => route('baptism.download', $baptism)),
+                DownloadCertificate::make('baptism.download'),
             ]);
     }
 
