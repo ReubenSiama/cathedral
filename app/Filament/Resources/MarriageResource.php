@@ -20,7 +20,9 @@ class MarriageResource extends Resource
 
     protected static string $dateFormat = 'd/m/Y';
 
-    public static function form(Form $form): Form
+    protected static string $fileTypes = 'image/png';
+
+    public static function form(Form $form): Form // NOSONAR
     {
         return $form
             ->schema([
@@ -28,6 +30,7 @@ class MarriageResource extends Resource
                     ->schema([
                         NumberField::create(),
                         Forms\Components\DatePicker::make('date_of_marriage')
+                            ->label('Date of Marriage')
                             ->native(false)
                             ->displayFormat(self::$dateFormat)
                             ->required(),
@@ -35,18 +38,22 @@ class MarriageResource extends Resource
                             ->required()
                             ->maxLength(255),
                         Forms\Components\DatePicker::make('date_of_first_announcement')
+                            ->label('Date of First Announcement')
                             ->native(false)
                             ->displayFormat(self::$dateFormat)
                             ->required(),
                         Forms\Components\DatePicker::make('date_of_second_announcement')
+                            ->label('Date of Second Announcement')
                             ->native(false)
                             ->displayFormat(self::$dateFormat)
                             ->required(),
                         Forms\Components\DatePicker::make('date_of_third_announcement')
+                            ->label('Date of Third Announcement')
                             ->native(false)
                             ->displayFormat(self::$dateFormat)
                             ->required(),
                         Forms\Components\TextInput::make('impediment_dispensation')
+                            ->label('Impediment Dispensation')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\Select::make('priest_id')
@@ -68,6 +75,7 @@ class MarriageResource extends Resource
                                 ->modalWidth('md')),
                         Forms\Components\Select::make('parish_priest_id')
                             ->required()
+                            ->label('Parish Priest')
                             ->relationship('parishPriest', 'full_name')
                             ->native(false)
                             ->searchable()
@@ -83,6 +91,7 @@ class MarriageResource extends Resource
                             ->createOptionAction(fn (Action $action) => $action
                                 ->modalWidth('md')),
                         Forms\Components\FileUpload::make('nuptial_form')
+                            ->label('Nuptial Form')
                             ->acceptedFileTypes(['application/pdf'])
                             ->required(),
                     ])
@@ -106,6 +115,7 @@ class MarriageResource extends Resource
                                     ->required()
                                     ->maxLength(255),
                                 Forms\Components\DatePicker::make('personalDetails.0.date_of_birth')
+                                    ->label('Date of Birth')
                                     ->native(false)
                                     ->displayFormat(self::$dateFormat)
                                     ->required(),
@@ -131,7 +141,7 @@ class MarriageResource extends Resource
                                     ])
                                     ->required(),
                                 Forms\Components\FileUpload::make('personalDetails.0.signature')
-                                    ->acceptedFileTypes(['image/png'])
+                                    ->acceptedFileTypes([self::$fileTypes])
                                     ->required(),
                             ])
                             ->columns(3),
@@ -152,6 +162,7 @@ class MarriageResource extends Resource
                                     ->required()
                                     ->maxLength(255),
                                 Forms\Components\DatePicker::make('personalDetails.1.date_of_birth')
+                                    ->label('Date of Birth')
                                     ->native(false)
                                     ->displayFormat(self::$dateFormat)
                                     ->required(),
@@ -177,7 +188,7 @@ class MarriageResource extends Resource
                                     ])
                                     ->required(),
                                 Forms\Components\FileUpload::make('personalDetails.1.signature')
-                                    ->acceptedFileTypes(['image/png'])
+                                    ->acceptedFileTypes([self::$fileTypes])
                                     ->required(),
                             ])
                             ->columns(3),
@@ -197,7 +208,7 @@ class MarriageResource extends Resource
                                     ->maxLength(255),
                                 Forms\Components\FileUpload::make('witnesses.0.signature')
                                     ->required()
-                                    ->acceptedFileTypes(['image/png']),
+                                    ->acceptedFileTypes([self::$fileTypes]),
                             ])
                             ->columns(3),
                         Forms\Components\Section::make('SECOND WITNESS')
@@ -213,7 +224,7 @@ class MarriageResource extends Resource
                                     ->maxLength(255),
                                 Forms\Components\FileUpload::make('witnesses.1.signature')
                                     ->required()
-                                    ->acceptedFileTypes(['image/png']),
+                                    ->acceptedFileTypes([self::$fileTypes]),
                             ])
                             ->columns(3),
                     ]),
