@@ -33,24 +33,30 @@ class FirstCommunionResource extends Resource
                         Forms\Components\TextInput::make('surname')
                             ->maxLength(255),
                         Forms\Components\DatePicker::make('date_of_birth')
+                            ->label('Date of Birth')
                             ->displayFormat(self::$dateFormat)
                             ->native(false),
-                        Forms\Components\TextInput::make('place_of_birth'),
+                        Forms\Components\TextInput::make('place_of_birth')
+                            ->label('Place of Birth')
+                            ->maxLength(100),
                         Forms\Components\DatePicker::make('date_of_baptism')
+                            ->label('Date of Baptism')
                             ->displayFormat(self::$dateFormat)
                             ->native(false),
-                        Forms\Components\TextInput::make('place_of_baptism'),
+                        Forms\Components\TextInput::make('place_of_baptism')
+                            ->label('Place of Baptism')
+                            ->maxLength(100),
                         Forms\Components\TextInput::make('father_name')
-                            ->label('Father\'s name')
+                            ->label('Father\'s Name')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('father_surname')
-                            ->label('Father\'s surname')
+                            ->label('Father\'s Surname')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('mother_name')
-                            ->label('Mother\'s name')
+                            ->label('Mother\'s Name')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('mother_surname')
-                            ->label('Mother\'s surname')
+                            ->label('Mother\'s Surname')
                             ->maxLength(255),
                         Forms\Components\Select::make('priest_id')
                             ->relationship('priest', 'full_name')
@@ -86,8 +92,9 @@ class FirstCommunionResource extends Resource
                                     ->modalWidth('md'),
                             ),
                         Forms\Components\DatePicker::make('date_of_first_communion')
+                            ->label('Date of First Communion')
                             ->required()
-                            ->displayFormat('d/m/Y')
+                            ->displayFormat(self::$dateFormat)
                             ->native(false),
                         Forms\Components\TextInput::make('address')
                             ->required()
@@ -119,7 +126,7 @@ class FirstCommunionResource extends Resource
                 Tables\Columns\TextColumn::make('parish.name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('date_of_first_communion')
-                    ->date('d/m/Y')
+                    ->date(self::$dateFormat)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
