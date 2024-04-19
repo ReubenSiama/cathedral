@@ -34,16 +34,16 @@ class ConfirmationResource extends Resource
                         Forms\Components\TextInput::make('surname')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('father_name')
-                            ->label('Father\'s name')
+                            ->label('Father\'s Name')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('father_surname')
-                            ->label('Father\'s surname')
+                            ->label('Father\'s Surname')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('mother_name')
-                            ->label('Mother\'s name')
+                            ->label('Mother\'s Name')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('mother_surname')
-                            ->label('Mother\'s surname')
+                            ->label('Mother\'s Surname')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('domicile')
                             ->required()
@@ -62,6 +62,7 @@ class ConfirmationResource extends Resource
                             ->createOptionAction(fn (Action $action) => $action
                                 ->modalWidth('md')),
                         Forms\Components\DatePicker::make('confirmation_date')
+                            ->label('Date of Confirmation')
                             ->displayFormat(self::$dateFormat)
                             ->native(false)
                             ->required(),
@@ -71,19 +72,32 @@ class ConfirmationResource extends Resource
                             ->searchable()
                             ->required()
                             ->preload(),
-                        Forms\Components\TextInput::make('sponsor_1')
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('sponsor_2')
-                            ->maxLength(255),
                         Forms\Components\DatePicker::make('date_of_birth')
+                            ->label('Date of Birth')
                             ->native(false)
                             ->displayFormat(self::$dateFormat),
-                        Forms\Components\TextInput::make('place_of_birth'),
-                        Forms\Components\Textarea::make('remarks')
-                            ->maxLength(65535)
-                            ->columnSpanFull(),
+                        Forms\Components\TextInput::make('place_of_birth')
+                            ->label('Place of Birth'),
                     ])
                     ->columns(4),
+                Forms\Components\Section::make('SPONSORS')
+                    ->schema([
+                        Forms\Components\TextInput::make('sponsor_1')
+                            ->hiddenLabel()
+                            ->prefix('1')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('sponsor_2')
+                            ->hiddenLabel()
+                            ->prefix('2')
+                            ->maxLength(255),
+                    ]),
+                Forms\Components\Section::make('REMARKS')
+                    ->schema([
+                        Forms\Components\Textarea::make('remarks')
+                            ->hiddenLabel()
+                            ->maxLength(65535)
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 
