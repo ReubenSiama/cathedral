@@ -42,10 +42,12 @@ class BaptismResource extends Resource
                         Forms\Components\Group::make()
                             ->schema([
                                 Forms\Components\DatePicker::make('date_of_baptism')
+                                    ->label('Date of Baptism')
                                     ->required()
                                     ->displayFormat(self::$dateFormat)
                                     ->native(false),
                                 Forms\Components\DatePicker::make('date_of_birth')
+                                    ->label('Date of Birth')
                                     ->displayFormat(self::$dateFormat)
                                     ->native(false),
                             ])
@@ -53,12 +55,13 @@ class BaptismResource extends Resource
                         Forms\Components\Group::make()
                             ->schema([
                                 Forms\Components\Radio::make('is_infant')
+                                    ->label('Infant?')
                                     ->live()
                                     ->inline()
                                     ->inlineLabel(false)
                                     ->options([
-                                        1 => 'Infant',
-                                        0 => 'Not-Infant',
+                                        1 => 'Yes',
+                                        0 => 'No',
                                     ])
                                     ->default(true),
                                 Forms\Components\TextInput::make('age')
@@ -162,8 +165,10 @@ class BaptismResource extends Resource
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('god_father')
+                            ->label('God Father')
                             ->maxLength(50),
                         Forms\Components\TextInput::make('god_mother')
+                            ->label('God Mother')
                             ->maxLength(50),
                     ])
                     ->columns(2),
