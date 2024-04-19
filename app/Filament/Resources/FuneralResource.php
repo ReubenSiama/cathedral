@@ -35,49 +35,26 @@ class FuneralResource extends Resource
                             ->maxLength(255),
                         Forms\Components\TextInput::make('surname')
                             ->maxLength(255),
-                        Forms\Components\Group::make(
-                            [
-                                Forms\Components\Select::make('relationship')
-                                    ->options(Relationship::class)
-                                    ->default(Relationship::Parent)
-                                    ->native(false)
-                                    ->live()
-                                    ->required(),
-                                Forms\Components\TextInput::make('parent_spouse_name')
-                                    ->label(fn (Get $get) => match ($get('relationship')) {
-                                        Relationship::Parent => 'Parent\'s Name',
-                                        Relationship::Spouse => 'Spouse\'s Name',
-                                        default => 'Name',
-                                    })
-                                    ->required()
-                                    ->maxLength(255)
-                                    ->columnSpan(2),
-                            ]
-                        )->columns(3)
-                            ->columnSpan(2),
                         Forms\Components\TextInput::make('age')
                             ->numeric()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('domicile')
                             ->maxLength(255),
                         Forms\Components\DatePicker::make('date_of_death')
+                            ->label('Date of Death')
                             ->displayFormat(self::$dateFormat)
                             ->native(false)
                             ->required(),
                         Forms\Components\DatePicker::make('date_of_burial')
+                            ->label('Date of Burial')
                             ->displayFormat(self::$dateFormat)
                             ->native(false)
                             ->required(),
                         Forms\Components\TextInput::make('cause_of_death')
+                            ->label('Cause of Death')
                             ->maxLength(255),
-                        Forms\Components\Radio::make('cve_or_infants')
-                            ->label('C.V.E. or Infant')
-                            ->inline(true)
-                            ->inlineLabel(false)
-                            ->default(CveInfant::CVE)
-                            ->options(CveInfant::class)
-                            ->required(),
                         Forms\Components\TextInput::make('place_of_burial')
+                            ->label('Place of Burial')
                             ->maxLength(255),
                         Forms\Components\Select::make('priest_id')
                             ->relationship('priest', 'full_name')
@@ -97,11 +74,54 @@ class FuneralResource extends Resource
                                 fn (Action $action) => $action
                                     ->modalWidth('md'),
                             ),
+                        Forms\Components\Radio::make('cve_or_infants')
+                            ->label('C.V.E. or Infant')
+                            ->inline(true)
+                            ->inlineLabel(false)
+                            ->default(CveInfant::CVE)
+                            ->options(CveInfant::class)
+                            ->required(),
                         Forms\Components\Textarea::make('remarks')
                             ->maxLength(65535)
                             ->columnSpanFull(),
                     ])
                     ->columns(3),
+                Forms\Components\Section::make('RELATIVES')
+                    ->schema([
+                        Forms\Components\Section::make()
+                            ->schema([
+                                Forms\Components\Select::make('relationship')
+                                    ->options(Relationship::class)
+                                    ->default(Relationship::Parent)
+                                    ->native(false)
+                                    ->live()
+                                    ->required(),
+                            ])
+                            ->columnspan(1),
+                        Forms\Components\Section::make()
+                            ->schema([
+                                Forms\Components\TextInput::make('parent_spouse_name.0')
+                                    ->hiddenLabel()
+                                    ->prefix(fn (Get $get) => match ($get('relationship')) {
+                                        Relationship::Parent->value => 'Father\'s Name',
+                                        Relationship::Spouse->value => 'Spouse\'s Name',
+                                        default => 'Name'
+                                    })
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('parent_spouse_name.1')
+                                    ->hidden(fn ($get) => $get('relationship') == Relationship::Spouse->value)
+                                    ->hiddenLabel()
+                                    ->prefix(fn (Get $get) => match ($get('relationship')) {
+                                        Relationship::Parent->value => 'Mother\'s Name',
+                                        Relationship::Spouse->value => 'Spouse\'s Name',
+                                        default => 'Name',
+                                    })
+                                    ->maxLength(255),
+                            ])
+                            ->columns(1)
+                            ->columnspan(3),
+                    ])
+                    ->columns(4),
             ]);
     }
 

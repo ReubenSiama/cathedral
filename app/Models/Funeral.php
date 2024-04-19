@@ -16,6 +16,7 @@ class Funeral extends Model
     public $casts = [
         'relationship' => Relationship::class,
         'cve_or_infants' => CveInfant::class,
+        'parent_spouse_name' => 'array',
     ];
 
     public function priest(): \Illuminate\Database\Eloquent\Relations\BelongsTo
