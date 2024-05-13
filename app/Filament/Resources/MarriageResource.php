@@ -259,9 +259,9 @@ class MarriageResource extends Resource
                     ->numeric(),
                 Tables\Columns\TextColumn::make('parishPriest.full_name')
                     ->numeric(),
-            ])
-            ->filters([
-                //
+                Tables\Columns\TextColumn::make('nuptial_form')
+                    ->url(fn ($record) => asset('storage/'.$record->nuptial_form))
+                    ->numeric(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

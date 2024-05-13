@@ -5,6 +5,7 @@ namespace App\Filament\Resources\MarriageResource\Pages;
 use App\Filament\Resources\MarriageResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Support\Arr;
 
 class EditMarriage extends EditRecord
 {
@@ -27,6 +28,16 @@ class EditMarriage extends EditRecord
         $data['personalDetails'] = $this->record->personalDetails->toArray();
         $data['witnesses'] = $this->record->witnesses->toArray();
 
+        return $data;
+    }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $this->record->personalDetails()->update($data['personalDetails'][0]);
+        $this->record->personalDetails()->update($data['personalDetails'][1]);
+        $this->record->witnesses()->update($data['witnesses'][0]);
+        $this->record->witnesses()->update($data['witnesses'][1]);
+        $data = Arr::except($data, ['personalDetails', 'witnesses']);
         return $data;
     }
 }
