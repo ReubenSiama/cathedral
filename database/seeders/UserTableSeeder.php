@@ -13,8 +13,8 @@ class UserTableSeeder extends Seeder
     {
         $user = \App\Models\User::create([
             'name' => 'Admin',
-            'email' => 'admin@mail.com',
-            'password' => 'password',
+            'email' => 'cathedralaizawl@gmail.com',
+            'password' => 'spacepathum',
         ]);
 
         $user->assignRole('super_admin');

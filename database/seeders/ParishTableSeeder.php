@@ -12,17 +12,17 @@ class ParishTableSeeder extends Seeder
     public function run(): void
     {
         $parishes = [
-            'CHRIST THE KING CATHEDRAL, KULIKAWN',
-            'ST. PETER\'S CHURCH, SILAIMUAL',
-            'ST. AUGUSTINE\'S CHURCH, MELRIAT',
-            'ST. DOMINIC\'S CHURCH, FALKAWN',
-            'ST. ANDREW\'S CHURCH, MUALLUNGTHU',
-            'ST. JAMES CHURCH, SAMTLANG',
-            'SACRED HEART CHURCH, BLOCK VENG - TLANGNUAM',
-            'ST. MARY\'S CHURCH, MAUBAWK',
-            'ST.PADRE PIO\'S CHURCH, KHATLA BUNGKAWN',
-            'HOLY TRINITY CHURCH, ITI',
-            'HOLY FAMILY CHURCH, KANGHMUN',
+            'Christ The King Cathedral, Kulikawn',
+            'St. Peter\'S Church, Silaimual',
+            'St. Augustine\'S Church, Melriat',
+            'St. Dominic\'S Church, Falkawn',
+            'St. Andrew\'S Church, Muallungthu',
+            'St. James Church, Samtlang',
+            'Sacred Heart Church, Block Veng - Tlangnuam',
+            'St. Mary\'S Church, Maubawk',
+            'St.Padre Pio\'S Church, Khatla Bungkawn',
+            'Holy Trinity Church, Iti',
+            'Holy Family Church, Kanghmun',
         ];
 
         foreach ($parishes as $parish) {
