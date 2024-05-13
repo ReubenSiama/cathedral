@@ -51,6 +51,10 @@ class CertificateController extends Controller
     
     public function marriage(Marriage $marriage)
     {
+        if ($marriage->date_of_issue == null) {
+            $marriage->date_of_issue = now();
+            $marriage->save();
+        }
         return PDF::loadView('certificates.marriage', compact('marriage'))
             ->setPaper('a4', 'landscape')
             ->stream("$marriage->number.pdf");

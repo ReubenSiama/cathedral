@@ -167,7 +167,9 @@
                 <td style="width: 5%">
                     Date: 
                 </td>
-                <td style="width: 20%" class="dotted-border"></td>
+                <td style="width: 20%" class="dotted-border">
+                    {{ date('d-m-Y', strtotime($marriage->date_of_issue)) }}
+                </td>
                 <td style="width: 60%"></td>
                 <td style="text-align: center">
                     Parish Priest

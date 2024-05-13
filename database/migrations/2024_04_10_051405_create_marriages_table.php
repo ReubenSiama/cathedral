@@ -24,6 +24,7 @@ return new class extends Migration
             $table->foreignId('parish_priest_id');
             $table->string('nuptial_form');
             $table->text('remarks');
+            $table->date('date_of_issue')->nullable();
             $table->timestamps();
         });
     }
