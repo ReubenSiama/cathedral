@@ -22,6 +22,8 @@ class MarriageResource extends Resource
 
     protected static string $fileTypes = 'image/png';
 
+    protected static ?int $navigationSort = 3;
+
     public static function form(Form $form): Form // NOSONAR
     {
         return $form

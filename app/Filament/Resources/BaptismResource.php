@@ -22,6 +22,8 @@ class BaptismResource extends Resource
 
     public static $dateFormat = 'd/m/Y';
 
+    public static ?int $navigationSort = 0;
+
     public static function form(Form $form): Form
     {
         return $form

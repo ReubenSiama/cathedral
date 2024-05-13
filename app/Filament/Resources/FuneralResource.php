@@ -23,6 +23,8 @@ class FuneralResource extends Resource
 
     protected static string $dateFormat = 'd/m/Y';
 
+    protected static ?int $navigationSort = 4;
+
     public static function form(Form $form): Form
     {
         return $form
