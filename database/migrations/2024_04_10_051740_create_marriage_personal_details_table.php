@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('mother');
             $table->date('date_of_birth');
             $table->foreignIdFor(\App\Models\Nationality::class);
-            $table->string('domicle');
+            $table->string('domicile');
             $table->string('occupation');
             $table->boolean('is_married')->default(false);
             $table->string('signature');

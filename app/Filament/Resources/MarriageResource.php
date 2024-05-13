@@ -128,7 +128,7 @@ class MarriageResource extends Resource
                                     )
                                     ->required()
                                     ->native(false),
-                                Forms\Components\TextInput::make('personalDetails.0.domicle')
+                                Forms\Components\TextInput::make('personalDetails.0.domicile')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('personalDetails.0.occupation')
                                     ->maxLength(255),
@@ -175,7 +175,7 @@ class MarriageResource extends Resource
                                     )
                                     ->required()
                                     ->native(false),
-                                Forms\Components\TextInput::make('personalDetails.1.domicle')
+                                Forms\Components\TextInput::make('personalDetails.1.domicile')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('personalDetails.1.occupation')
                                     ->maxLength(255),
@@ -248,28 +248,17 @@ class MarriageResource extends Resource
                 Tables\Columns\TextColumn::make('number')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('date_of_marriage')
-                    ->date(self::$dateFormat)
-                    ->sortable(),
+                    ->date(self::$dateFormat),
                 Tables\Columns\TextColumn::make('date_of_first_announcement')
-                    ->date(self::$dateFormat)
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('impediment_dispensation')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('priest.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('parishPriest.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('nuptial_form'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->date(self::$dateFormat),
+                Tables\Columns\TextColumn::make('personalDetails.0.name')
+                    ->label('Bridegroom'),
+                Tables\Columns\TextColumn::make('personalDetails.1.name')
+                    ->label('Bride'),
+                Tables\Columns\TextColumn::make('priest.full_name')
+                    ->numeric(),
+                Tables\Columns\TextColumn::make('parishPriest.full_name')
+                    ->numeric(),
             ])
             ->filters([
                 //
@@ -277,13 +266,6 @@ class MarriageResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array
