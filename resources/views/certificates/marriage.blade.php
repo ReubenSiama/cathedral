@@ -25,7 +25,7 @@
             border-collapse: collapse;
         }
         .mt{
-            margin-top: 4rem;
+            margin-top: 3rem;
         }
         /* td{
             border: 1px solid black;
@@ -156,7 +156,7 @@
             </tr>
             <tr>
                 <td colspan="2">Remarks</td>
-                <td colspan="3">
+                <td style="padding-top: 10px;" colspan="3">
                     {{ $marriage->remarks }}
                 </td>
             </tr>
