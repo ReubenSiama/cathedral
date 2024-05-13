@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Common\DownloadCertificate;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\MarriageResource\Pages;
 use App\Models\Marriage;
@@ -36,9 +37,13 @@ class MarriageResource extends Resource
                             ->native(false)
                             ->displayFormat(self::$dateFormat)
                             ->required(),
-                        Forms\Components\TextInput::make('place')
-                            ->required()
-                            ->maxLength(255),
+                        Forms\Components\Select::make('parish_id')
+                            ->relationship('parish', 'name')
+                            ->native(false)
+                            ->searchable()
+                            ->preload()
+                            ->label('Place')
+                            ->required(),
                         Forms\Components\DatePicker::make('date_of_first_announcement')
                             ->label('Date of First Announcement')
                             ->native(false)
@@ -265,6 +270,7 @@ class MarriageResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                DownloadCertificate::make('marriage.download')
             ]);
     }
 

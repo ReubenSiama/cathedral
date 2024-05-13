@@ -33,10 +33,10 @@ class EditMarriage extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        $this->record->personalDetails()->update($data['personalDetails'][0]);
-        $this->record->personalDetails()->update($data['personalDetails'][1]);
-        $this->record->witnesses()->update($data['witnesses'][0]);
-        $this->record->witnesses()->update($data['witnesses'][1]);
+        $this->record->personalDetails[0]->update($data['personalDetails'][0]);
+        $this->record->personalDetails[1]->update($data['personalDetails'][1]);
+        $this->record->witnesses[0]->update($data['witnesses'][0]);
+        $this->record->witnesses[1]->update($data['witnesses'][1]);
         $data = Arr::except($data, ['personalDetails', 'witnesses']);
         return $data;
     }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('number');
             $table->date('date_of_marriage');
-            $table->string('place');
+            $table->foreignIdFor(\App\Models\Parish::class);
             $table->date('date_of_first_announcement');
             $table->date('date_of_second_announcement');
             $table->date('date_of_third_announcement');

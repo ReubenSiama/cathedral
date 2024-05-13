@@ -30,4 +30,9 @@ class Marriage extends Model
     {
         return $this->belongsTo(Priest::class);
     }
+
+    public function parish()
+    {
+        return $this->belongsTo(Parish::class);
+    }
 }

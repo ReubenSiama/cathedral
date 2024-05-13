@@ -6,6 +6,7 @@ use App\Models\Baptism;
 use App\Models\Confirmation;
 use App\Models\FirstCommunion;
 use App\Models\Funeral;
+use App\Models\Marriage;
 use PDF;
 
 class CertificateController extends Controller
@@ -46,5 +47,12 @@ class CertificateController extends Controller
         return PDF::loadView('certificates.funeral', compact('funeral'))
             ->setPaper('a5')
             ->stream('funeral-certificate.pdf');
+    }
+    
+    public function marriage(Marriage $marriage)
+    {
+        return PDF::loadView('certificates.marriage', compact('marriage'))
+            ->setPaper('a4', 'landscape')
+            ->stream("$marriage->number.pdf");
     }
 }
