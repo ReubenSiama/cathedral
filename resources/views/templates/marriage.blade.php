@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $marriage->bridegroom->name }} & {{ $marriage->bride->name }}</title>
+    <title>Marriage Certificate</title>
     <style>
         @page{
             margin: 0;
@@ -25,11 +25,11 @@
             border-collapse: collapse;
         }
         .mt{
-            margin-top: 3rem;
+            margin-top: 5rem;
         }
-        /* td{
-            border: 1px solid black;
-        } */
+        td{
+            padding: 8px;
+        }
     </style>
 </head>
 <body>
@@ -39,14 +39,14 @@
                 <td style="width: 40%">Marriage No.</td>
                 <td style="width: 5%">:</td>
                 <td style="width: 50%" class="dotted-border">
-                    {{ $marriage->number }}
+                    
                 </td>
             </tr>
             <tr>
                 <td>Date of Marriage</td>
                 <td>:</td>
                 <td class="dotted-border">
-                    {{ $marriage->date_of_marriage }}
+                    
                 </td>
             </tr>
         </table>
@@ -62,53 +62,53 @@
             <tr>
                 <td colspan="2">Name & Surname</td>
                 <td class="dotted-border" style="width: 30%">
-                    {{ $marriage->bridegroom->name }} {{ $marriage->bridegroom->surname }}
+                    
                 </td>
                 <td style="width: 20px;"></td>
                 <td class="dotted-border" style="width: 30%">
-                    {{ $marriage->bride->name }} {{ $marriage->bride->surname }}
+                    
                 </td>
             </tr>
             <tr>
                 <td colspan="2">Date of Birth/Age</td>
                 <td class="dotted-border">
-                    {{ date('d-m-Y', strtotime($marriage->bridegroom->date_of_birth)) }}
+                   
                 </td>
                 <td></td>
                 <td class="dotted-border">
-                    {{ date('d-m-Y', strtotime($marriage->bride->date_of_birth)) }}
+                  
                 </td>
             </tr>
             <tr>
                 <td style="width: 10%;">Name of Parents</td>
                 <td style="width: 5%;">: Father</td>
                 <td class="dotted-border">
-                    {{ $marriage->bridegroom->father }}
+                    
                 </td>
                 <td></td>
                 <td class="dotted-border">
-                    {{ $marriage->bride->father }}
+                    
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>: Mother</td>
                 <td class="dotted-border">
-                    {{ $marriage->bridegroom->mother }}
+                    
                 </td>
                 <td></td>
                 <td class="dotted-border">
-                    {{ $marriage->bride->mother }}
+                    
                 </td>
             </tr>
             <tr>
                 <td colspan="2">Address</td>
                 <td class="dotted-border">
-                    {{ $marriage->bridegroom->domicile }}
+                    
                 </td>
                 <td></td>
                 <td class="dotted-border">
-                    {{ $marriage->bride->domicile }}
+                    
                 </td>
             </tr>
             <tr>
@@ -121,27 +121,27 @@
             <tr>
                 <td colspan="2">Name & Surname</td>
                 <td class="dotted-border" style="width: 30%">
-                    {{ $marriage->firstWitness->name }} {{ $marriage->firstWitness->surname }}
+                    
                 </td>
                 <td style="width: 20px;"></td>
                 <td class="dotted-border" style="width: 30%">
-                    {{ $marriage->secondWitness->name }} {{ $marriage->secondWitness->surname }}
+                    
                 </td>
             </tr>
             <tr>
                 <td colspan="2">Address</td>
                 <td class="dotted-border">
-                    {{ $marriage->firstWitness->domicile }}
+                    
                 </td>
                 <td></td>
                 <td class="dotted-border">
-                    {{ $marriage->secondWitness->domicile }}
+                    
                 </td>
             </tr>
             <tr>
                 <td colspan="2">Place of Marriage</td>
                 <td class="dotted-border">
-                    {{ $marriage->parish->name }}
+                    
                 </td>
                 <td></td>
                 <td></td>
@@ -149,7 +149,7 @@
             <tr>
                 <td colspan="2">Minister</td>
                 <td class="dotted-border">
-                    {{ $marriage->priest->full_name }}
+                    
                 </td>
                 <td></td>
                 <td></td>
@@ -157,7 +157,7 @@
             <tr>
                 <td colspan="2">Remarks</td>
                 <td style="padding-top: 10px;" colspan="3">
-                    {{ $marriage->remarks }}
+                    
                 </td>
             </tr>
         </table>
@@ -168,7 +168,7 @@
                     Date: 
                 </td>
                 <td style="width: 20%" class="dotted-border">
-                    {{ date('d-m-Y', strtotime($marriage->date_of_issue)) }}
+                    
                 </td>
                 <td style="width: 60%"></td>
                 <td style="text-align: center">

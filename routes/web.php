@@ -31,4 +31,5 @@ Route::controller(CertificateController::class)
         Route::get('confirmation/{confirmation}/download', 'confirmation')->name('confirmation.download');
         Route::get('funeral/{funeral}/download', 'funeral')->name('funeral.download');
         Route::get('marriage/{marriage}/download', 'marriage')->name('marriage.download');
+        Route::get('template', 'certificateTemplate')->name('certificate.template');
     });

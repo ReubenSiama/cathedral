@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TemplateRequest;
 use App\Models\Baptism;
 use App\Models\Confirmation;
 use App\Models\FirstCommunion;
 use App\Models\Funeral;
 use App\Models\Marriage;
+use Illuminate\Support\Facades\Request;
 use PDF;
 
 class CertificateController extends Controller
@@ -58,5 +60,11 @@ class CertificateController extends Controller
         return PDF::loadView('certificates.marriage', compact('marriage'))
             ->setPaper('a4', 'landscape')
             ->stream("$marriage->number.pdf");
+    }
+
+    public function certificateTemplate(TemplateRequest $request){
+        return PDF::loadView('templates.'.$request->type)
+            ->setPaper($request->size, $request->orientation)
+            ->stream('certificate.pdf');
     }
 }
