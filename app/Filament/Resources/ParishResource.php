@@ -14,6 +14,8 @@ class ParishResource extends Resource
 {
     protected static ?string $model = Parish::class;
 
+    protected static ?string $label = 'Station';
+
     protected static ?string $navigationGroup = 'Settings';
 
     public static function form(Form $form): Form
@@ -36,7 +38,6 @@ class ParishResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ]);
     }
 

@@ -13,12 +13,12 @@
         body{
             font-family: Arial, Helvetica, sans-serif;
             background-color: white;
-            background-image: url('{{ asset('images/confirmation/frame.png') }}');
+            background-image: url('{{ public_path('images/confirmation/frame.png') }}');
             background-size: cover;
         }
 
         .bottom{
-            background-image: url('{{ asset('images/confirmation/dove.png')}}');
+            background-image: url('{{ public_path('images/confirmation/dove.png')}}');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -43,7 +43,7 @@
         .crucifix{
             position: relative;
             height: 250px;
-            background-image: url('{{ asset('images/confirmation/crucifix.png') }}');
+            background-image: url('{{ public_path('images/confirmation/crucifix.png') }}');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;

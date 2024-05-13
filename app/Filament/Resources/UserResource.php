@@ -67,11 +67,6 @@ class UserResource extends Resource
                 Tables\Actions\EditAction::make()
                     ->modalWidth('md'),
                 Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
             ]);
     }
 

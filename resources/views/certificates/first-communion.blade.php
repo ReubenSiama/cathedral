@@ -13,21 +13,21 @@
 
         body{
             font-family: Arial, Helvetica, sans-serif;
-            background-image: url('{{ asset('images/firstCommunion/frame.png') }}');
+            background-image: url('{{ public_path('images/firstCommunion/frame.png') }}');
             background-size: cover;
         }
 
         .chalice{
             width: 350px;
             height: 350px;
-            background-image: url('{{ asset('images/firstCommunion/bread_and_wine.png') }}');
+            background-image: url('{{ public_path('images/firstCommunion/bread_and_wine.png') }}');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
         }
 
         .bottom{
-            background-image: url('{{ asset('images/firstCommunion/bottom.png')}}');
+            background-image: url('{{ public_path('images/firstCommunion/bottom.png')}}');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
