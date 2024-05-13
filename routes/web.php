@@ -29,4 +29,5 @@ Route::controller(CertificateController::class)
         Route::get('baptism/{baptism}/download', 'baptism')->name('baptism.download');
         Route::get('first-communion/{firstCommunion}/download', 'firstCommunion')->name('first.communion.download');
         Route::get('confirmation/{confirmation}/download', 'confirmation')->name('confirmation.download');
+        Route::get('funeral/{funeral}/download', 'funeral')->name('funeral.download');
     });

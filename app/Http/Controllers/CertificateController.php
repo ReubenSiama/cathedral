@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Baptism;
 use App\Models\Confirmation;
 use App\Models\FirstCommunion;
+use App\Models\Funeral;
 use PDF;
 
 class CertificateController extends Controller
@@ -38,5 +39,12 @@ class CertificateController extends Controller
         return PDF::loadView('certificates.confirmation', compact('confirmation'))
             ->setPaper('a4')
             ->stream('confirmation-certificate.pdf');
+    }
+
+    public function funeral(Funeral $funeral)
+    {
+        return PDF::loadView('certificates.funeral', compact('funeral'))
+            ->setPaper('a5')
+            ->stream('funeral-certificate.pdf');
     }
 }

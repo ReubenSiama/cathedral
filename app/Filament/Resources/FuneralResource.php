@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Enums\CveInfant;
 use App\Enums\Relationship;
+use App\Filament\Common\DownloadCertificate;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\FuneralResource\Pages;
 use App\Models\Funeral;
@@ -144,10 +145,10 @@ class FuneralResource extends Resource
                 Tables\Columns\TextColumn::make('domicile')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('date_of_death')
-                    ->date()
+                    ->date('d-m-Y')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('date_of_burial')
-                    ->date()
+                    ->date('d-m-Y')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('cause_of_death')
                     ->searchable(),
@@ -155,7 +156,8 @@ class FuneralResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('place_of_burial')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('priest.name')
+                Tables\Columns\TextColumn::make('priest.full_name')
+                    ->label('Minister of Exsequics')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -172,11 +174,7 @@ class FuneralResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                DownloadCertificate::make('funeral.download'),
             ]);
     }
 
