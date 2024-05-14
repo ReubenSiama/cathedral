@@ -270,7 +270,7 @@
         <tr>
             <td style="width: 18%">Place</td>
             <td style="width: 1%;">:</td>
-            <td class="underline" style="width: 20%">Cathedral, Aizawl</td>
+            <td class="underline" style="width: 25%">Cathedral, Aizawl</td>
             <td class="bottom" rowspan="4"></td>
             <td colspan="2"></td>
         </tr>
