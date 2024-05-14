@@ -154,12 +154,6 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td colspan="2">Remarks</td>
-                <td style="padding-top: 10px;" colspan="3">
-                    {{ $marriage->remarks }}
-                </td>
-            </tr>
         </table>
         <br>
         <table style="width: 100%">
@@ -173,6 +167,7 @@
                 <td style="width: 60%"></td>
                 <td style="text-align: center">
                     Parish Priest
+                    <br>
                     (Seal & Signature)
                 </td>
             </tr>
