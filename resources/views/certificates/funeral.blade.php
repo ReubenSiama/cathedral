@@ -142,7 +142,7 @@
             </tr>
         </table>
     <div style="text-align: center; font-style: italic">Certified that the above is a true extract
-        from the Register of Baptisms kept at the <u>Christ the King Cathedral, Kulikawn</u> Church</div>
+        from the Register of Funeral kept at the <u>Christ the King Cathedral, Kulikawn</u> Church</div>
     <div class="bottom">
         <div class="left">
             No.: {{ $funeral->number }}
