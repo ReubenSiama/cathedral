@@ -1,6 +1,9 @@
 @extends('layouts.main')
-@section('content')
+@section('carousel')
     @include('layouts.carousel')
+@endsection
+
+@section('content')
     <div class="grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-0 mt-10 md:container mx-4 md:mx-auto">
         <div class="col-span-2">
             <h1 class="text-center md:text-left mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Welcome to Christ The King Cathedral</h1>
