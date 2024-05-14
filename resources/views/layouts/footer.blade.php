@@ -17,6 +17,6 @@
             </ul>
         </div>
         <br>
-        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© {{ date('Y') }} Christ The King Catheral, Aizawl</span>
+        <span class="block text-sm text-gray-500 text-center dark:text-gray-400">© {{ date('Y') }} Christ The King Catheral, Aizawl</span>
     </div>
 </footer>
