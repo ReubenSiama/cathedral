@@ -46,7 +46,7 @@
                 <td>Date of Marriage</td>
                 <td>:</td>
                 <td class="dotted-border">
-                    {{ $marriage->date_of_marriage }}
+                    {{ date('d-m-Y', strtotime($marriage->date_of_marriage)) }}
                 </td>
             </tr>
         </table>
@@ -55,9 +55,9 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td style="text-align: center">BRIDEGROOM</td>
+                <td style="text-align: center; font-weight: bold">BRIDEGROOM</td>
                 <td></td>
-                <td style="text-align: center">BRIDE</td>
+                <td style="text-align: center; font-weight: bold">BRIDE</td>
             </tr>
             <tr>
                 <td colspan="2">Name & Surname</td>
@@ -114,9 +114,9 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td style="text-align: center; padding-top: 10px">Witness I</td>
+                <td style="text-align: center; padding-top: 10px; font-weight: bold">WITNESS I</td>
                 <td></td>
-                <td style="text-align: center; padding-top: 10px">Witness II</td>
+                <td style="text-align: center; padding-top: 10px; font-weight: bold">WITNESS II</td>
             </tr>
             <tr>
                 <td colspan="2">Name & Surname</td>
