@@ -15,6 +15,7 @@ class CertificateController extends Controller
 {
     public function baptism(Baptism $baptism)
     {
+        self::generateDateOfIssue($baptism);
         return PDF::loadView('certificates.baptism', compact('baptism'))
             ->setPaper('a5')
             ->stream('baptism-certificate.pdf');
@@ -22,11 +23,7 @@ class CertificateController extends Controller
 
     public function firstCommunion(FirstCommunion $firstCommunion)
     {
-        if ($firstCommunion->date_of_issue == null) {
-            $firstCommunion->date_of_issue = now();
-            $firstCommunion->save();
-        }
-
+        self::generateDateOfIssue($firstCommunion);
         return PDF::loadView('certificates.first-communion', compact('firstCommunion'))
             ->setPaper('a4')
             ->stream("$firstCommunion->name Certificate.pdf");
@@ -34,11 +31,7 @@ class CertificateController extends Controller
 
     public function confirmation(Confirmation $confirmation)
     {
-        if ($confirmation->date_of_issue == null) {
-            $confirmation->date_of_issue = now();
-            $confirmation->save();
-        }
-
+        self::generateDateOfIssue($confirmation);
         return PDF::loadView('certificates.confirmation', compact('confirmation'))
             ->setPaper('a4')
             ->stream('confirmation-certificate.pdf');
@@ -46,6 +39,7 @@ class CertificateController extends Controller
 
     public function funeral(Funeral $funeral)
     {
+        self::generateDateOfIssue($funeral);
         return PDF::loadView('certificates.funeral', compact('funeral'))
             ->setPaper('a5')
             ->stream('funeral-certificate.pdf');
@@ -53,10 +47,7 @@ class CertificateController extends Controller
     
     public function marriage(Marriage $marriage)
     {
-        if ($marriage->date_of_issue == null) {
-            $marriage->date_of_issue = now();
-            $marriage->save();
-        }
+        self::generateDateOfIssue($marriage);
         return PDF::loadView('certificates.marriage', compact('marriage'))
             ->setPaper('a4', 'landscape')
             ->stream("$marriage->number.pdf");
@@ -66,5 +57,13 @@ class CertificateController extends Controller
         return PDF::loadView('templates.'.$request->type)
             ->setPaper($request->size, $request->orientation)
             ->stream('certificate.pdf');
+    }
+
+    protected static function generateDateOfIssue($model)
+    {
+        if ($model->date_of_issue == null) {
+            $model->date_of_issue = now();
+            $model->save();
+        }
     }
 }
