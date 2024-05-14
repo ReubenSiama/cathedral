@@ -166,7 +166,7 @@
                 <td style="width: 20%" class="dotted-border">
                     
                 </td>
-                <td style="width: 60%"></td>
+                <td style="width: 50%"></td>
                 <td style="text-align: center">
                     Parish Priest
                     <br>
