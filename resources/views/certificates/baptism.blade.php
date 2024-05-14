@@ -154,8 +154,8 @@
         from the Register of Baptisms kept at the <u>Christ the King Cathedral, Kulikawn</u> Church</div>
     <div class="bottom">
         <div class="left">
-            The {{ date('jS', strtotime($baptism->date_of_baptism)) }} of
-            {{ date('F, Y', strtotime($baptism->date_of_baptism)) }}
+            The {{ date('jS', strtotime($baptism->date_of_issue)) }} of
+            {{ date('F, Y', strtotime($baptism->date_of_issue)) }}
         </div>
         <div class="right">Parish Priest</div>
     </div>
