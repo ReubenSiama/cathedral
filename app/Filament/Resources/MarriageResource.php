@@ -21,7 +21,7 @@ class MarriageResource extends Resource
 
     protected static string $dateFormat = 'd/m/Y';
 
-    protected static string $fileTypes = 'image/png';
+    protected static array $fileTypes = ['image/png', 'image/jpg', 'application/pdf'];
 
     protected static ?int $navigationSort = 3;
 
@@ -61,7 +61,6 @@ class MarriageResource extends Resource
                             ->required(),
                         Forms\Components\TextInput::make('impediment_dispensation')
                             ->label('Impediment Dispensation')
-                            ->required()
                             ->maxLength(255),
                         Forms\Components\Select::make('priest_id')
                             ->label('Minister')
@@ -99,8 +98,7 @@ class MarriageResource extends Resource
                                 ->modalWidth('md')),
                         Forms\Components\FileUpload::make('nuptial_form')
                             ->label('Nuptial Form')
-                            ->acceptedFileTypes(['application/pdf'])
-                            ->required(),
+                            ->acceptedFileTypes(self::$fileTypes),
                     ])
                     ->columns(3),
                 Forms\Components\Section::make('PERSONAL DETAILS')
@@ -148,8 +146,7 @@ class MarriageResource extends Resource
                                     ])
                                     ->required(),
                                 Forms\Components\FileUpload::make('personalDetails.0.signature')
-                                    ->acceptedFileTypes([self::$fileTypes])
-                                    ->required(),
+                                    ->acceptedFileTypes(self::$fileTypes),
                             ])
                             ->columns(3),
                         Forms\Components\Section::make('BRIDE')
@@ -195,8 +192,7 @@ class MarriageResource extends Resource
                                     ])
                                     ->required(),
                                 Forms\Components\FileUpload::make('personalDetails.1.signature')
-                                    ->acceptedFileTypes([self::$fileTypes])
-                                    ->required(),
+                                    ->acceptedFileTypes(self::$fileTypes),
                             ])
                             ->columns(3),
                     ]),
@@ -214,8 +210,7 @@ class MarriageResource extends Resource
                                     ->required()
                                     ->maxLength(255),
                                 Forms\Components\FileUpload::make('witnesses.0.signature')
-                                    ->required()
-                                    ->acceptedFileTypes([self::$fileTypes]),
+                                    ->acceptedFileTypes(self::$fileTypes),
                             ])
                             ->columns(3),
                         Forms\Components\Section::make('SECOND WITNESS')
@@ -230,8 +225,7 @@ class MarriageResource extends Resource
                                     ->required()
                                     ->maxLength(255),
                                 Forms\Components\FileUpload::make('witnesses.1.signature')
-                                    ->required()
-                                    ->acceptedFileTypes([self::$fileTypes]),
+                                    ->acceptedFileTypes(self::$fileTypes),
                             ])
                             ->columns(3),
                     ]),
