@@ -18,12 +18,12 @@ class StatsOverview extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Users', User::count()),
             Stat::make('Baptisms', Baptism::count()),
-            Stat::make('Confirmation', Confirmation::count()),
             Stat::make('First Communion', FirstCommunion::count()),
-            Stat::make('Funeral', Funeral::count()),
+            Stat::make('Confirmation', Confirmation::count()),
             Stat::make('Marriage', Marriage::count()),
+            Stat::make('Funeral', Funeral::count()),
+            Stat::make('Users', User::count()),
         ];
     }
 }
