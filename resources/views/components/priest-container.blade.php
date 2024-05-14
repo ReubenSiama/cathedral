@@ -1,4 +1,4 @@
-<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-10 md:mt-0">
     <div class="flex flex-col items-center py-10">
         @if ($image == '')
             <img class="w-24 h-24 mb-3 rounded-full shadow-lg object-cover" src="{{ asset('images/placeholder.webp') }}" alt="{{ $name }}"/>
