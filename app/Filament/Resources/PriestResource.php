@@ -36,6 +36,17 @@ class PriestResource extends Resource
                     ->maxSize(1024)
                     ->columnSpanFull()
                     ->image(),
+                Forms\Components\Textarea::make('bio')
+                    ->maxLength(255)
+                    ->columnSpanFull(),
+                Forms\Components\Radio::make('designation')
+                ->options([
+                    'parish_priest' => 'Parish Priest',
+                    'assistant_priest' => 'Assistant Priest',
+                ])
+                ->inline()
+                ->hiddenLabel()
+                ->columnSpanFull(),
             ]);
     }
 
@@ -45,6 +56,13 @@ class PriestResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('full_name')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('designation')
+                    ->label('Role')
+                    ->formatStateUsing(fn($state) => match ($state) {
+                        'parish_priest' => 'Parish Priest',
+                        'assistant_priest' => 'Assistant Priest',
+                    })
+                    ->badge(),
                 Tables\Columns\ImageColumn::make('picture'),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
@@ -52,13 +70,23 @@ class PriestResource extends Resource
                     ->searchable(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->modalWidth('md')
+                ->before(function ($record, $data) {
+                    if($data['designation']){
+                        $priests = Priest::where('designation', $data['designation'])
+                        ->where('id', '!=', $record->id)
+                        ->get();
+                        
+                        if($priests->count() > 0){
+                            $priests->each(function($priest){
+                                $priest->update(['designation' => null]);
+                            });
+                        }
+                    }
+                })
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->defaultSort('designation', 'desc');
     }
 
     public static function getPages(): array

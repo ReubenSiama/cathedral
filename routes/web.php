@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomePageController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,8 @@ Route::controller(CertificateController::class)
         Route::get('marriage/{marriage}/download', 'marriage')->name('marriage.download');
         Route::get('template', 'certificateTemplate')->name('certificate.template');
     });
+
+Route::controller(GalleryController::class)
+->group(function(){
+    Route::get('gallery', 'index')->name('gallery');
+});

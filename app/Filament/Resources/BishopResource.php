@@ -23,6 +23,13 @@ class BishopResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\FileUpload::make('image')
+                    ->image()
+                    ->maxSize(2048),
+                Forms\Components\Textarea::make('bio')
+                    ->maxLength(255),
+                Forms\Components\Checkbox::make('is_current')
+                    ->default(false),
             ])
             ->columns(1);
     }
@@ -33,20 +40,24 @@ class BishopResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
+                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\IconColumn::make('is_current')
+                    ->label('Current')
+                    ->boolean(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->modalWidth('md')
+                ->beforeFormValidated(function ($record, $action) {
+                    $bishops = Bishop::where('is_current', true)
+                    ->where('id', '!=', $record->id)
+                    ->get();
+                    if($bishops->count() > 0){
+                        $bishops->each(function($bishop){
+                            $bishop->update(['is_current' => false]);
+                        });
+                    }
+                }),
             ]);
     }
 

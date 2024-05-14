@@ -38,7 +38,7 @@
     <div class="mt-10 bg-black py-10 text-white">
         <div class="mx-4 md:container md:mx-auto">
             <div class="text-center font-extrabold text-xl">Institutions & Others</div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-10 mt-10 text-black">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-10 mt-10 text-black">
                 @foreach ($institutions as $institution)
                     <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center">
                         {{ $institution->name }}
@@ -47,6 +47,25 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+    </div>
+    <div class="mt-10 md:container md:mx-auto mx-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-10">
+            <x-priest-container>
+                <x-slot name="image">{{ $bishop->image }}</x-slot>
+                <x-slot name="name">{{ $bishop->name }}</x-slot>
+                <x-slot name="designation">Bishop</x-slot>
+            </x-priest-container>
+            <x-priest-container>
+                <x-slot name="image">{{ $parishPriest->picture }}</x-slot>
+                <x-slot name="name">{{ $parishPriest->full_name }}</x-slot>
+                <x-slot name="designation">Parish Priest</x-slot>
+            </x-priest-container>
+            <x-priest-container>
+                <x-slot name="image">{{ $assistantParishPriest->picture }}</x-slot>
+                <x-slot name="name">{{ $assistantParishPriest->full_name }}</x-slot>
+                <x-slot name="designation">Asst. Parish Priest</x-slot>
+            </x-priest-container>
         </div>
     </div>
 @endsection
