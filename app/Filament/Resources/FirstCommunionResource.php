@@ -45,9 +45,12 @@ class FirstCommunionResource extends Resource
                             ->label('Date of Baptism')
                             ->displayFormat(self::$dateFormat)
                             ->native(false),
-                        Forms\Components\TextInput::make('place_of_baptism')
+                        Forms\Components\Select::make('place_of_baptism')
                             ->label('Place of Baptism')
-                            ->maxLength(100),
+                            ->relationship('placeOfBaptism', 'name')
+                            ->native(false)
+                            ->searchable()
+                            ->preload(),
                         Forms\Components\TextInput::make('father_name')
                             ->label('Father\'s Name')
                             ->maxLength(255),

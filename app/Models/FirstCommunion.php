@@ -20,4 +20,9 @@ class FirstCommunion extends Model
     {
         return $this->belongsTo(Priest::class);
     }
+
+    public function placeOfBaptism(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Parish::class, 'place_of_baptism');
+    }
 }

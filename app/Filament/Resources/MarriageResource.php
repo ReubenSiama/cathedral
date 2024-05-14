@@ -130,7 +130,16 @@ class MarriageResource extends Resource
                                         \App\Models\Nationality::pluck('name', 'id')->toArray()
                                     )
                                     ->required()
-                                    ->native(false),
+                                    ->native(false)
+                                    ->createOptionForm([
+                                        Forms\Components\TextInput::make('name')
+                                            ->required()
+                                            ->maxLength(255),
+                                    ])
+                                    ->createOptionAction(
+                                        fn (Action $action) => $action
+                                            ->modalWidth('md'),
+                                    ),
                                 Forms\Components\TextInput::make('personalDetails.0.domicile')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('personalDetails.0.occupation')
@@ -176,7 +185,16 @@ class MarriageResource extends Resource
                                         \App\Models\Nationality::pluck('name', 'id')->toArray()
                                     )
                                     ->required()
-                                    ->native(false),
+                                    ->native(false)
+                                    ->createOptionForm([
+                                        Forms\Components\TextInput::make('name')
+                                            ->required()
+                                            ->maxLength(255),
+                                    ])
+                                    ->createOptionAction(
+                                        fn (Action $action) => $action
+                                            ->modalWidth('md'),
+                                    ),
                                 Forms\Components\TextInput::make('personalDetails.1.domicile')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('personalDetails.1.occupation')

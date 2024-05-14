@@ -95,7 +95,6 @@ class FuneralResource extends Resource
                             ->schema([
                                 Forms\Components\Select::make('relationship')
                                     ->options(Relationship::class)
-                                    ->default(Relationship::Parent)
                                     ->native(false)
                                     ->live()
                                     ->required(),
