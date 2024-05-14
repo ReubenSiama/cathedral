@@ -9,7 +9,7 @@
                     <a href="#" class="hover:underline me-4 md:me-6">Clergy & Religious</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Gallery</a>
+                    <a href="{{ route('gallery') }}" class="hover:underline me-4 md:me-6">Gallery</a>
                 </li>
                 <li>
                     <a href="/system" class="hover:underline">Admin Login</a>
