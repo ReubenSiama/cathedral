@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             ParishTableSeeder::class,
             ShieldSeeder::class,
             UserTableSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }
