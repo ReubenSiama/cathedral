@@ -14,5 +14,6 @@ class Setting extends Model
         'name',
         'description',
         'value',
+        'image',
     ];
 }

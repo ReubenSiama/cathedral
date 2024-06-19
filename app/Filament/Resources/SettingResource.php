@@ -33,6 +33,9 @@ class SettingResource extends Resource
                         Forms\Components\Textarea::make('description')
                             ->maxLength(65535)
                             ->columnSpanFull(),
+                        Forms\Components\FileUpload::make('image')
+                            ->image()
+                            ->columnSpanFull(),
                         TinyEditor::make('value')
                             ->columnSpanFull(),
                     ])
