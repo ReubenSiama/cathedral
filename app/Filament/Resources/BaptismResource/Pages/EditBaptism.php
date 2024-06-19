@@ -2,18 +2,16 @@
 
 namespace App\Filament\Resources\BaptismResource\Pages;
 
+use App\Filament\Common\RedirectUrl;
 use App\Filament\Resources\BaptismResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditBaptism extends EditRecord
 {
-    protected static string $resource = BaptismResource::class;
+    use RedirectUrl;
 
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
+    protected static string $resource = BaptismResource::class;
 
     protected function getHeaderActions(): array
     {

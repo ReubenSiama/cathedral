@@ -2,21 +2,19 @@
 
 namespace App\Filament\Resources\MarriageResource\Pages;
 
+use App\Filament\Common\RedirectUrl;
 use App\Filament\Resources\MarriageResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateMarriage extends CreateRecord
 {
+    use RedirectUrl;
+
     protected static string $resource = MarriageResource::class;
 
     protected $personalDetails = [];
 
     protected $witnesses = [];
-
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {

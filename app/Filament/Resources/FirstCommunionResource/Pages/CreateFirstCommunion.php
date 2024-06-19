@@ -2,15 +2,13 @@
 
 namespace App\Filament\Resources\FirstCommunionResource\Pages;
 
+use App\Filament\Common\RedirectUrl;
 use App\Filament\Resources\FirstCommunionResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateFirstCommunion extends CreateRecord
 {
-    protected static string $resource = FirstCommunionResource::class;
+    use RedirectUrl;
 
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
+    protected static string $resource = FirstCommunionResource::class;
 }

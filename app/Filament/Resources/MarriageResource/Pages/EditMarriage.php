@@ -2,21 +2,16 @@
 
 namespace App\Filament\Resources\MarriageResource\Pages;
 
+use App\Filament\Common\RedirectUrl;
 use App\Filament\Resources\MarriageResource;
-use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Arr;
 
 class EditMarriage extends EditRecord
 {
-    protected static string $resource = MarriageResource::class;
+    use RedirectUrl;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
+    protected static string $resource = MarriageResource::class;
 
     protected function getRedirectUrl(): string
     {
@@ -38,6 +33,7 @@ class EditMarriage extends EditRecord
         $this->record->witnesses[0]->update($data['witnesses'][0]);
         $this->record->witnesses[1]->update($data['witnesses'][1]);
         $data = Arr::except($data, ['personalDetails', 'witnesses']);
+
         return $data;
     }
 }

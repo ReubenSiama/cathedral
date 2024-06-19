@@ -2,12 +2,15 @@
 
 namespace App\Filament\Resources\FuneralResource\Pages;
 
+use App\Filament\Common\RedirectUrl;
 use App\Filament\Resources\FuneralResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditFuneral extends EditRecord
 {
+    use RedirectUrl;
+
     protected static string $resource = FuneralResource::class;
 
     protected function getHeaderActions(): array
@@ -15,10 +18,5 @@ class EditFuneral extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
-    }
-
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
     }
 }

@@ -2,15 +2,13 @@
 
 namespace App\Filament\Resources\FuneralResource\Pages;
 
+use App\Filament\Common\RedirectUrl;
 use App\Filament\Resources\FuneralResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateFuneral extends CreateRecord
 {
-    protected static string $resource = FuneralResource::class;
+    use RedirectUrl;
 
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
+    protected static string $resource = FuneralResource::class;
 }
