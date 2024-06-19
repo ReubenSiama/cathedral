@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(HomePageController::class)
     ->group(function () {
         Route::get('/', 'index')->name('home');
+        Route::get('/about-us', 'aboutUs')->name('about.us');
     });
 
 Route::get('login', function () {
@@ -36,6 +37,6 @@ Route::controller(CertificateController::class)
     });
 
 Route::controller(GalleryController::class)
-->group(function(){
-    Route::get('gallery', 'index')->name('gallery');
-});
+    ->group(function () {
+        Route::get('gallery', 'index')->name('gallery');
+    });
