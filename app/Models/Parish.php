@@ -9,5 +9,11 @@ class Parish extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'banner',
+        'about',
+        'address',
+        'short_description',
+    ];
 }

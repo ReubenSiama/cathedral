@@ -58,22 +58,10 @@
         </div>
     </div>
     <div class="mt-10 md:container md:mx-auto mx-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-10">
-            <x-priest-container>
-                <x-slot name="image">{{ $bishop->image }}</x-slot>
-                <x-slot name="name">{{ $bishop->name }}</x-slot>
-                <x-slot name="designation">Bishop</x-slot>
-            </x-priest-container>
-            <x-priest-container>
-                <x-slot name="image">{{ $parishPriest->picture }}</x-slot>
-                <x-slot name="name">{{ $parishPriest->full_name }}</x-slot>
-                <x-slot name="designation">Parish Priest</x-slot>
-            </x-priest-container>
-            <x-priest-container>
-                <x-slot name="image">{{ $assistantParishPriest->picture }}</x-slot>
-                <x-slot name="name">{{ $assistantParishPriest->full_name }}</x-slot>
-                <x-slot name="designation">Asst. Parish Priest</x-slot>
-            </x-priest-container>
-        </div>
+        <h1 class="uppercase text-center text-2xl font-extrabold">{{ $stationsIntro->name }}</h1>
+        <p class="text-center font-extralight">
+            {{ $stationsIntro->description }}
+        </p>
+        <x-station-container :stations="$stations"/>
     </div>
 @endsection
