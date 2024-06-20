@@ -41,9 +41,9 @@
     <div class="mt-10 bg-[#22242A] py-10 text-white">
         <div class="mx-4 md:container md:mx-auto">
             <div class="text-center font-extrabold text-xl">Institutions & Others</div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-10 mt-10 text-black">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-10 mt-10 text-black">
                 @foreach ($institutions as $institution)
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center">
+                    <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center">
                         <div class="w-full h-72 object-cover rounded-lg">
                             <img class="h-full w-full object-cover rounded-t-lg" src="
                             {{ $institution->image ? asset('storage/'.$institution->image) : asset('images/placeholder.webp') }}
