@@ -5,7 +5,7 @@
         {{ $about->name }}
     </h1>
     <img src="{{ asset('storage/'.$about->image) }}" alt="{{ $about->name }}"
-            class="object-cover w-full md:w-[30%] ml-6 rounded-lg md:float-end">
+            class="object-cover w-full md:w-[30%] mb-6 md:ml-6 rounded-lg md:float-end">
     {!! $about->value !!}
 </div>
 @endsection
