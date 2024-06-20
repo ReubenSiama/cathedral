@@ -4,15 +4,17 @@
 @endsection
 
 @section('content')
-    <div class="grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-0 mt-10 md:container mx-4 md:mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-5 mt-10 md:container mx-4 md:mx-auto">
         <div class="col-span-2">
             <h1 class="text-center md:text-left mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $about->name }}</h1>
             <div class="mb-5">
                 {!! $about->description !!}
             </div>
-            <a class="py-3 px-4 bg-[#41C190] text-white rounded-lg" href="{{ route('about.us')}}">Read More</a>
+            <div class="">
+                <a class="py-3 px-4 bg-[#41C190] text-white rounded-lg" href="{{ route('about.us')}}">Read More</a>
+            </div>
         </div>
-        <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#" class="text-center">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Mass Timings</h5>
             </a>
@@ -36,15 +38,23 @@
             </table>
         </div>
     </div>
-    <div class="mt-10 bg-black py-10 text-white">
+    <div class="mt-10 bg-[#22242A] py-10 text-white">
         <div class="mx-4 md:container md:mx-auto">
             <div class="text-center font-extrabold text-xl">Institutions & Others</div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-10 mt-10 text-black">
                 @foreach ($institutions as $institution)
-                    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center">
-                        {{ $institution->name }}
-                        <br>
-                        {{ $institution->address }}
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center">
+                        <div class="w-full h-72 object-cover rounded-lg">
+                            <img class="h-full w-full object-cover rounded-t-lg" src="
+                            {{ $institution->image ? asset('storage/'.$institution->image) : asset('images/placeholder.webp') }}
+                             " alt="{{ $institution->name }}" />
+                        </div>
+                        <div class="p-5">
+                            <a href="#">
+                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $institution->name }}</h5>
+                            </a>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $institution->address }}</p>
+                        </div>
                     </div>
                 @endforeach
             </div>
