@@ -12,6 +12,7 @@ class HomePageController extends Controller
         $parishPriest = \App\Models\Priest::parishPriest();
         $assistantParishPriest = \App\Models\Priest::assistantParishPriest();
         $about = \App\Models\Setting::where('key', 'history-of-aizawl-diocese')->first();
+        $banner = \App\Models\Setting::where('key', 'banner')->first();
 
         return view('home', compact(
             'massTimings',
@@ -19,7 +20,8 @@ class HomePageController extends Controller
             'bishop',
             'parishPriest',
             'assistantParishPriest',
-            'about'
+            'about',
+            'banner'
         ));
     }
 
