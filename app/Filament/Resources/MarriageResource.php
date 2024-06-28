@@ -122,8 +122,7 @@ class MarriageResource extends Resource
                                 Forms\Components\DatePicker::make('personalDetails.0.date_of_birth')
                                     ->label('Date of Birth')
                                     ->native(false)
-                                    ->displayFormat(self::$dateFormat)
-                                    ->required(),
+                                    ->displayFormat(self::$dateFormat),
                                 Forms\Components\Select::make('personalDetails.0.nationality_id')
                                     ->label('Nationality')
                                     ->options(
@@ -156,6 +155,7 @@ class MarriageResource extends Resource
                                     ->required(),
                                 Forms\Components\FileUpload::make('personalDetails.0.signature')
                                     ->acceptedFileTypes(self::$fileTypes),
+                                Forms\Components\TextInput::make('personalDetails.0.age'),
                             ])
                             ->columns(3),
                         Forms\Components\Section::make('BRIDE')
@@ -177,8 +177,7 @@ class MarriageResource extends Resource
                                 Forms\Components\DatePicker::make('personalDetails.1.date_of_birth')
                                     ->label('Date of Birth')
                                     ->native(false)
-                                    ->displayFormat(self::$dateFormat)
-                                    ->required(),
+                                    ->displayFormat(self::$dateFormat),
                                 Forms\Components\Select::make('personalDetails.1.nationality_id')
                                     ->label('Nationality')
                                     ->options(
@@ -211,6 +210,7 @@ class MarriageResource extends Resource
                                     ->required(),
                                 Forms\Components\FileUpload::make('personalDetails.1.signature')
                                     ->acceptedFileTypes(self::$fileTypes),
+                                Forms\Components\TextInput::make('personalDetails.1.age')
                             ])
                             ->columns(3),
                     ]),

@@ -67,8 +67,7 @@ class BaptismResource extends Resource
                                     ])
                                     ->default(true),
                                 Forms\Components\TextInput::make('age')
-                                    ->numeric()
-                                    ->visible(fn (Get $get) => ! $get('is_infant')),
+                                    ->numeric(),
 
                             ])
                             ->columns(2),
