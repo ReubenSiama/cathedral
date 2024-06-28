@@ -14,7 +14,7 @@ class BishopResource extends Resource
 {
     protected static ?string $model = Bishop::class;
 
-    protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $navigationGroup = 'Master Data';
 
     public static function form(Form $form): Form
     {
@@ -47,17 +47,17 @@ class BishopResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                ->modalWidth('md')
-                ->beforeFormValidated(function ($record, $action) {
-                    $bishops = Bishop::where('is_current', true)
-                    ->where('id', '!=', $record->id)
-                    ->get();
-                    if($bishops->count() > 0){
-                        $bishops->each(function($bishop){
-                            $bishop->update(['is_current' => false]);
-                        });
-                    }
-                }),
+                    ->modalWidth('md')
+                    ->beforeFormValidated(function ($record, $action) {
+                        $bishops = Bishop::where('is_current', true)
+                            ->where('id', '!=', $record->id)
+                            ->get();
+                        if ($bishops->count() > 0) {
+                            $bishops->each(function ($bishop) {
+                                $bishop->update(['is_current' => false]);
+                            });
+                        }
+                    }),
             ]);
     }
 

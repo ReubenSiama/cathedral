@@ -14,7 +14,7 @@ class NationalityResource extends Resource
 {
     protected static ?string $model = Nationality::class;
 
-    protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $navigationGroup = 'Master Data';
 
     public static function form(Form $form): Form
     {

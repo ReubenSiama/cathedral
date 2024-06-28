@@ -14,7 +14,7 @@ class PriestResource extends Resource
 {
     protected static ?string $model = Priest::class;
 
-    protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $navigationGroup = 'Master Data';
 
     public static function form(Form $form): Form
     {
@@ -40,13 +40,13 @@ class PriestResource extends Resource
                     ->maxLength(255)
                     ->columnSpanFull(),
                 Forms\Components\Radio::make('designation')
-                ->options([
-                    'parish_priest' => 'Parish Priest',
-                    'assistant_priest' => 'Assistant Priest',
-                ])
-                ->inline()
-                ->hiddenLabel()
-                ->columnSpanFull(),
+                    ->options([
+                        'parish_priest' => 'Parish Priest',
+                        'assistant_priest' => 'Assistant Priest',
+                    ])
+                    ->inline()
+                    ->hiddenLabel()
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -58,7 +58,7 @@ class PriestResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('designation')
                     ->label('Role')
-                    ->formatStateUsing(fn($state) => match ($state) {
+                    ->formatStateUsing(fn ($state) => match ($state) {
                         'parish_priest' => 'Parish Priest',
                         'assistant_priest' => 'Assistant Priest',
                     })
@@ -71,20 +71,20 @@ class PriestResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                ->modalWidth('md')
-                ->before(function ($record, $data) {
-                    if($data['designation']){
-                        $priests = Priest::where('designation', $data['designation'])
-                        ->where('id', '!=', $record->id)
-                        ->get();
-                        
-                        if($priests->count() > 0){
-                            $priests->each(function($priest){
-                                $priest->update(['designation' => null]);
-                            });
+                    ->modalWidth('md')
+                    ->before(function ($record, $data) {
+                        if ($data['designation']) {
+                            $priests = Priest::where('designation', $data['designation'])
+                                ->where('id', '!=', $record->id)
+                                ->get();
+
+                            if ($priests->count() > 0) {
+                                $priests->each(function ($priest) {
+                                    $priest->update(['designation' => null]);
+                                });
+                            }
                         }
-                    }
-                })
+                    }),
             ])
             ->defaultSort('designation', 'desc');
     }
