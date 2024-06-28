@@ -218,6 +218,9 @@ class BaptismResource extends Resource
                 Tables\Columns\TextColumn::make('mother_surname')
                     ->label('Mother\'s Surname')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('causer.user.name')
+                    ->label('Entered By')
+                    ->searchable(),
             ])
             ->filters([
                 //

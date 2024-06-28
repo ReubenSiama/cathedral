@@ -11,4 +11,13 @@ class CreateBaptism extends CreateRecord
     use RedirectUrl;
 
     protected static string $resource = BaptismResource::class;
+
+    protected function afterCreate()
+    {
+        $this->record->causer()->create([
+            'modelable_type' => BaptismResource::getModel(),
+            'modelable_id' => $this->record->id,
+            'user_id' => auth()->id(),
+        ]);
+    }
 }
