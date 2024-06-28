@@ -9,7 +9,6 @@ use App\Models\Baptism;
 use Filament\Forms;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -205,6 +204,7 @@ class BaptismResource extends Resource
                 Tables\Columns\TextColumn::make('surname')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('gender')
+                    ->formatStateUsing(fn ($state) => ucwords($state))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('father_name')
                     ->label('Father\'s Name')
