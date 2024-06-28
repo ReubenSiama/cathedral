@@ -40,28 +40,33 @@ class Marriage extends Model
     public function bride(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->personalDetails->where('type', 'bride')->first()
+            get: fn () => $this->personalDetails->where('type', 'bride')->first()
         );
     }
 
     public function bridegroom(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->personalDetails->where('type', 'bridegroom')->first()
+            get: fn () => $this->personalDetails->where('type', 'bridegroom')->first()
         );
     }
 
     public function firstWitness(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->witnesses[0]
+            get: fn () => $this->witnesses[0]
         );
     }
 
     public function secondWitness(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->witnesses[1]
+            get: fn () => $this->witnesses[1]
         );
+    }
+
+    public function causer(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Causer::class, 'modelable');
     }
 }

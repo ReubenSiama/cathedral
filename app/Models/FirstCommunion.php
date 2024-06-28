@@ -25,4 +25,9 @@ class FirstCommunion extends Model
     {
         return $this->belongsTo(Parish::class, 'place_of_baptism');
     }
+
+    public function causer(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Causer::class, 'modelable');
+    }
 }

@@ -23,4 +23,9 @@ class Funeral extends Model
     {
         return $this->belongsTo(Priest::class);
     }
+
+    public function causer(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Causer::class, 'modelable');
+    }
 }

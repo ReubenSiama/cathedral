@@ -21,4 +21,9 @@ class Confirmation extends Model
     {
         return $this->belongsTo(\App\Models\Bishop::class);
     }
+
+    public function causer(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Causer::class, 'modelable');
+    }
 }
