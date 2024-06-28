@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -67,6 +68,36 @@ class UserResource extends Resource
                 Tables\Actions\EditAction::make()
                     ->modalWidth('md'),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\Action::make('Password')
+                    ->modalSubmitActionLabel('Change Password')
+                    ->icon('heroicon-o-lock-closed')
+                    ->action(function ($record, array $data) {
+                        $record->update($data);
+                    })
+                    ->form(function ($form, $record) {
+                        return $form
+                            ->schema([
+                                Forms\Components\TextInput::make('password')
+                                    ->label('New Password')
+                                    ->password()
+                                    ->required()
+                                    ->confirmed()
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('password_confirmation')
+                                    ->label('Confirm Password')
+                                    ->password()
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                            ->columns(1);
+                    })
+                    ->modalWidth('sm')
+                    ->after(fn () => Notification::make()
+                        ->success()
+                        ->body('Password changed successfully.')
+                        ->send()
+                    )
+                    ->disabled(fn ($record) => $record->is(auth()->user())),
             ]);
     }
 
