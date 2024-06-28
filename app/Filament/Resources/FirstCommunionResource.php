@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Common\CauserDisplay;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\FirstCommunionResource\Pages;
 use App\Models\FirstCommunion;
@@ -133,14 +134,7 @@ class FirstCommunionResource extends Resource
                 Tables\Columns\TextColumn::make('date_of_first_communion')
                     ->date(self::$dateFormat)
                     ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                CauserDisplay::create(),
             ])
             ->filters([
                 //

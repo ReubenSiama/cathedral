@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Common\CauserDisplay;
 use App\Filament\Common\DownloadCertificate;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\MarriageResource\Pages;
@@ -210,7 +211,7 @@ class MarriageResource extends Resource
                                     ->required(),
                                 Forms\Components\FileUpload::make('personalDetails.1.signature')
                                     ->acceptedFileTypes(self::$fileTypes),
-                                Forms\Components\TextInput::make('personalDetails.1.age')
+                                Forms\Components\TextInput::make('personalDetails.1.age'),
                             ])
                             ->columns(3),
                     ]),
@@ -279,10 +280,11 @@ class MarriageResource extends Resource
                 Tables\Columns\TextColumn::make('nuptial_form')
                     ->url(fn ($record) => asset('storage/'.$record->nuptial_form))
                     ->numeric(),
+                CauserDisplay::create(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                DownloadCertificate::make('marriage.download')
+                DownloadCertificate::make('marriage.download'),
             ]);
     }
 

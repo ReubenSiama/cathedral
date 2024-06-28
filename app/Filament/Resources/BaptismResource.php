@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Common\CauserDisplay;
 use App\Filament\Common\DownloadCertificate;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\BaptismResource\Pages;
@@ -218,9 +219,7 @@ class BaptismResource extends Resource
                 Tables\Columns\TextColumn::make('mother_surname')
                     ->label('Mother\'s Surname')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('causer.user.name')
-                    ->label('Entered By')
-                    ->searchable(),
+                CauserDisplay::create(),
             ])
             ->filters([
                 //

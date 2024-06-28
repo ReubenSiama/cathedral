@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Enums\CveInfant;
 use App\Enums\Relationship;
+use App\Filament\Common\CauserDisplay;
 use App\Filament\Common\DownloadCertificate;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\FuneralResource\Pages;
@@ -159,14 +160,7 @@ class FuneralResource extends Resource
                     ->label('Minister of Exsequics')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                CauserDisplay::create(),
             ])
             ->filters([
                 //

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Common\CauserDisplay;
 use App\Filament\Common\DownloadCertificate;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\ConfirmationResource\Pages;
@@ -126,6 +127,7 @@ class ConfirmationResource extends Resource
                     ->label('Minister')
                     ->numeric()
                     ->sortable(),
+                CauserDisplay::create(),
             ])
             ->filters([
                 //
