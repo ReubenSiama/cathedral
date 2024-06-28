@@ -66,8 +66,7 @@ class BaptismResource extends Resource
                                         0 => 'No',
                                     ])
                                     ->default(true),
-                                Forms\Components\TextInput::make('age')
-                                    ->numeric(),
+                                Forms\Components\TextInput::make('age'),
 
                             ])
                             ->columns(2),
