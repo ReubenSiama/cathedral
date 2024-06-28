@@ -25,4 +25,9 @@ class Baptism extends Model
     {
         return $this->belongsTo(Nationality::class);
     }
+
+    public function causer(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Causer::class, 'modelable');
+    }
 }
