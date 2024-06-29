@@ -1,20 +1,21 @@
 <div id="controls-carousel" class="relative w-full mt-10" data-carousel="static">
-    <div class="relative h-56 overflow-hidden rounded-xl md:h-96">
+    <div class="relative h-[30rem] overflow-hidden md:h-[20rem] rounded-xl">
         @foreach ($stations as $station)
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <div class="bg-[#D9D9D9] bg-opacity-20 absolute block w-full">
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 items-center">
-                        <div class="rounded-xl p-14">
-                            <img src="{{ asset('storage/'.$station->banner) }}" class="rounded-xl" alt="{{ $station->name }}">
+                <div class="bg-[#D9D9D9] bg-opacity-20 absolute block w-full h-full items-center content-center">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center content-center">
+                        <div class="hidden md:flex rounded-xl placeholder-gray-100 pl-10 p-4">
+                            <img class="h-full w-full bg-cover" src="{{ asset('storage/'.$station->banner) }}" class="rounded-xl" alt="{{ $station->name }}">
                         </div>
-                        <div class="col-span-1 md:col-span-2">
-                            <h1 class="text-xl font-extrabold uppercase">
+                        <div class="col-span-1 md:col-span-2 px-14 p-4">
+                            <h1 class="text-md md:text-xl font-extrabold uppercase">
                                 {{ $station->name }}
                             </h1>
                             {{ $station->address }}
-                            <p class="pt-6 pr-14 pb-14">
+                            <p class="mb-4">
                                 {{ $station->short_description }}
                             </p>
+                            <a class="bg-green-500 hover:bg-green-400 rounded px-4 py-2 text-white" href="{{ route('stations.show', $station) }}">Read More</a>
                         </div>
                     </div>
                 </div>

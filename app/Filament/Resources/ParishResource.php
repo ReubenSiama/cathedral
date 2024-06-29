@@ -17,6 +17,8 @@ class ParishResource extends Resource
 
     protected static ?string $navigationGroup = 'Master Data';
 
+    protected static ?string $label = 'Station';
+
     public static function form(Form $form): Form
     {
         return $form

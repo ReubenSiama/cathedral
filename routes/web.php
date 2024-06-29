@@ -3,6 +3,7 @@
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\StationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Route::controller(HomePageController::class)
         Route::get('/', 'index')->name('home');
         Route::get('/about-us', 'aboutUs')->name('about.us');
     });
+
+Route::get('stations/{parish}', [StationsController::class, 'show'])->name('stations.show');
 
 Route::get('login', function () {
     return redirect()->route('filament.admin.auth.login');
