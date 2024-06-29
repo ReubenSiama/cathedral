@@ -29,7 +29,7 @@ class Parish extends Model
     {
         return new Attribute(
             set: fn ($value) => [
-                'title' => $value,
+                'name' => $value,
                 'slug' => Str::slug($value),
             ],
         );
