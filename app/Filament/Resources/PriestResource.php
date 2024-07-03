@@ -43,6 +43,7 @@ class PriestResource extends Resource
                     ->options([
                         'parish_priest' => 'Parish Priest',
                         'assistant_priest' => 'Assistant Priest',
+                        null => 'None',
                     ])
                     ->inline()
                     ->hiddenLabel()
@@ -85,6 +86,7 @@ class PriestResource extends Resource
                             }
                         }
                     }),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->defaultSort('designation', 'desc');
     }
