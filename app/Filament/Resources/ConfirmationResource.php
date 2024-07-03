@@ -135,7 +135,8 @@ class ConfirmationResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 DownloadCertificate::make('confirmation.download'),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array

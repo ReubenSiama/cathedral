@@ -168,7 +168,8 @@ class FuneralResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 DownloadCertificate::make('funeral.download'),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array

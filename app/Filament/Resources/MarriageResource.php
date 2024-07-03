@@ -285,7 +285,8 @@ class MarriageResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 DownloadCertificate::make('marriage.download'),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getPages(): array
