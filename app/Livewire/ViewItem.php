@@ -18,6 +18,22 @@ class ViewItem extends ModalComponent
         return '6xl';
     }
 
+    public function close(): void
+    {
+        $this->dispatch('closeModal');
+        $this->dispatch('modalClosed');
+    }
+
+    public static function closeModalOnClickAway(): bool
+    {
+        return false;
+    }
+
+    public static function closeModalOnEscape(): bool
+    {
+        return false;
+    }
+
     public function render()
     {
         return view('livewire.view-item');

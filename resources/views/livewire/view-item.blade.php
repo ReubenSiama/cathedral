@@ -2,13 +2,18 @@
     if(isset($item['banner']) && !empty($item['banner'])) {
         $image = 'storage/'.$item['banner'];
     } else {
-        $image = $item['image'] ? 'storage/'.$item['image'] : 'images/placeholder.webp';
+        $image = isset($item['image']) ? 'storage/'.$item['image'] : 'images/placeholder.webp';
     }
-    $writeup = $item['about'] ?? $item['description'];
+
+    if(isset($item['about']) && !empty($item['about'])) {
+        $writeup = $item['about'];
+    } else {
+        $writeup = isset($item['description']) ? $item['description'] : '';
+    }
 @endphp
 <div class="">
     <div class="h-80 bg-cover bg-no-repeat relative" style="background-image: url({{ asset($image) }})">
-        <div wire:click="$dispatch('closeModal')" class="absolute top-2 right-2 rounded-full bg-white shadow-md text-black py-1 px-3 hover:cursor-pointer">
+        <div wire:click="close" class="absolute top-2 right-2 rounded-full bg-white shadow-md text-black py-1 px-3 hover:cursor-pointer">
             &times;
         </div>
     </div>
