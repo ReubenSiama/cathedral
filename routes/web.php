@@ -21,6 +21,7 @@ Route::controller(HomePageController::class)
     ->group(function () {
         Route::get('/', 'index')->name('home');
         Route::get('/about-us', 'aboutUs')->name('about.us');
+        Route::get('/parish-pastoral-council', 'parishPastoralCouncil')->name('parish.pastoral.council');
     });
 
 Route::get('stations', [StationsController::class, 'index'])->name('stations.index');

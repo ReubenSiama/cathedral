@@ -67,7 +67,7 @@ shadow-md dark:border-gray-700 inset-x-0 z-50
           <a href="#" class="{{ Route::is('associations') ? $activeClass : $inactiveClass }}">Associations</a>
         </li>
         <li>
-          <a href="#" class="{{ Route::is('parish.pastoral.council') ? $activeClass : $inactiveClass }}">Parish Pastoral Council</a>
+          <a href="{{ route('parish.pastoral.council') }}" class="{{ Route::is('parish.pastoral.council') ? $activeClass : $inactiveClass }}">Parish Pastoral Council</a>
         </li>
         <li>
           <a href="#" class="{{ Route::is('institutions.and.others') ? $activeClass : $inactiveClass }}">Institutions & Others</a>

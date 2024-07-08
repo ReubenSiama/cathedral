@@ -29,4 +29,10 @@ class HomePageController extends Controller
 
         return view('pages.about-us', compact('about'));
     }
+
+    public function parishPastoralCouncil()
+    {
+        $parishPastoralCouncil = \App\Models\Setting::where('key', 'parish-pastoral-council')->first();
+        return view('pages.parish-pastoral-council', compact('parishPastoralCouncil'));
+    }
 }
