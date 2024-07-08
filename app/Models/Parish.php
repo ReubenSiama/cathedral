@@ -18,6 +18,11 @@ class Parish extends Model
         'address',
         'short_description',
         'slug',
+        'display_at_homepage',
+    ];
+
+    protected $casts = [
+        'display_at_homepage' => 'boolean',
     ];
 
     public function getRouteKeyName()
@@ -33,5 +38,10 @@ class Parish extends Model
                 'slug' => Str::slug($value),
             ],
         );
+    }
+
+    public function scopeDisplayAtHomepage($query)
+    {
+        return $query->where('display_at_homepage', true);
     }
 }

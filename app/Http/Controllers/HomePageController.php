@@ -11,7 +11,7 @@ class HomePageController extends Controller
         $about = \App\Models\Setting::where('key', 'history-of-aizawl-diocese')->first();
         $banner = \App\Models\Setting::where('key', 'banner')->first();
         $stationsIntro = \App\Models\Setting::where('key', 'stations-intro')->first();
-        $stations = \App\Models\Parish::all();
+        $stations = \App\Models\Parish::displayAtHomepage()->get();
 
         return view('home', compact(
             'massTimings',

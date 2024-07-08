@@ -7,6 +7,7 @@ use App\Filament\Resources\ParishResource\Pages;
 use App\Models\Parish;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -50,6 +51,15 @@ class ParishResource extends Resource
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('banner')
                     ->searchable(),
+                Tables\Columns\ToggleColumn::make('display_at_homepage')
+                    ->label('Display at Homepage')
+                    ->afterStateUpdated(function($state, $record){
+                        Notification::make()
+                            ->success()
+                            ->title($record->name)
+                            ->body("Will be ".($state ? 'displayed in' : 'hidden from')." stations list.")
+                            ->send();
+                    }),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

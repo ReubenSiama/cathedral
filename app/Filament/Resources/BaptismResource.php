@@ -227,7 +227,8 @@ class BaptismResource extends Resource
                 Tables\Actions\EditAction::make()
                     ->hiddenLabel(),
                 DownloadCertificate::make('baptism.download'),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array

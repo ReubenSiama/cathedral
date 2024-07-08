@@ -13,17 +13,20 @@ class Baptism extends Model
 
     public function priest(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Priest::class);
+        return $this->belongsTo(Priest::class)
+        ->select(['id','full_name']);
     }
 
     public function parish(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Parish::class);
+        return $this->belongsTo(Parish::class)
+        ->select(['id','name']);
     }
 
     public function nationality(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Nationality::class);
+        return $this->belongsTo(Nationality::class)
+        ->select(['id','name']);
     }
 
     public function causer(): \Illuminate\Database\Eloquent\Relations\MorphOne

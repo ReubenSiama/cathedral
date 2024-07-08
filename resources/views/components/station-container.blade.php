@@ -15,7 +15,7 @@
                             <p class="mb-4">
                                 {{ $station->short_description }}
                             </p>
-                            <a class="bg-green-500 hover:bg-green-400 rounded px-4 py-2 text-white" href="{{ route('stations.index') }}">Read More</a>
+                            {{-- <a class="bg-green-500 hover:bg-green-400 rounded px-4 py-2 text-white" href="{{ route('stations.show', $station) }}">Read More</a> --}}
                         </div>
                     </div>
                 </div>
