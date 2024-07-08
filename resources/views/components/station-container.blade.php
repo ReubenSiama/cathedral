@@ -1,22 +1,20 @@
 <div id="controls-carousel" class="relative w-full mt-10" data-carousel="static">
     <div class="relative h-[30rem] overflow-hidden md:h-[20rem] rounded-xl">
         @foreach ($stations as $station)
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <div class="bg-[#D9D9D9] bg-opacity-20 absolute block w-full h-full items-center content-center">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center content-center">
-                        <div class="hidden md:flex rounded-xl placeholder-gray-100 pl-10 p-4">
-                            <img class="h-full w-full bg-cover" src="{{ asset('storage/'.$station->banner) }}" class="rounded-xl" alt="{{ $station->name }}">
-                        </div>
-                        <div class="col-span-1 md:col-span-2 px-14 p-4">
-                            <h1 class="text-md md:text-xl font-extrabold uppercase">
-                                {{ $station->name }}
-                            </h1>
-                            {{ $station->address }}
-                            <p class="mb-4">
-                                {{ $station->short_description }}
-                            </p>
-                            <a class="bg-green-500 hover:bg-green-400 rounded px-4 py-2 text-white" href="{{ route('stations.index', ['station' => $station]) }}">Read More</a>
-                        </div>
+            <div class="hidden duration-700 ease-in-out bg-[#D9D9D9] bg-opacity-20" data-carousel-item>
+                <div class="grid grid-cols-1 md:grid-cols-3 px-10 gap-4 min-h-full content-center">
+                    <div class="hidden md:flex rounded-xl placeholder-gray-100 bg-cover bg-no-repeat"
+                    style="background-image:url({{ asset('storage/'.$station->banner) }});">
+                    </div>
+                    <div class="col-span-1 md:col-span-2 px-14 p-4">
+                        <h1 class="text-md md:text-xl font-extrabold uppercase">
+                            {{ $station->name }}
+                        </h1>
+                        {{ $station->address }}
+                        <p class="mb-4">
+                            {{ $station->short_description }}
+                        </p>
+                        <a class="bg-green-500 hover:bg-green-400 rounded px-4 py-2 text-white" href="{{ route('stations.index', ['station' => $station]) }}">Read More</a>
                     </div>
                 </div>
             </div>
