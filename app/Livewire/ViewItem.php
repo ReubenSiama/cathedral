@@ -15,7 +15,7 @@ class ViewItem extends ModalComponent
 
     public static function modalMaxWidth(): string
     {
-        return 'md';
+        return '6xl';
     }
 
     public function render()

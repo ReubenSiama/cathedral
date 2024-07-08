@@ -15,7 +15,7 @@
         hover:cursor-pointer
         ">
             <div class="w-full h-72 object-cover rounded-lg">
-                <img class="h-full w-full object-cover rounded-t-lg" src="{{ $image }}" alt="{{ $item->name }}" />        </div>
+                <img class="h-full w-full object-cover rounded-t-lg" src="{{ asset('storage/'.$image) }}" alt="{{ $item->name }}" /></div>
             <div class="p-5">
                 <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{{ $item->name }}</h5>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $item->address }}</p>
