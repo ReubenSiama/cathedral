@@ -23,6 +23,7 @@ Route::controller(HomePageController::class)
         Route::get('/about-us', 'aboutUs')->name('about.us');
     });
 
+Route::get('stations', [StationsController::class, 'index'])->name('stations.index');
 Route::get('stations/{parish}', [StationsController::class, 'show'])->name('stations.show');
 
 Route::get('login', function () {

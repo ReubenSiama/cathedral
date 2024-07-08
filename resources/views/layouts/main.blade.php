@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body>
+    @livewire('wire-elements-modal')
     @include('layouts.navbar')
     @yield('carousel')
     @yield('content')

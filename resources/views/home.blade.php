@@ -37,24 +37,8 @@
     </div>
     <div class="mt-10 bg-[#22242A] py-10 text-white">
         <div class="mx-4 md:container md:mx-auto">
-            <div class="text-center font-extrabold text-xl">Institutions & Others</div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-10 mt-10 text-black">
-                @foreach ($institutions as $institution)
-                    <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center">
-                        <div class="w-full h-72 object-cover rounded-lg">
-                            <img class="h-full w-full object-cover rounded-t-lg" src="
-                            {{ $institution->image ? asset('storage/'.$institution->image) : asset('images/placeholder.webp') }}
-                             " alt="{{ $institution->name }}" />
-                        </div>
-                        <div class="p-5">
-                            <a href="#">
-                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $institution->name }}</h5>
-                            </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $institution->address }}</p>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            <div class="text-center font-extrabold text-xl mb-10">Institutions & Others</div>
+            <livewire:info-card :items="$institutions"/>
         </div>
     </div>
     <div class="mt-10 md:container md:mx-auto mx-4">

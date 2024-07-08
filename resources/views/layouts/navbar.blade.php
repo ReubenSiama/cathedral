@@ -61,7 +61,7 @@ shadow-md dark:border-gray-700 inset-x-0 z-50
           <a href="#" class="{{ Route::is('religious.and.catechists') ? $activeClass : $inactiveClass }}">Religious & Catechists</a>
         </li>
         <li>
-          <a href="#" class="{{ Route::is('stations') ? $activeClass : $inactiveClass }}">Stations</a>
+          <a href="{{ route('stations.index') }}" class="{{ Route::is('stations.index') ? $activeClass : $inactiveClass }}">Stations</a>
         </li>
         <li>
           <a href="#" class="{{ Route::is('associations') ? $activeClass : $inactiveClass }}">Associations</a>
