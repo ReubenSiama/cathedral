@@ -11,9 +11,17 @@ class Institutions extends Component
 
     public $institution;
 
+    public $institutionId;
+
+    public function updatedInstitutionId()
+    {
+        $this->institution = Institution::find($this->institutionId);
+    }
+
     public function mount()
     {
         $this->institution = $this->institutions->first();
+        $this->institutionId = $this->institution->id;
     }
 
     public function changeInstitution(Institution $institution)

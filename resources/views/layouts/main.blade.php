@@ -11,7 +11,9 @@
     @livewire('wire-elements-modal')
     @include('layouts.navbar')
     @yield('carousel')
-    @yield('content')
+    <div class="min-h-[70vh]">
+        @yield('content')
+    </div>
     @include('layouts.footer')
 </body>
 </html>
