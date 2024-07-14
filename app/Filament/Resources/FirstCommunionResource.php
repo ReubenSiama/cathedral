@@ -136,7 +136,7 @@ class FirstCommunionResource extends Resource
                     ->sortable(),
                 CauserDisplay::create(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->date(self::$dateFormat)
                     ->sortable(),
             ])
             ->filters([
