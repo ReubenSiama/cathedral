@@ -8,7 +8,9 @@
             }
         @endphp
         <div
+        @if ($clickable)
         wire:click="$dispatch('openModal', { component: 'view-item', arguments: { item: {{ $item }}} })"
+        @endif
         class="bg-white border
         border-gray-200
         rounded-lg

@@ -10,7 +10,7 @@ class StationsController extends Controller
 {
     public function index(Request $request)
     {
-        $stations = Parish::all();
+        $stations = Parish::displayAtHomePage()->get();
         $stationsIntro = Setting::where('key', 'stations-intro')->first();
 
         return view('pages.stations', compact('stations', 'stationsIntro'));

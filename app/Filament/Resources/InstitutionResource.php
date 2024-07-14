@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use AmidEsfahani\FilamentTinyEditor\TinyEditor;
 use App\Filament\Resources\InstitutionResource\Pages;
 use App\Models\Institution;
 use Filament\Forms;
@@ -36,8 +37,7 @@ class InstitutionResource extends Resource
                             ->maxLength(255),
                         Forms\Components\FileUpload::make('image')
                             ->image(),
-                        Forms\Components\Textarea::make('description')
-                            ->maxLength(65535)
+                        TinyEditor::make('description')
                             ->columnSpanFull(),
                     ])
                     ->columns(2),

@@ -37,8 +37,10 @@
     </div>
     <div class="mt-10 bg-[#22242A] py-10 text-white">
         <div class="mx-4 md:container md:mx-auto">
-            <div class="text-center font-extrabold text-xl mb-10">Institutions & Others</div>
-            <livewire:info-card :items="$institutions"/>
+            <div class="text-center font-extrabold text-xl mb-10">Institutions</div>
+            <a href="{{ route('institutions') }}">
+                <livewire:info-card :items="$institutions"/>
+            </a>
         </div>
     </div>
     <div class="mt-10 md:container md:mx-auto mx-4">

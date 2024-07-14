@@ -25,4 +25,14 @@ class Institution extends Model
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
+
+    public function scopeInstitutions()
+    {
+        return $this->where('type', InstitutionType::INSTITUTION);
+    }
+
+    public function scopeOthers()
+    {
+        return $this->where('type', InstitutionType::OTHERS);
+    }
 }

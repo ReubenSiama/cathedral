@@ -55,22 +55,25 @@ shadow-md dark:border-gray-700 inset-x-0 z-50
           <a href="{{ route('home') }}" class="{{ Route::is('home') ? $activeClass : $inactiveClass }}" aria-current="page">Home</a>
         </li>
         <li>
-          <a href="#" class="{{ Route::is('bishops.and.priests') ? $activeClass : $inactiveClass }}" aria-current="page">Bishops & Priests</a>
+          <a href="{{ route('bishops.and.priests') }}" class="{{ Route::is('bishops.and.priests') ? $activeClass : $inactiveClass }}" aria-current="page">Bishops & Priests</a>
         </li>
         <li>
-          <a href="#" class="{{ Route::is('religious.and.catechists') ? $activeClass : $inactiveClass }}">Religious & Catechists</a>
+          <a href="{{ route('religious.and.catechists') }}" class="{{ Route::is('religious.and.catechists') ? $activeClass : $inactiveClass }}">Religious & Catechists</a>
         </li>
         <li>
           <a href="{{ route('stations.index') }}" class="{{ Route::is('stations.index') ? $activeClass : $inactiveClass }}">Stations</a>
         </li>
         <li>
-          <a href="#" class="{{ Route::is('associations') ? $activeClass : $inactiveClass }}">Associations</a>
+          <a href="{{ route('associations') }}" class="{{ Route::is('associations') ? $activeClass : $inactiveClass }}">Associations</a>
         </li>
         <li>
           <a href="{{ route('parish.pastoral.council') }}" class="{{ Route::is('parish.pastoral.council') ? $activeClass : $inactiveClass }}">Parish Pastoral Council</a>
         </li>
         <li>
-          <a href="#" class="{{ Route::is('institutions.and.others') ? $activeClass : $inactiveClass }}">Institutions & Others</a>
+          <a href="{{ route('institutions') }}" class="{{ Route::is('institutions') ? $activeClass : $inactiveClass }}">Institutions</a>
+        </li>
+        <li>
+          <a href="{{ route('others') }}" class="{{ Route::is('others') ? $activeClass : $inactiveClass }}">Others</a>
         </li>
         <li>
           <a href="{{ route('about.us') }}" class="{{ Route::is('about.us') ? $activeClass : $inactiveClass }}">About Us</a>

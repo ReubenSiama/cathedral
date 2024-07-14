@@ -22,6 +22,11 @@ Route::controller(HomePageController::class)
         Route::get('/', 'index')->name('home');
         Route::get('/about-us', 'aboutUs')->name('about.us');
         Route::get('/parish-pastoral-council', 'parishPastoralCouncil')->name('parish.pastoral.council');
+        Route::get('/bishops-and-priests', 'bishopsAndPriests')->name('bishops.and.priests');
+        Route::get('/religious-and-catechists', 'religiousAndCatechists')->name('religious.and.catechists');
+        Route::get('/institutions', 'institutions')->name('institutions');
+        Route::get('/others', 'others')->name('others');
+        Route::get('/associations', 'associations')->name('associations');
     });
 
 Route::get('stations', [StationsController::class, 'index'])->name('stations.index');
