@@ -135,9 +135,14 @@ class FirstCommunionResource extends Resource
                     ->date(self::$dateFormat)
                     ->sortable(),
                 CauserDisplay::create(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('causer')
+                    ->relationship('causer', 'user.name')
+                    ->label('Operator'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
