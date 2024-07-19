@@ -44,7 +44,24 @@ class HomePageController extends Controller
 
     public function religiousAndCatechists()
     {
-        return view('pages.religious-and-catechists');
+        $dioceseCatechists = \App\Models\Catechist::diocese()->get();
+        $localTillNow = \App\Models\Catechist::localTillNow()->first();
+        $localPast = \App\Models\Catechist::pastLocal()->get();
+        $localCatechistWriteup = \App\Models\Setting::where('key', 'local-catechists-writeup')->first();
+
+        $parishSisters = \App\Models\ParishMissionary::sisters()->get();
+        $parishBrothers = \App\Models\ParishMissionary::brothers()->get();
+        $parishPriests = \App\Models\ParishMissionary::priests()->get();
+
+        return view('pages.religious-and-catechists', compact(
+            'dioceseCatechists',
+            'localTillNow',
+            'localPast',
+            'localCatechistWriteup',
+            'parishSisters',
+            'parishBrothers',
+            'parishPriests'
+        ));
     }
 
     public function institutions()
