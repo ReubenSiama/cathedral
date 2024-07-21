@@ -17,6 +17,8 @@ class PriestInParishResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Website';
+
     protected static string $dateFormat = 'd/m/Y';
 
     public static function form(Form $form): Form
