@@ -13,7 +13,7 @@
             dark:border-gray-700
             text-center
             ">
-                <div class="w-full h-72 object-cover rounded-lg">
+                <div class="w-full h-80 object-cover rounded-lg">
                     <img class="h-full w-full object-cover rounded-t-lg" src="{{ asset($bishop->image ? 'storage/'.$bishop->image : 'images/placeholder.webp') }}" alt="{{ $bishop->name }}" />
                 </div>
                 <div class="p-5">
