@@ -15,12 +15,11 @@ class ManageBishops extends ManageRecords
     {
         return [
             Actions\CreateAction::make()
-                ->modalWidth('md')
                 ->createAnother(false)
-                ->beforeFormValidated(function ($action){
+                ->beforeFormValidated(function ($action) {
                     $bishops = Bishop::where('is_current', true)->get();
-                    if($bishops->count() > 0){
-                        $bishops->each(function($bishop){
+                    if ($bishops->count() > 0) {
+                        $bishops->each(function ($bishop) {
                             $bishop->update(['is_current' => false]);
                         });
                     }

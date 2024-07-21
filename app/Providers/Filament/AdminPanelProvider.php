@@ -57,6 +57,7 @@ class AdminPanelProvider extends PanelProvider
                 'Data Entry',
                 'User Management',
                 'Settings',
-            ]);
+            ])
+            ->spa();
     }
 }

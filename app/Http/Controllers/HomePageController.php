@@ -39,7 +39,11 @@ class HomePageController extends Controller
 
     public function bishopsAndPriests()
     {
-        return view('pages.bishops-and-priests');
+        $bishops = \App\Models\Bishop::get();
+        $parishPriests = \App\Models\PriestInParish::parishPriest()->get();
+        $assistantParishPriests = \App\Models\PriestInParish::assistantPriest()->get();
+
+        return view('pages.bishops-and-priests', compact('bishops', 'parishPriests', 'assistantParishPriests'));
     }
 
     public function religiousAndCatechists()
