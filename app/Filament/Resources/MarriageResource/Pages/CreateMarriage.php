@@ -9,7 +9,7 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateMarriage extends CreateRecord
 {
-    use CreateCauser, RedirectUrl;
+    use RedirectUrl;
 
     protected static string $resource = MarriageResource::class;
 
@@ -37,5 +37,11 @@ class CreateMarriage extends CreateRecord
 
         $marriage->personalDetails()->createMany($this->personalDetails);
         $marriage->witnesses()->createMany($this->witnesses);
+
+        $this->record->causer()->create([
+            'modelable_type' => $this->getResource()::getModel(),
+            'modelable_id' => $this->record->id,
+            'user_id' => auth()->id(),
+        ]);
     }
 }
