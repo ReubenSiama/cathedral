@@ -29,6 +29,13 @@ class BishopResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->maxSize(2048),
+                Forms\Components\Group::make([
+                    Forms\Components\Checkbox::make('is_deceased')
+                        ->default(false),
+                    Forms\Components\Checkbox::make('display')
+                        ->default(true),
+                ])
+                ->columns(2),
                 TinyEditor::make('bio')
                     ->maxLength(1000)
                     ->columnSpanFull(),
@@ -57,7 +64,9 @@ class BishopResource extends Resource
                             });
                         }
                     }),
-            ]);
+            ])
+            ->reorderable('order')
+            ->defaultSort('order', 'asc');
     }
 
     public static function getPages(): array
