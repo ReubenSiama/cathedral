@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
     <div class="col-span-1 bg-gray-100 p-4 rounded-lg hidden md:flex">
-        <ul>
+        <ul class="w-full">
             @foreach ($institutions as $data)
             <li class="p-4 rounded-lg mb-4
             hover:cursor-pointer hover:bg-gray-200
