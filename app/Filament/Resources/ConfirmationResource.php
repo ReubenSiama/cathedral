@@ -74,7 +74,14 @@ class ConfirmationResource extends Resource
                             ->relationship('bishop', 'name')
                             ->searchable()
                             ->required()
-                            ->preload(),
+                            ->preload()
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                            ->createOptionAction(fn (Action $action) => $action
+                                ->modalWidth('md')),
                         Forms\Components\DatePicker::make('date_of_birth')
                             ->label('Date of Birth')
                             ->native(false)

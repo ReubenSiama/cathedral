@@ -48,18 +48,15 @@ class MarriageResource extends Resource
                         Forms\Components\DatePicker::make('date_of_first_announcement')
                             ->label('Date of First Announcement')
                             ->native(false)
-                            ->displayFormat(self::$dateFormat)
-                            ->required(),
+                            ->displayFormat(self::$dateFormat),
                         Forms\Components\DatePicker::make('date_of_second_announcement')
                             ->label('Date of Second Announcement')
                             ->native(false)
-                            ->displayFormat(self::$dateFormat)
-                            ->required(),
+                            ->displayFormat(self::$dateFormat),
                         Forms\Components\DatePicker::make('date_of_third_announcement')
                             ->label('Date of Third Announcement')
                             ->native(false)
-                            ->displayFormat(self::$dateFormat)
-                            ->required(),
+                            ->displayFormat(self::$dateFormat),
                         Forms\Components\TextInput::make('impediment_dispensation')
                             ->label('Impediment Dispensation')
                             ->maxLength(255),

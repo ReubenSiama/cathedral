@@ -39,7 +39,7 @@ class HomePageController extends Controller
 
     public function bishopsAndPriests()
     {
-        $bishops = \App\Models\Bishop::get();
+        $bishops = \App\Models\Bishop::display()->get();
         $parishPriests = \App\Models\PriestInParish::parishPriest()->get();
         $assistantParishPriests = \App\Models\PriestInParish::assistantPriest()->get();
 
