@@ -64,6 +64,7 @@ class BishopResource extends Resource
                             });
                         }
                     }),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->reorderable('order')
             ->defaultSort('order', 'asc');

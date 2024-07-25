@@ -13,11 +13,6 @@ class EditMarriage extends EditRecord
 
     protected static string $resource = MarriageResource::class;
 
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
-
     protected function mutateFormDataBeforeFill(array $data): array
     {
         $data['personalDetails'] = $this->record->personalDetails->toArray();
