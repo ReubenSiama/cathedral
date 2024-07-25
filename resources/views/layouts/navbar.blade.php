@@ -6,17 +6,12 @@
           dark:hover:text-white md:dark:hover:bg-transparent'
 @endphp
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
-  <div class="hidden md:flex flex-wrap justify-center items-center mx-auto max-w-screen-xl p-4">
+  <div class="hidden md:flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
     <a href="{{ Route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="{{ asset('images/new_logo.png') }}" alt="Logo" class="h-10">
     </a>
-    {{-- <div class="flex items-center space-x-6 rtl:space-x-reverse">
-      <span class="text-sm">
-        Kulikawn, Aizawl
-        <br>
-        Mizoram, 796015
-      </span>
-    </div> --}}
+
+    @livewire('switch-language', ['id' => 1])
   </div>
 </nav>
 
@@ -80,6 +75,9 @@ shadow-md dark:border-gray-700 inset-x-0 z-50
         </li>
         <li>
           <a href="#" class="{{ Route::is('publications') ? $activeClass : $inactiveClass }}">Publications</a>
+        </li>
+        <li class="flex md:hidden">
+          @livewire('switch-language', ['id' => 2])
         </li>
       </ul>
     </div>
