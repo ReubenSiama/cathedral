@@ -289,6 +289,7 @@ class MarriageResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
                 DownloadCertificate::make('marriage.download'),
             ])
             ->defaultSort('created_at', 'desc');
