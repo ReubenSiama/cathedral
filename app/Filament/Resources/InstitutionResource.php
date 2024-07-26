@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use AmidEsfahani\FilamentTinyEditor\TinyEditor;
+use App\Filament\Common\LocaleGenerator;
 use App\Filament\Resources\InstitutionResource\Pages;
 use App\Models\Institution;
 use Filament\Forms;
@@ -37,7 +37,7 @@ class InstitutionResource extends Resource
                             ->maxLength(255),
                         Forms\Components\FileUpload::make('image')
                             ->image(),
-                        TinyEditor::make('description')
+                        LocaleGenerator::make('description', 'tiny')
                             ->columnSpanFull(),
                     ])
                     ->columns(2),

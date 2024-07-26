@@ -15,6 +15,14 @@ return new class extends Migration
             $table->dropColumn('description');
             $table->dropColumn('value');
         });
+
+        Schema::table('association_branches', function (Blueprint $table) {
+            $table->dropColumn('description');
+        });
+
+        Schema::table('institutions', function (Blueprint $table) {
+            $table->dropColumn('description');
+        });
     }
 
     /**

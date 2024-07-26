@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\AssociationBranchResource\Pages;
 
+use App\Filament\Common\HandleTranslation;
+use App\Filament\Common\MutateFormForTranslation;
 use App\Filament\Resources\AssociationBranchResource;
 use App\Filament\Resources\AssociationResource;
 use App\Models\Association;
@@ -10,6 +12,7 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditAssociationBranch extends EditRecord
 {
+    use MutateFormForTranslation;
     protected static string $resource = AssociationBranchResource::class;
 
     protected function getHeaderActions(): array
@@ -17,6 +20,16 @@ class EditAssociationBranch extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        return HandleTranslation::clearData($data, ['description', 'value']);
+    }
+
+    protected function afterSave(): void
+    {
+        HandleTranslation::updateTranslation($this->record, $this->data, ['description', 'value']);
     }
 
     protected function getRedirectUrl(): string

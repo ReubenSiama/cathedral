@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use AmidEsfahani\FilamentTinyEditor\TinyEditor;
+use App\Filament\Common\LocaleGenerator;
 use App\Filament\Resources\AssociationBranchResource\Pages;
 use App\Models\AssociationBranch;
 use Filament\Forms;
@@ -36,7 +36,7 @@ class AssociationBranchResource extends Resource
                 Forms\Components\TextInput::make('address'),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
-                TinyEditor::make('description')
+                LocaleGenerator::make('description', 'tiny')
                     ->columnSpanFull(),
                 ])
                 ->columns(2),
