@@ -19,6 +19,8 @@ class LanguageMiddleware
             app()->setLocale(session()->get('locale'));
         }
 
+        info(session()->get('locale'));
+
         return $next($request);
     }
 }
