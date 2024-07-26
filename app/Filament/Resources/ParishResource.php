@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use AmidEsfahani\FilamentTinyEditor\TinyEditor;
+use App\Filament\Common\LocaleGenerator;
 use App\Filament\Resources\ParishResource\Pages;
 use App\Models\Parish;
 use Filament\Forms;
@@ -33,10 +33,9 @@ class ParishResource extends Resource
                 Forms\Components\FileUpload::make('banner')
                     ->image()
                     ->columnSpanFull(),
-                Forms\Components\Textarea::make('short_description')
-                    ->maxLength(2000)
+                LocaleGenerator::make('short_description', 'textarea')
                     ->columnSpanFull(),
-                TinyEditor::make('about')
+                LocaleGenerator::make('about', 'tiny')
                     ->columnSpanFull(),
             ]);
     }
@@ -53,11 +52,11 @@ class ParishResource extends Resource
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('display_at_homepage')
                     ->label('Display at Homepage')
-                    ->afterStateUpdated(function($state, $record){
+                    ->afterStateUpdated(function ($state, $record) {
                         Notification::make()
                             ->success()
                             ->title($record->name)
-                            ->body("Will be ".($state ? 'displayed in' : 'hidden from')." stations list.")
+                            ->body('Will be '.($state ? 'displayed in' : 'hidden from').' stations list.')
                             ->send();
                     }),
             ])

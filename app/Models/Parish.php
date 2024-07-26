@@ -14,9 +14,7 @@ class Parish extends Model
     protected $fillable = [
         'name',
         'banner',
-        'about',
         'address',
-        'short_description',
         'slug',
         'display_at_homepage',
     ];
@@ -43,5 +41,40 @@ class Parish extends Model
     public function scopeDisplayAtHomepage($query)
     {
         return $query->where('display_at_homepage', true);
+    }
+
+    public function translations()
+    {
+        return $this->morphMany(Translation::class, 'translatable');
+    }
+
+    public function getTranslation(string $key, ?string $locale = null): string
+    {
+        $locale = $locale ?? app()->getLocale();
+        $translation = $this->translations()->where('key', $key)->where('locale', $locale)->first();
+
+        return $translation ? $translation->value : '';
+    }
+
+    public function shortDescription(): Attribute
+    {
+        $locale = app()->getLocale();
+
+        return new Attribute(
+            get: function () use ($locale) {
+                return $this->getTranslation('short_description', $locale);
+            },
+        );
+    }
+
+    public function about(): Attribute
+    {
+        $locale = app()->getLocale();
+
+        return new Attribute(
+            get: function () use ($locale) {
+                return $this->getTranslation('about', $locale);
+            },
+        );
     }
 }

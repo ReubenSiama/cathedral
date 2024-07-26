@@ -11,17 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('settings', function (Blueprint $table) {
-            $table->dropColumn('description');
-            $table->dropColumn('value');
-        });
+        // Schema::table('settings', function (Blueprint $table) {
+        //     $table->dropColumn('description');
+        //     $table->dropColumn('value');
+        // });
 
-        Schema::table('association_branches', function (Blueprint $table) {
-            $table->dropColumn('description');
-        });
+        // Schema::table('association_branches', function (Blueprint $table) {
+        //     $table->dropColumn('description');
+        // });
 
-        Schema::table('institutions', function (Blueprint $table) {
-            $table->dropColumn('description');
+        // Schema::table('institutions', function (Blueprint $table) {
+        //     $table->dropColumn('description');
+        // });
+
+        Schema::table('parishes', function (Blueprint $table) {
+            $table->dropColumn('about');
+            $table->dropColumn('short_description');
         });
     }
 
