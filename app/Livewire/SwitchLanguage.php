@@ -8,6 +8,7 @@ use Livewire\Component;
 class SwitchLanguage extends Component
 {
     public $languages;
+
     public $id;
 
     public function mount()
@@ -18,7 +19,9 @@ class SwitchLanguage extends Component
     public function switchLanguage($locale)
     {
         session()->put('locale', $locale);
+        info('From Livewire: '.session()->get('locale'));
         app()->setLocale($locale);
+
         return redirect(request()->header('Referer'));
     }
 
