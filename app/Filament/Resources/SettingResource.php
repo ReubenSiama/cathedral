@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use AmidEsfahani\FilamentTinyEditor\TinyEditor;
+use App\Filament\Common\LocaleGenerator;
 use App\Filament\Resources\SettingResource\Pages;
 use App\Models\Setting;
 use Filament\Forms;
@@ -32,13 +32,12 @@ class SettingResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\Textarea::make('description')
-                            ->maxLength(65535)
+                        LocaleGenerator::make('description', 'textarea')
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('image')
                             ->image()
                             ->columnSpanFull(),
-                        TinyEditor::make('value')
+                        LocaleGenerator::make('value', 'tiny')
                             ->columnSpanFull(),
                     ])
                     ->columns(2),

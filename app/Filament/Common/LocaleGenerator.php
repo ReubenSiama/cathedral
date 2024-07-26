@@ -11,29 +11,28 @@ class LocaleGenerator
 
     public static function make($field, $key)
     {
-        $locales = Language::all();
+        $languages = Language::all();
 
-        return Forms\Components\Tabs::make($field)
-        ->tabs(
-            self::getTabs($locales, $key)
-        );
+        return Forms\Components\Tabs::make()
+            ->tabs(self::getTabs($languages, $key, $field));
     }
 
-    private function getTabs($locales, $key)
+    private static function getTabs($languages, $key, $field)
     {
         $tabs = [];
 
-        foreach ($locales as $locale) {
-            $tabs[] = Forms\Components\Tabs\Tab::make($locale->name)
+        foreach ($languages as $language) {
+            $tabs[] = Forms\Components\Tabs\Tab::make($language->name)
             ->schema([
-                self::getField($key, $locale->code)
+                self::getField($key, $field.'.'.$language->locale)
+                ->label(ucwords($field))
             ]);
         }
 
         return $tabs;
     }
 
-    private function getField($type, $fieldName)
+    private static function getField($type, $fieldName)
     {
         return match ($type) {
             'default' => Forms\Components\TextInput::make($fieldName),

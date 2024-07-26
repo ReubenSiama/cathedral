@@ -23,7 +23,9 @@ class AssociationBranchResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('association_id')
+                Forms\Components\Section::make()
+                ->schema([
+                    Forms\Components\Select::make('association_id')
                     ->relationship('association', 'name')
                     ->default(request()->query('ownerRecord'))
                     ->native('false')
@@ -36,6 +38,8 @@ class AssociationBranchResource extends Resource
                     ->image(),
                 TinyEditor::make('description')
                     ->columnSpanFull(),
+                ])
+                ->columns(2),
             ]);
     }
 
