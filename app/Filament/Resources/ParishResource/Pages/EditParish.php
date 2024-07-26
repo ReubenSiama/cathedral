@@ -25,11 +25,11 @@ class EditParish extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        return HandleTranslation::clearData($data, ['description', 'value']);
+        return HandleTranslation::clearData($data, ['short_description', 'about']);
     }
 
     protected function afterSave(): void
     {
-        HandleTranslation::updateTranslation($this->record, $this->data, ['description', 'value']);
+        HandleTranslation::updateTranslation($this->record, $this->data, ['short_description', 'about']);
     }
 }
