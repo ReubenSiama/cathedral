@@ -18,10 +18,8 @@ class SwitchLanguage extends Component
 
     public function switchLanguage($locale)
     {
-        session()->put('locale', $locale);
-        info('From Livewire: '.session()->get('locale'));
+        session(['locale' => $locale]);
         app()->setLocale($locale);
-        info('After setLocale:'.app()->getLocale());
 
         return redirect(request()->header('Referer'));
     }
