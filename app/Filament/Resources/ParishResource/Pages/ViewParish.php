@@ -2,12 +2,15 @@
 
 namespace App\Filament\Resources\ParishResource\Pages;
 
+use App\Filament\Common\MutateFormForTranslation;
 use App\Filament\Resources\ParishResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 
 class ViewParish extends ViewRecord
 {
+    use MutateFormForTranslation;
+
     protected static string $resource = ParishResource::class;
 
     protected function getHeaderActions(): array
