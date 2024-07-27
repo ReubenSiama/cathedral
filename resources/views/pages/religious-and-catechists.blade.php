@@ -60,8 +60,10 @@
             </div>
         </div>
     </div>
-    <div class="mt-10">
-        <h1 class="text-center mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+</div>
+<div class="bg-[#22242A]">
+    <div class="md:container md:mx-auto mx-5 mt-6 text-white py-10">
+        <h1 class="text-center mb-2 text-xl font-bold tracking-tight">
             MISSIONARIES FROM THE PARISH
         </h1>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -79,4 +81,11 @@
         </div>
     </div>
 </div>
+<div class="md:container md:mx-auto mx-5 mt-6 py-10">
+    <h1 class="text-center mb-2 text-xl font-bold tracking-tight">
+        RELIGIOUS INSTITUTES
+    </h1>
+    @livewire('religious-institute')
+</div>
+
 @endsection
