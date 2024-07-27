@@ -24,6 +24,11 @@ class ReligiousInstitute extends Component
         $this->selectedInstitute = ModelsReligiousInstitute::find($id);
     }
 
+    public function updatedSelectedInstituteId()
+    {
+        $this->changeInstitute($this->selectedInstituteId);
+    }
+
     public function render()
     {
         return view('livewire.religious-institute');
