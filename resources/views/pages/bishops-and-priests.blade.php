@@ -66,7 +66,7 @@
     <h1 class="text-center mb-2 text-xl font-bold tracking-tight">
         ASSISTANT PARISH PRIESTS
     </h1>
-    <div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         @foreach ($assistantParishPriests as $assistant)
             <div
             class="bg-white border border-gray-200
