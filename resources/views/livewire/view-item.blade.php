@@ -10,6 +10,7 @@
     } else {
         $writeup = isset($item['description']) ? $item['description'] : '';
     }
+
 @endphp
 <div class="">
     <div class="h-80 bg-cover bg-no-repeat relative" style="background-image: url({{ asset($image) }})">

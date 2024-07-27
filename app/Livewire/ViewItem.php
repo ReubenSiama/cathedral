@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Parish;
 use LivewireUI\Modal\ModalComponent;
 
 class ViewItem extends ModalComponent
@@ -10,7 +11,7 @@ class ViewItem extends ModalComponent
 
     public function mount($item)
     {
-        $this->item = $item;
+        $this->item = Parish::find($item['id']);
     }
 
     public static function modalMaxWidth(): string
