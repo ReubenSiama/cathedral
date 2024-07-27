@@ -48,7 +48,7 @@ class Parish extends Model
         return $this->morphMany(Translation::class, 'translatable');
     }
 
-    public function getTranslation(string $key, ?string $locale = null): string
+    public function getTranslation(string $key, ?string $locale = null)
     {
         $locale = $locale ?? app()->getLocale();
         $translation = $this->translations()->where('key', $key)->where('locale', $locale)->first();
