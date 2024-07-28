@@ -8,6 +8,7 @@ use App\Models\FirstCommunion;
 use App\Models\Funeral;
 use App\Models\Marriage;
 use App\Models\User;
+use App\Models\Visitor;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
@@ -24,6 +25,7 @@ class StatsOverview extends BaseWidget
             Stat::make('Marriage', Marriage::count()),
             Stat::make('Funeral', Funeral::count()),
             Stat::make('Users', User::count()),
+            Stat::make('Today\'s Visitors', Visitor::whereDate('created_at', date('Y-m-d'))->count()),
         ];
     }
 }

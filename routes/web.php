@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('language')->group(function(){
+Route::middleware(['language', 'visitor'])->group(function () {
     Route::controller(HomePageController::class)
         ->group(function () {
             Route::get('/', 'index')->name('home');
@@ -29,14 +29,14 @@ Route::middleware('language')->group(function(){
             Route::get('/others', 'others')->name('others');
             Route::get('/associations', 'associations')->name('associations');
         });
-    
+
     Route::get('stations', [StationsController::class, 'index'])->name('stations.index');
     Route::get('stations/{parish}', [StationsController::class, 'show'])->name('stations.show');
-    
+
     Route::get('login', function () {
         return redirect()->route('filament.admin.auth.login');
     })->name('login');
-    
+
     Route::controller(CertificateController::class)
         ->group(function () {
             Route::get('baptism/{baptism}/download', 'baptism')->name('baptism.download');
@@ -46,7 +46,7 @@ Route::middleware('language')->group(function(){
             Route::get('marriage/{marriage}/download', 'marriage')->name('marriage.download');
             Route::get('template', 'certificateTemplate')->name('certificate.template');
         });
-    
+
     Route::controller(GalleryController::class)
         ->group(function () {
             Route::get('gallery', 'index')->name('gallery');
