@@ -14,6 +14,8 @@ class VisitorResource extends Resource
 {
     protected static ?string $model = Visitor::class;
 
+    protected static ?string $navigationGroup = 'Website';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function table(Table $table): Table

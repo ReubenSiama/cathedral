@@ -15,6 +15,8 @@ class ReligiousInstituteResource extends Resource
 {
     protected static ?string $model = ReligiousInstitute::class;
 
+    protected static ?string $navigationGroup = 'Website';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
