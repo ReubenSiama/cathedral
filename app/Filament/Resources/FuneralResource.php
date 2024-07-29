@@ -40,7 +40,6 @@ class FuneralResource extends Resource
                         Forms\Components\TextInput::make('surname')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('age')
-                            ->numeric()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('domicile')
                             ->maxLength(255),
@@ -97,8 +96,7 @@ class FuneralResource extends Resource
                                 Forms\Components\Select::make('relationship')
                                     ->options(Relationship::class)
                                     ->native(false)
-                                    ->live()
-                                    ->required(),
+                                    ->live(),
                             ])
                             ->columnspan(1),
                         Forms\Components\Section::make()

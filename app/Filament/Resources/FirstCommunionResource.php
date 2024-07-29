@@ -69,7 +69,6 @@ class FirstCommunionResource extends Resource
                             ->label('Minister')
                             ->searchable()
                             ->preload()
-                            ->required()
                             ->createOptionForm([
                                 Forms\Components\TextInput::make('name')
                                     ->required()
@@ -103,7 +102,6 @@ class FirstCommunionResource extends Resource
                             ->displayFormat(self::$dateFormat)
                             ->native(false),
                         Forms\Components\TextInput::make('address')
-                            ->required()
                             ->maxLength(255)
                             ->columnSpan(2),
                         Forms\Components\Textarea::make('remarks')
