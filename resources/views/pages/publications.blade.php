@@ -7,7 +7,7 @@
         <li class="mb-4 p-4 bg-gray-100">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div class="col-span-1">
-                    <img src="{{ asset($publication->image ? 'storage/'.$publication->image : 'images/placeholder.webp') }}" alt="{{ $publication->title }}" class="w-full h-40 object-cover rounded-lg" />
+                    <img src="{{ asset($publication->cover_image ? 'storage/'.$publication->cover_image : 'images/placeholder.webp') }}" alt="{{ $publication->title }}" class="w-full h-40 object-cover rounded-lg" />
                 </div>
                 <div class="col-span-3">
                     <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">{{ $publication->title }}</h2>

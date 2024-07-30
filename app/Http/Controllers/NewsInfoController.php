@@ -12,4 +12,9 @@ class NewsInfoController extends Controller
         $publications = NewsInfo::latest()->paginate(10);
         return view('pages.publications', compact('publications'));
     }
+
+    public function show(NewsInfo $newsInfo)
+    {
+        return view('pages.publication', compact('newsInfo'));
+    }
 }
