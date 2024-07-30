@@ -3,6 +3,7 @@
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\NewsInfoController;
 use App\Http\Controllers\StationsController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,11 @@ Route::middleware(['language', 'visitor'])->group(function () {
 
     Route::get('stations', [StationsController::class, 'index'])->name('stations.index');
     Route::get('stations/{parish}', [StationsController::class, 'show'])->name('stations.show');
+    Route::controller(NewsInfoController::class)
+        ->group(function () {
+            Route::get('publications', 'index')->name('publications');
+            Route::get('publications/{newsInfo}', 'show')->name('publications.show');
+        });
 
     Route::get('login', function () {
         return redirect()->route('filament.admin.auth.login');

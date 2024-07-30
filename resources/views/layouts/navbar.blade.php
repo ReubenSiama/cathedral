@@ -74,7 +74,7 @@ shadow-md dark:border-gray-700 inset-x-0 z-50
           <a href="{{ route('about.us') }}" class="{{ Route::is('about.us') ? $activeClass : $inactiveClass }}">About Us</a>
         </li>
         <li>
-          <a href="#" class="{{ Route::is('publications') ? $activeClass : $inactiveClass }}">Publications</a>
+          <a href="{{ route('publications') }}" class="{{ Route::is('publications') ? $activeClass : $inactiveClass }}">Publications</a>
         </li>
         <li class="flex md:hidden">
           @livewire('switch-language', ['id' => 2])

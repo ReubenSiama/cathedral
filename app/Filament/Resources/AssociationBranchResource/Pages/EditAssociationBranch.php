@@ -24,12 +24,12 @@ class EditAssociationBranch extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        return HandleTranslation::clearData($data, ['description', 'value']);
+        return HandleTranslation::clearData($data, ['description']);
     }
 
     protected function afterSave(): void
     {
-        HandleTranslation::updateTranslation($this->record, $this->data, ['description', 'value']);
+        HandleTranslation::updateTranslation($this->record, $this->data, ['description']);
     }
 
     protected function getRedirectUrl(): string

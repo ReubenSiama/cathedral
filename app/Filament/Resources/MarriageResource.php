@@ -266,12 +266,17 @@ class MarriageResource extends Resource
                     ->date(self::$dateFormat),
                 Tables\Columns\TextColumn::make('date_of_first_announcement')
                     ->date(self::$dateFormat),
-                Tables\Columns\TextColumn::make('personalDetails.0.name')
+                Tables\Columns\TextColumn::make('personalDetails.0.full_name')
                     ->label('Bridegroom'),
-                Tables\Columns\TextColumn::make('personalDetails.1.name')
+                Tables\Columns\TextColumn::make('personalDetails.0.domicile')
+                    ->label('Bridegroom\'s Domicile'),
+                Tables\Columns\TextColumn::make('personalDetails.1.full_name')
                     ->label('Bride'),
+                    Tables\Columns\TextColumn::make('personalDetails.1.domicile')
+                    ->label('Bride\'s Domicile'),
                 Tables\Columns\TextColumn::make('priest.full_name')
-                    ->numeric(),
+                    ->numeric()
+                    ->label('Minister'),
                 Tables\Columns\TextColumn::make('parishPriest.full_name')
                     ->numeric(),
                 Tables\Columns\TextColumn::make('nuptial_form')
