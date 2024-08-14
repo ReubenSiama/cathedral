@@ -44,7 +44,14 @@ class MarriageResource extends Resource
                             ->searchable()
                             ->preload()
                             ->label('Place')
-                            ->required(),
+                            ->required()
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                            ->createOptionAction(fn (Action $action) => $action
+                                ->modalWidth('md')),
                         Forms\Components\DatePicker::make('date_of_first_announcement')
                             ->label('Date of First Announcement')
                             ->native(false)
@@ -136,7 +143,10 @@ class MarriageResource extends Resource
                                     ->createOptionAction(
                                         fn (Action $action) => $action
                                             ->modalWidth('md'),
-                                    ),
+                                    )
+                                    ->createOptionUsing(function (array $data) {
+                                        return \App\Models\Nationality::create($data)->getKey();
+                                    }),
                                 Forms\Components\TextInput::make('personalDetails.0.domicile')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('personalDetails.0.occupation')
@@ -191,7 +201,10 @@ class MarriageResource extends Resource
                                     ->createOptionAction(
                                         fn (Action $action) => $action
                                             ->modalWidth('md'),
-                                    ),
+                                    )
+                                    ->createOptionUsing(function (array $data) {
+                                        return \App\Models\Nationality::create($data)->getKey();
+                                    }),
                                 Forms\Components\TextInput::make('personalDetails.1.domicile')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('personalDetails.1.occupation')
@@ -272,7 +285,7 @@ class MarriageResource extends Resource
                     ->label('Bridegroom\'s Domicile'),
                 Tables\Columns\TextColumn::make('personalDetails.1.full_name')
                     ->label('Bride'),
-                    Tables\Columns\TextColumn::make('personalDetails.1.domicile')
+                Tables\Columns\TextColumn::make('personalDetails.1.domicile')
                     ->label('Bride\'s Domicile'),
                 Tables\Columns\TextColumn::make('priest.full_name')
                     ->numeric()
