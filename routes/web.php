@@ -35,8 +35,8 @@ Route::middleware(['language', 'visitor'])->group(function () {
     Route::get('stations/{parish}', [StationsController::class, 'show'])->name('stations.show');
     Route::controller(NewsInfoController::class)
         ->group(function () {
-            Route::get('publications', 'index')->name('publications');
-            Route::get('publications/{newsInfo}', 'show')->name('publications.show');
+            Route::get('news', 'index')->name('news');
+            Route::get('news/{newsInfo}', 'show')->name('news.show');
         });
 
     Route::get('login', function () {
