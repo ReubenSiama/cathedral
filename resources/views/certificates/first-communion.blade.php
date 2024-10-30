@@ -162,7 +162,7 @@
         <tr>
             <td>Conferred by</td>
             <td style="width: 1%;">:</td>
-            <td colspan="4" class="underline">{{ $firstCommunion->priest->full_name }}</td>
+            <td colspan="4" class="underline">{{ $firstCommunion->priest?->full_name }}</td>
         </tr>
         <tr>
             <td colspan="6" style="font-size: 13px; padding: 10px 0px; text-align: justify;">
