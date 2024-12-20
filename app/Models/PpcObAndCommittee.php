@@ -25,4 +25,9 @@ class PpcObAndCommittee extends Model
     {
         return $this->belongsTo(PpcTerm::class);
     }
+
+    public function members()
+    {
+        return $this->hasMany(PpcObAndCommitteeMember::class);
+    }
 }
