@@ -66,6 +66,7 @@ class PpcTermResource extends Resource
     {
         return [
             RelationManagers\PpcObAndCommitteesRelationManager::class,
+            RelationManagers\MembersRelationManager::class,
         ];
     }
 
