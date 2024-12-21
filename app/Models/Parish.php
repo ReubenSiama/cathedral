@@ -17,6 +17,7 @@ class Parish extends Model
         'address',
         'slug',
         'display_at_homepage',
+        'location',
     ];
 
     protected $casts = [

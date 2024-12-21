@@ -30,6 +30,9 @@ class ParishResource extends Resource
                 Forms\Components\TextInput::make('address')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('location')
+                    ->maxLength(255)
+                    ->columnSpanFull(),
                 Forms\Components\FileUpload::make('banner')
                     ->image()
                     ->columnSpanFull(),
