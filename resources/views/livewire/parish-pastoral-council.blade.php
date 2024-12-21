@@ -12,7 +12,7 @@
         </ul>
     </div>
 
-    <div class="col-span-3">
+    <div class="col-span-3 flex md:hidden">
         <select wire:model.live="current" id="current" class="w-full flex md:hidden">
             @foreach ($links as $link)
                 <option value="{{ $link['slug'] }}">{{ $link['name'] }}</option>
