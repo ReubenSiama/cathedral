@@ -36,6 +36,7 @@ class NewsInfoResource extends Resource
                         Forms\Components\FileUpload::make('file')
                             ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'])
                             ->uploadingMessage('Uploading attachment...')
+                            ->maxSize(2 * 1024)
                             ->required(),
                         Forms\Components\TextInput::make('name')
                             ->maxLength(255),
