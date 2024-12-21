@@ -49,7 +49,7 @@
             </div>
         </div>
         @elseif($current == 'priests')
-            <div class="bg-[#22242A] text-white py-10 mt-10">
+            <div class="md:container md:mx-auto mx-5 mt-6">
                 <div class="md:container md:mx-auto mx-5">
                     <h1 class="text-center mb-2 text-xl font-bold tracking-tight">
                         PRIESTS
