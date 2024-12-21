@@ -16,12 +16,14 @@ class InfoCard extends Component
     #[Url]
     public $station;
 
+    public $model = 'Parish';
+
     public function mount($items, $clickable = false)
     {
         $this->items = $items;
         $this->clickable = $clickable;
         if($this->station){
-            $station = Parish::where('slug', $this->station)->first();
+            $station = $this->model::where('slug', $this->station)->first();
             $this->dispatch('openModal', component: 'view-item', arguments: ['item' => $station]);
         }
     }

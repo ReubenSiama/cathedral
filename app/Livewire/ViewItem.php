@@ -8,10 +8,12 @@ use LivewireUI\Modal\ModalComponent;
 class ViewItem extends ModalComponent
 {
     public $item;
+    public $model;
 
-    public function mount($item)
+    public function mount($item, $model)
     {
-        $this->item = Parish::find($item['id']);
+        $this->model = "App\Models\\$model";
+        $this->item = $this->model::find($item['id']);
     }
 
     public static function modalMaxWidth(): string
