@@ -17,9 +17,6 @@
                 <option value="{{ $link['slug'] }}">{{ $link['name'] }}</option>
             @endforeach
         </select>
-    </div>
-
-    <div class="col-span-3">
         @if ($current == 'bishops')
         <div class="md:container md:mx-auto mx-5 mt-6">
             <h1 class="text-center mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -83,7 +80,7 @@
                     </div>
                 </div>
             </div>
-        @elseif($current == 'assistant-priests')
+        @elseif($current == 'asst_priests')
             <div class="md:container md:mx-auto mx-5 py-10">
                 <h1 class="text-center mb-2 text-xl font-bold tracking-tight">
                     ASSISTANT PARISH PRIESTS
