@@ -7,6 +7,7 @@
     @if ($newsInfo->cover_image)
         <img src="{{ asset('storage/'.$newsInfo->cover_image) }}" alt="{{ $newsInfo->title }}" class="h-52 w-52 object-cover float-end">
     @endif
-    {!! $newsInfo->description !!}
+    <br>
+    {!! $newsInfo->content !!}
 </div>
 @endsection

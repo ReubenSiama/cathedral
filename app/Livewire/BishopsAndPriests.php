@@ -17,7 +17,7 @@ class BishopsAndPriests extends Component
             'slug' => 'bishops',
         ],
         [
-            'name' => 'Priests',
+            'name' => 'Parish Priests',
             'slug' => 'priests',
         ],
         [
