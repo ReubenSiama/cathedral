@@ -39,7 +39,7 @@ class MembersRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('id')
             ->columns([
-                Tables\Columns\TextColumn::make('ppcObAndCommittee.type'),
+                Tables\Columns\TextColumn::make('ppcObAndCommittee.name'),
                 Tables\Columns\TextColumn::make('role'),
                 Tables\Columns\TextColumn::make('name'),
             ])

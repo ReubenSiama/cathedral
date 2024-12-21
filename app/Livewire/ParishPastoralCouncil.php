@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Enums\ObAndCommitteeType;
 use App\Models\ParishPastoralCouncil as ModelsParishPastoralCouncil;
 use App\Models\PpcTerm;
 use Livewire\Component;
@@ -19,20 +18,18 @@ class ParishPastoralCouncil extends Component
             'slug' => 'about_us',
         ],
         [
-            'name' => 'Office Bearers',
+            'name' => 'OB & Committee',
             'slug' => 'office_bearers',
         ],
-        [
-            'name' => 'Committees',
-            'slug' => 'committees',
-        ]
     ];
 
     public function mount(){
         $this->parishPastoralCouncil = ModelsParishPastoralCouncil::first();
         $this->terms = PpcTerm::with(['ppcObAndCommittees' => function($query){
             $query->with('members');
-        }])->get();
+        }])
+        ->orderBy('id', 'desc')
+        ->get();
     }
 
     public function changeLink($slug){
