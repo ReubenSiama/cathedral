@@ -9,5 +9,21 @@
     @endif
     <br>
     {!! $newsInfo->content !!}
+
+    @if ($newsInfo->attachments)
+        <div class="mt-4">
+            <h2 class="text-lg font-bold text-gray-800 dark:text-gray-200">Attachments</h2>
+            <ul>
+                @foreach ($newsInfo->attachments as $attachment)
+                    <li>
+                        <a href="{{ asset('storage/'.$attachment->file) }}" class="text-blue-500 hover:text-blue-700">
+                            {{ $attachment->name ?? 'Download' }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        
+    @endif
 </div>
 @endsection

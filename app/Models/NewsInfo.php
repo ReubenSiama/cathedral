@@ -59,4 +59,9 @@ class NewsInfo extends Model
             },
         );
     }
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachmentable');
+    }
 }

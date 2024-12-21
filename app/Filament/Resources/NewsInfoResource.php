@@ -4,15 +4,12 @@ namespace App\Filament\Resources;
 
 use App\Filament\Common\LocaleGenerator;
 use App\Filament\Resources\NewsInfoResource\Pages;
-use App\Filament\Resources\NewsInfoResource\RelationManagers;
 use App\Models\NewsInfo;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class NewsInfoResource extends Resource
 {
@@ -34,6 +31,19 @@ class NewsInfoResource extends Resource
                 ->columnSpanFull(),
                 LocaleGenerator::make('content', 'tiny')
                 ->columnSpanFull(),
+                Forms\Components\Repeater::make('attachments')
+                    ->schema([
+                        Forms\Components\FileUpload::make('file')
+                            ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'])
+                            ->uploadingMessage('Uploading attachment...')
+                            ->required(),
+                        Forms\Components\TextInput::make('name')
+                            ->maxLength(255),
+                    ])
+                    ->reorderable(false)
+                    ->columnSpanFull()
+                    ->addActionLabel('Add Attachment')
+                    ->relationship(),
             ]);
     }
 
