@@ -25,6 +25,12 @@
             </div>
             <div class="">
                 <span class="text-sm font-normal">{{ $item['address'] }}</span>
+                @if (isset($item['location']) && !empty($item['location']))
+                    <br>
+                    <span class="text-sm font-normal">
+                        <a href="{{ $item['location'] }}" target="_blank" class="text-blue-700 dark:text-blue-500 hover:underline">View on Map</a>
+                    </span>
+                @endif
             </div>
         </div>
         <div class="">
