@@ -8,7 +8,17 @@ export default {
         "./storage/framework/views/*.php",
     ],
     theme: {
-        extend: {},
+        extend: {
+            animation: {
+                marquee: 'marquee 40s linear infinite',
+            },
+            keyframes: {
+                marquee: {
+                    '0%': { transform: 'translateX(100%)' },
+                    '100%': { transform: 'translateX(-100%)' },
+                },
+            },
+        },
     },
     plugins: [
         require('flowbite/plugin')
@@ -18,6 +28,6 @@ export default {
           pattern: /max-w-(sm|md|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl)/,
           variants: ['sm', 'md', 'lg', 'xl', '2xl']
         }
-      ],
+    ],
 }
 

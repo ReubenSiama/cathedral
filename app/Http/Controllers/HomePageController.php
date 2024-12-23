@@ -13,13 +13,20 @@ class HomePageController extends Controller
         $stationsIntro = \App\Models\Setting::where('key', 'stations-intro')->first();
         $stations = \App\Models\Parish::displayAtHomepage()->get();
 
+        // get news from the past 7 days
+        $newsInfo = \App\Models\NewsInfo::latest()
+            ->where('created_at', '>=', now()->subDays(7))
+            ->select(['title', 'slug'])
+            ->get();
+
         return view('home', compact(
             'massTimings',
             'institutions',
             'about',
             'banner',
             'stationsIntro',
-            'stations'
+            'stations',
+            'newsInfo'
         ));
     }
 
