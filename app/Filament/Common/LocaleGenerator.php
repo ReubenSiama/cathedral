@@ -35,9 +35,12 @@ class LocaleGenerator
     private static function getField($type, $fieldName)
     {
         return match ($type) {
-            'default' => Forms\Components\TextInput::make($fieldName),
-            'textarea' => Forms\Components\Textarea::make($fieldName),
-            'tiny' => TinyEditor::make($fieldName),
+            'default' => Forms\Components\TextInput::make($fieldName)
+                ->required(),
+            'textarea' => Forms\Components\Textarea::make($fieldName)
+                ->required(),
+            'tiny' => TinyEditor::make($fieldName)
+                ->required(),
         };
     }
 }
