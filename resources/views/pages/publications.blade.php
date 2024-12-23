@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-span-3">
                     <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">{{ $publication->title }}</h2>
-                    <p class="text-gray-700 dark:text-gray-300">{{ $publication->description }}</p>
+                    <p class="text-gray-700 dark:text-gray-300">{{ $publication?->description }}</p>
                     <a href="{{ route('news.show', $publication) }}" class="text-blue-700 dark:text-blue-500 hover:underline">Read More</a>
                 </div>
             </div>
