@@ -1,13 +1,6 @@
 @extends('layouts.main')
 @section('content')
     <x-carousel :image="$banner->image"/>
-    {{-- <div class="bg-[#22242A] text-white py-2 marquee-container overflow-hidden">
-        <div class="whitespace-nowrap animate-marquee marquee-content flex gap-4 items-center">
-            @foreach ($newsInfo as $news)
-                <a href="{{ route('news.show', $news) }}">| {{ $news->title }} |</a>
-            @endforeach
-        </div>
-    </div> --}}
     <div class="grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-5 mt-10 md:container mx-4 md:mx-auto">
         <div class="col-span-2">
             <h1 class="text-center md:text-left mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $about->name }}</h1>
