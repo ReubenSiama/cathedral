@@ -2,20 +2,11 @@
 @section('content')
     <x-carousel :image="$banner->image"/>
     @if ($newsInfo->count() > 0)
-        <div class="wrapper bg-[#22242A] text-white">
-            <div class="marquee">
-                <div class="marquee__group">
-                    @foreach ($newsInfo as $news)
-                        <a class="marquee__item hover:text-gray-300" href="{{ route('news.show', $news) }}">{{ $news->title }}</a>
-                    @endforeach
-                </div>
-                <div aria-hidden="true" class="marquee__group">
-                    @foreach ($newsInfo as $news)
-                        <a class="marquee__item" href="{{ route('news.show', $news) }}">{{ $news->title }}</a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
+        <marquee class="bg-[#22242A] text-white py-4" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+            @foreach ($newsInfo as $news)
+                <a class="hover:text-gray-300" href="{{ route('news.show', $news) }}">{{ $news->title }}</a>
+            @endforeach
+        </marquee>
     @endif
     <div class="grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-5 mt-10 md:container mx-4 md:mx-auto">
         <div class="col-span-2">
