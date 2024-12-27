@@ -2,17 +2,21 @@
 @section('content')
     <x-carousel :image="$banner->image"/>
     @if ($newsInfo->count() > 0)
-        <marquee class="bg-[#22242A] text-white py-4" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
-            Latest News: &nbsp;
-            @foreach ($newsInfo as $news)
-                <a class="hover:text-gray-300" href="{{ route('news.show', $news) }}">{{ $news->title }}</a>
-                @if (!$loop->last)
-                <span class="text-gray-400">
-                    &nbsp;|&nbsp;
-                </span>
-                @endif
-            @endforeach
-        </marquee>
+    <div class="grid grid-cols-3 md:grid-cols-12 pt-4 pb-2 bg-[#22242A] text-white">
+        <div class="col-span-1 md:col-span-2 ml-4 font-extrabold animate-pulse">Latest News: </div>
+        <div class="col-span-2 md:col-span-10">
+            <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                @foreach ($newsInfo as $news)
+                    <a class="hover:text-gray-300" href="{{ route('news.show', $news) }}">{{ $news->title }}</a>
+                    @if (!$loop->last)
+                    <span class="text-gray-400">
+                        &nbsp;|&nbsp;
+                    </span>
+                    @endif
+                @endforeach
+            </marquee>
+        </div>
+    </div>
     @endif
     <div class="grid grid-cols-1 md:grid-cols-3 md:gap-10 gap-5 mt-10 md:container mx-4 md:mx-auto">
         <div class="col-span-2">
