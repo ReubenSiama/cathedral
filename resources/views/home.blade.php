@@ -3,8 +3,14 @@
     <x-carousel :image="$banner->image"/>
     @if ($newsInfo->count() > 0)
         <marquee class="bg-[#22242A] text-white py-4" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+            Latest News: &nbsp;
             @foreach ($newsInfo as $news)
                 <a class="hover:text-gray-300" href="{{ route('news.show', $news) }}">{{ $news->title }}</a>
+                @if (!$loop->last)
+                <span class="text-gray-400">
+                    &nbsp;|&nbsp;
+                </span>
+                @endif
             @endforeach
         </marquee>
     @endif
