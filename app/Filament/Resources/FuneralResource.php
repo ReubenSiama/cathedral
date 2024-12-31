@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Enums\CveInfant;
 use App\Enums\Relationship;
+use App\Exports\FuneralExport;
 use App\Filament\Common\CauserDisplay;
 use App\Filament\Common\DownloadCertificate;
 use App\Filament\Common\NumberField;
@@ -16,6 +17,7 @@ use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FuneralResource extends Resource
 {
@@ -172,7 +174,35 @@ class FuneralResource extends Resource
                 Tables\Actions\EditAction::make(),
                 DownloadCertificate::make('funeral.download'),
             ])
-            ->defaultSort('created_at', 'desc');
+            ->defaultSort('created_at', 'desc')
+            ->headerActions([
+                Tables\Actions\Action::make('export')
+                    ->form([
+                        Forms\Components\TextInput::make('filename')
+                            ->label('Filename')
+                            ->default(fn() => 'Funeral Export'.date('d-m-Y'))
+                            ->required(),
+                        Forms\Components\DatePicker::make('from')
+                            ->label('From')
+                            ->displayFormat(self::$dateFormat)
+                            ->native(false)
+                            ->required(),
+                        Forms\Components\DatePicker::make('to')
+                            ->label('To')
+                            ->displayFormat(self::$dateFormat)
+                            ->native(false)
+                            ->required()
+                    ])
+                    ->modalWidth('md')
+                    ->action(function(array $data){
+                        $funeralExport = new FuneralExport(
+                            $data['from'],
+                            $data['to']
+                        );
+
+                        return Excel::download($funeralExport, $data['filename'].'.xlsx');
+                    }),
+            ]);
     }
 
     public static function getRelations(): array
