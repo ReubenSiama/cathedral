@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use App\Exports\BaptismExport;
 use App\Filament\Common\CauserDisplay;
 use App\Filament\Common\DownloadCertificate;
+use App\Filament\Common\ExportData;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\BaptismResource\Pages;
 use App\Models\Baptism;
@@ -233,7 +235,10 @@ class BaptismResource extends Resource
                     ->hiddenLabel(),
                 DownloadCertificate::make('baptism.download'),
             ])
-            ->defaultSort('created_at', 'desc');
+            ->defaultSort('created_at', 'desc')
+            ->headerActions([
+                ExportData::make(BaptismExport::class, 'Baptism'),
+            ]);
     }
 
     public static function getRelations(): array

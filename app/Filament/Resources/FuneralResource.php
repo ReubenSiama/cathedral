@@ -7,6 +7,7 @@ use App\Enums\Relationship;
 use App\Exports\FuneralExport;
 use App\Filament\Common\CauserDisplay;
 use App\Filament\Common\DownloadCertificate;
+use App\Filament\Common\ExportData;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\FuneralResource\Pages;
 use App\Models\Funeral;
@@ -17,7 +18,6 @@ use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Maatwebsite\Excel\Facades\Excel;
 
 class FuneralResource extends Resource
 {
@@ -176,32 +176,7 @@ class FuneralResource extends Resource
             ])
             ->defaultSort('created_at', 'desc')
             ->headerActions([
-                Tables\Actions\Action::make('export')
-                    ->form([
-                        Forms\Components\TextInput::make('filename')
-                            ->label('Filename')
-                            ->default(fn() => 'Funeral Export'.date('d-m-Y'))
-                            ->required(),
-                        Forms\Components\DatePicker::make('from')
-                            ->label('From')
-                            ->displayFormat(self::$dateFormat)
-                            ->native(false)
-                            ->required(),
-                        Forms\Components\DatePicker::make('to')
-                            ->label('To')
-                            ->displayFormat(self::$dateFormat)
-                            ->native(false)
-                            ->required()
-                    ])
-                    ->modalWidth('md')
-                    ->action(function(array $data){
-                        $funeralExport = new FuneralExport(
-                            $data['from'],
-                            $data['to']
-                        );
-
-                        return Excel::download($funeralExport, $data['filename'].'.xlsx');
-                    }),
+                ExportData::make(FuneralExport::class, 'Funeral'),
             ]);
     }
 

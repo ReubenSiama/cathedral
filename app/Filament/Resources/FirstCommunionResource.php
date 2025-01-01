@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources;
 
+use App\Exports\FirstCommunionExport;
 use App\Filament\Common\CauserDisplay;
+use App\Filament\Common\ExportData;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\FirstCommunionResource\Pages;
 use App\Models\FirstCommunion;
@@ -155,7 +157,10 @@ class FirstCommunionResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
-            ->defaultSort('created_at', 'desc');
+            ->defaultSort('created_at', 'desc')
+            ->headerActions([
+                ExportData::make(FirstCommunionExport::class, 'First Communion'),
+            ]);
     }
 
     public static function getRelations(): array

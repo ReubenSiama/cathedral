@@ -29,7 +29,7 @@
                 <td>{{ $funeral->cause_of_death }}</td>
                 <td>{{ $funeral->cve_or_infants }}</td>
                 <td>{{ $funeral->place_of_burial }}</td>
-                <td>{{ $funeral->priest->full_name }}</td>
+                <td>{{ $funeral->priest?->full_name }}</td>
             </tr>
         @endforeach
     </tbody>

@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use App\Exports\ConfirmationExport;
 use App\Filament\Common\CauserDisplay;
 use App\Filament\Common\DownloadCertificate;
+use App\Filament\Common\ExportData;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\ConfirmationResource\Pages;
 use App\Models\Confirmation;
@@ -148,7 +150,10 @@ class ConfirmationResource extends Resource
                 Tables\Actions\EditAction::make(),
                 DownloadCertificate::make('confirmation.download'),
             ])
-            ->defaultSort('created_at', 'desc');
+            ->defaultSort('created_at', 'desc')
+            ->headerActions([
+                ExportData::make(ConfirmationExport::class, 'Confirmation '),
+            ]);
     }
 
     public static function getRelations(): array

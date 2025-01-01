@@ -2,24 +2,21 @@
 
 namespace App\Exports;
 
-use App\Models\Funeral;
+use App\Models\FirstCommunion;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class FuneralExport implements FromView, ShouldAutoSize
+class FirstCommunionExport implements FromView, ShouldAutoSize
 {
     public function __construct(public $from, public $to)
     {
     }
 
-    /**
-     * @return \Illuminate\Support\View
-     */
     public function view(): View
     {
-        return view('exports.funeral', [
-            'funerals' => Funeral::whereBetween('date_of_burial', [$this->from, $this->to])->get(),
+        return view('exports.first-communion', [
+            'firstCommunions' => FirstCommunion::whereBetween('date_of_first_communion', [$this->from, $this->to])->get(),
         ]);
     }
 }

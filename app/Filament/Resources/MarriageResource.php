@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use App\Exports\MarriageExport;
 use App\Filament\Common\CauserDisplay;
 use App\Filament\Common\DownloadCertificate;
+use App\Filament\Common\ExportData;
 use App\Filament\Common\NumberField;
 use App\Filament\Resources\MarriageResource\Pages;
 use App\Models\Marriage;
@@ -310,7 +312,10 @@ class MarriageResource extends Resource
                 Tables\Actions\DeleteAction::make(),
                 DownloadCertificate::make('marriage.download'),
             ])
-            ->defaultSort('created_at', 'desc');
+            ->defaultSort('created_at', 'desc')
+            ->headerActions([
+                ExportData::make(MarriageExport::class, 'Marriage '),
+            ]);
     }
 
     public static function getPages(): array
