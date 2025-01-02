@@ -174,7 +174,7 @@ class FuneralResource extends Resource
                 Tables\Actions\EditAction::make(),
                 DownloadCertificate::make('funeral.download'),
             ])
-            ->defaultSort('created_at', 'desc')
+            ->defaultSort('date_of_burial', 'desc')
             ->headerActions([
                 ExportData::make(FuneralExport::class, 'Funeral'),
             ]);

@@ -312,7 +312,7 @@ class MarriageResource extends Resource
                 Tables\Actions\DeleteAction::make(),
                 DownloadCertificate::make('marriage.download'),
             ])
-            ->defaultSort('created_at', 'desc')
+            ->defaultSort('date_of_marriage', 'desc')
             ->headerActions([
                 ExportData::make(MarriageExport::class, 'Marriage '),
             ]);

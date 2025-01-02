@@ -150,7 +150,7 @@ class ConfirmationResource extends Resource
                 Tables\Actions\EditAction::make(),
                 DownloadCertificate::make('confirmation.download'),
             ])
-            ->defaultSort('created_at', 'desc')
+            ->defaultSort('confirmation_date', 'desc')
             ->headerActions([
                 ExportData::make(ConfirmationExport::class, 'Confirmation '),
             ]);

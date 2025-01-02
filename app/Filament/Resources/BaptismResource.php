@@ -235,7 +235,7 @@ class BaptismResource extends Resource
                     ->hiddenLabel(),
                 DownloadCertificate::make('baptism.download'),
             ])
-            ->defaultSort('created_at', 'desc')
+            ->defaultSort('date_of_baptism', 'desc')
             ->headerActions([
                 ExportData::make(BaptismExport::class, 'Baptism'),
             ]);

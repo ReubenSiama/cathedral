@@ -157,7 +157,7 @@ class FirstCommunionResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
-            ->defaultSort('created_at', 'desc')
+            ->defaultSort('date_of_first_communion', 'desc')
             ->headerActions([
                 ExportData::make(FirstCommunionExport::class, 'First Communion'),
             ]);
