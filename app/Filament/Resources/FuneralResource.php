@@ -138,18 +138,18 @@ class FuneralResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('surname')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('parent_spouse_name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('age')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('domicile')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('date_of_death')
                     ->date('d-m-Y')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('date_of_burial')
                     ->date('d-m-Y')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('parent_spouse_name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('age')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('domicile')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('cause_of_death')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('cve_or_infants')

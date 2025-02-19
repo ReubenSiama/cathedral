@@ -119,21 +119,21 @@ class ConfirmationResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('number')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('confirmation_date')
+                    ->date(self::$dateFormat)
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('surname')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('domicile')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('parish.name')
-                    ->label('Parish/Church')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('confirmation_date')
-                    ->date(self::$dateFormat)
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('bishop.name')
                     ->label('Minister')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('parish.name')
+                    ->label('Parish/Church')
                     ->numeric()
                     ->sortable(),
                 CauserDisplay::create(),

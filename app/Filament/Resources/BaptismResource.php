@@ -196,11 +196,6 @@ class BaptismResource extends Resource
                 Tables\Columns\TextColumn::make('date_of_birth')
                     ->date(self::$dateFormat)
                     ->sortable(),
-                Tables\Columns\TextColumn::make('place_of_birth')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('priest.full_name')
-                    ->label('Minister')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('surname')
@@ -219,6 +214,11 @@ class BaptismResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('mother_surname')
                     ->label('Mother\'s Surname')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('place_of_birth')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('priest.full_name')
+                    ->label('Minister')
                     ->searchable(),
                 CauserDisplay::create(),
                 Tables\Columns\TextColumn::make('created_at')

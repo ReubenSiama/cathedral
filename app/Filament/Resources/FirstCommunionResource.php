@@ -121,6 +121,9 @@ class FirstCommunionResource extends Resource
                 Tables\Columns\TextColumn::make('number')
                     ->label('Number')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('date_of_first_communion')
+                    ->date(self::$dateFormat)
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('surname')
@@ -130,9 +133,6 @@ class FirstCommunionResource extends Resource
                 Tables\Columns\TextColumn::make('father_surname')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('parish.name')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('date_of_first_communion')
-                    ->date(self::$dateFormat)
                     ->sortable(),
                 CauserDisplay::create(),
                 Tables\Columns\TextColumn::make('created_at')
