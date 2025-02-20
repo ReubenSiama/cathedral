@@ -19,6 +19,8 @@ class SpiritualResourceCategoryResource extends Resource
 
     protected static ?string $modelLabel = 'Spiritual Resource';
 
+    protected static ?string $navigationGroup = 'Website';
+
     public static function form(Form $form): Form
     {
         return $form
