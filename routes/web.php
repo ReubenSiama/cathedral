@@ -4,6 +4,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\NewsInfoController;
+use App\Http\Controllers\SpiritualResourceController;
 use App\Http\Controllers\StationsController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,5 +57,11 @@ Route::middleware(['language', 'visitor'])->group(function () {
     Route::controller(GalleryController::class)
         ->group(function () {
             Route::get('gallery', 'index')->name('gallery');
+        });
+
+    Route::controller(SpiritualResourceController::class)
+        ->group(function () {
+            Route::get('spiritual-resources/{spiritualResourceCategory}', 'index')->name('spiritual.resources');
+            Route::get('spiritual-resources/{spiritualResourceCategory}/{spiritualResource}', 'show')->name('spiritual.resources.show');
         });
 });

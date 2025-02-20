@@ -9,7 +9,8 @@
 </head>
 <body>
     @livewire('wire-elements-modal')
-    @include('layouts.navbar')
+    {{-- @include('layouts.navbar') --}}
+    @livewire('navbar')
     @yield('carousel')
     <div class="min-h-[70vh]">
         @yield('content')

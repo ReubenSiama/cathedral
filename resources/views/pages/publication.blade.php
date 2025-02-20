@@ -5,7 +5,7 @@
         {{ $newsInfo->title }}
     </h1>
     @if ($newsInfo->cover_image)
-        <img src="{{ asset('storage/'.$newsInfo->cover_image) }}" alt="{{ $newsInfo->title }}" class="h-52 w-52 object-cover float-end">
+        <img src="{{ asset('storage/'.$newsInfo->cover_image) }}" alt="{{ $newsInfo->title }}" class="w-64 h-64 object-cover float-end p-4">
     @endif
     <br>
     {!! $newsInfo->content !!}
