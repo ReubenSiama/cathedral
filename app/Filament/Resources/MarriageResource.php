@@ -282,7 +282,13 @@ class MarriageResource extends Resource
                 Tables\Columns\TextColumn::make('date_of_first_announcement')
                     ->date(self::$dateFormat),
                 Tables\Columns\TextColumn::make('personalDetails.0.full_name')
-                    ->label('Bridegroom'),
+                    ->label('Bridegroom')
+                    ->searchable(query: function($query, $search){
+                        return $query->orWhereHas('personalDetails', function($query) use ($search){
+                            $query->where('name', 'like', '%'.$search.'%')
+                            ->orWhere('surname', 'like', '%'.$search.'%');
+                        });
+                    }),
                 Tables\Columns\TextColumn::make('personalDetails.0.domicile')
                     ->label('Bridegroom\'s Domicile'),
                 Tables\Columns\TextColumn::make('personalDetails.1.full_name')
