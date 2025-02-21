@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Models\Parish;
 use Livewire\Component;
 use Livewire\Attributes\Url;
 use Livewire\Attributes\On;
@@ -23,8 +22,9 @@ class InfoCard extends Component
         $this->items = $items;
         $this->clickable = $clickable;
         if($this->station){
-            $station = $this->model::where('slug', $this->station)->first();
-            $this->dispatch('openModal', component: 'view-item', arguments: ['item' => $station]);
+            $model = 'App\\Models\\' . $this->model;
+            $station = $model::where('slug', $this->station)->first();
+            $this->dispatch('openModal', component: 'view-item', arguments: ['item' => $station, 'model' => $this->model]);
         }
     }
 
