@@ -124,7 +124,7 @@
             <td class="underline">{{ date('d/m/Y', strtotime($firstCommunion->date_of_baptism)) }}</td>
             <td style="width: 5%;">Place</td>
             <td style="width: 1%;">:</td>
-            <td class="underline">{{ $firstCommunion->place_of_baptism }}</td>
+            <td class="underline">{{ $firstCommunion->placeOfBaptism?->name }}</td>
         </tr>
         <tr>
             <td>Father's Name</td>
