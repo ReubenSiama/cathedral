@@ -53,7 +53,14 @@ class FirstCommunionResource extends Resource
                             ->relationship('placeOfBaptism', 'name')
                             ->native(false)
                             ->searchable()
-                            ->preload(),
+                            ->preload()
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                            ->createOptionAction(fn (Action $action) => $action
+                                ->modalWidth('md')),
                         Forms\Components\TextInput::make('father_name')
                             ->label('Father\'s Name')
                             ->maxLength(255),
